@@ -7,7 +7,7 @@
 
     
 
-    <title>生活如此美好 | </title>
+    <title>基于github的Hexo静态Blog（在电脑重装后的相关部署） | </title>
     <meta name="author" content="Iris">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="基于github的Hexo静态Blog（在电脑重装后的相关部署）"/>
     <meta property="og:site_name" content="Iris&#39;s Blog"/>
 
     
@@ -170,6 +170,22 @@
 
             
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Hexo/">
+                    Hexo <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux/">
+                    Linux <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -193,30 +209,137 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper light-green lighten-2">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Hexo/">Hexo</a>
+
 
         
-            <a class="breadcrumb" href="/tags/生活如此美好/">生活如此美好</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>基于github的Hexo静态Blog（在电脑重装后的相关部署）</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="blue-link-context" datetime="2016-11-28T01:45:34.000Z"><a href="/2016/11/28/基于github的Hexo静态Blog（在电脑重装后的相关部署）/">2016-11-28</a></time>
+
+            
+    <div class="tags-row">
         
-            <a href="/2016/11/10/第一篇blog/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-11-10T03:04:11.000Z">2016-11-10</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                第一篇blog
-            </a>
+            <a href="/tags/Hexo/" class="chip pink lighten-3">Hexo</a>
+        
+            <a href="/tags/git/" class="chip pink lighten-3">git</a>
         
     </div>
+
+
+            <div class="toc blue-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-关联github"><span class="section table-of-contents-text">1 关联github</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-设置git"><span class="section table-of-contents-text">1.1 设置git</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-配置git私钥"><span class="section table-of-contents-text">1.2 配置git私钥</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-安装node-js和Hexo"><span class="section table-of-contents-text">2 安装node.js和Hexo</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-1-安装node-js"><span class="section table-of-contents-text">2.1 安装node.js</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-2-安装Hexo"><span class="section table-of-contents-text">2.2 安装Hexo</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry blue-link-context">
+                <p><strong>前言：</strong><br>由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和 Hexo 建站等流程。<br>此博文仅仅是在新系统上的重新布置，和本人情况类似的游客下文可做一定参考，也劳烦 没有文件备份的游客移步他家。</p>
+<a id="more"></a>
+<p><strong>环境：</strong></p>
+<blockquote>
+<ul>
+<li>os : Linux 4.8.10-1-ARCH linux x64</li>
+<li>git : 2.10.2</li>
+<li>node : 7.2.0</li>
+<li>npm : 4.0.2</li>
+<li>hexo-cli : 1.0.2</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="1-关联github"><a href="#1-关联github" class="headerlink" title="1 关联github"></a>1 关联github</h1><h2 id="1-1-设置git"><a href="#1-1-设置git" class="headerlink" title="1.1 设置git"></a>1.1 设置git</h2><p>系统中 git 已默认安装，设置 git 用户名称和邮件地址：</p>
+<pre><code>$ git config --global user.name &quot;username&quot;
+$ git config --global user.email &quot;username@example.com&quot;
+</code></pre><h2 id="1-2-配置git私钥"><a href="#1-2-配置git私钥" class="headerlink" title="1.2 配置git私钥"></a>1.2 配置git私钥</h2><p>安装 openssh</p>
+<pre><code>$ sudo pacman -S openssh
+</code></pre><p>生成 SSH key</p>
+<pre><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre><p>首先确保 ssh-agent 可运行：</p>
+<pre><code>$ ssh-agent -s
+</code></pre><p>然后添加SSH key：</p>
+<pre><code>$ ssh-add ~/.ssh/id_rsa
+</code></pre><p>拷贝 ~/.ssh/id_rsa.pub 中的内容，然后，在 GitHub 右上方点击头像，选择 ”Settings”，在右边的 ”Personal settings” 侧边栏选择 ”SSH Keys”。点击 ”Add key” 按钮添加，接着粘贴 key。</p>
+<p>测试：</p>
+<pre><code>$ ssh -T git@github.com
+</code></pre><hr>
+<h1 id="2-安装node-js和Hexo"><a href="#2-安装node-js和Hexo" class="headerlink" title="2 安装node.js和Hexo"></a>2 安装node.js和Hexo</h1><h2 id="2-1-安装node-js"><a href="#2-1-安装node-js" class="headerlink" title="2.1 安装node.js"></a>2.1 安装node.js</h2><p><strong>法一：</strong><br>按照 <a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo 官方</a>给出的安装方法，通过 nvm 进行安装。<br>安装 nvm：</p>
+<pre><code>$ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
+</code></pre><p>重启Terminal，安装 Node.js</p>
+<pre><code>$ nvm ls-remote
+$ nvm install v7.2.0
+</code></pre><p>网太慢的原因？下载总出错……果断尝试法二。</p>
+<p><strong>法二：</strong><br>按照 <a href="https://wiki.archlinux.org/index.php/Node.js_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">Arch wiki</a> 给出的安装方法。<br> nodejs 位于官方软件仓库，直接通过 pacman 安装：</p>
+<pre><code>$ sudo pacman -S nodejs
+</code></pre><p> npm 同上：</p>
+<pre><code>$ sudo pacman -S npm
+</code></pre><h2 id="2-2-安装Hexo"><a href="#2-2-安装Hexo" class="headerlink" title="2.2 安装Hexo"></a>2.2 安装Hexo</h2><p>使用 npm 完成 Hexo 的安装：</p>
+<pre><code>$ sudo npm install -g hexo-cli      &lt;== 注：这里不用 sudo 会报错
+</code></pre><p>由于本人在之前已经备份过 myHexo 的全部文件，因此不必 hexo init 了。<br>接下来，直接进入移动硬盘里面的 blog 文件目录：</p>
+<pre><code>$ hexo g
+$ hexo s                            &lt;== 本地 0.0.0.0:4000 预览
+$ hexo d                            &lt;== 部署至 github 
+</code></pre><p>访问 0.0.0.0.0.0:4000 大功告成!</p>
+<p><img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-28/95566873.jpg" alt=""></p>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more" target="_blank" rel="external">GitHub Pages + Hexo搭建博客</a>  </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 28 日 </p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/11/28/基于github的Hexo静态Blog（在电脑重装后的相关部署）/" data-title="基于github的Hexo静态Blog（在电脑重装后的相关部署）" data-url="http://yoursite.com/2016/11/28/基于github的Hexo静态Blog（在电脑重装后的相关部署）/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'irislr'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>

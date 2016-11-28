@@ -1,0 +1,752 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>撕人定制 ArchLinux | </title>
+    <meta name="author" content="Iris">
+    
+    <meta name="description" content="花开时折直须折,莫待无花空折枝">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="撕人定制 ArchLinux"/>
+    <meta property="og:site_name" content="Iris&#39;s Blog"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Iris&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="light-green lighten-2">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Iris&#39;s Blog</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav blue lighten-3" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="https://avatars2.githubusercontent.com/u/20903810?v=3&amp;s=460" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Iris</p>
+                        <p class="desc">Python控</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav blue lighten-3" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Hexo/">
+                    Hexo <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux/">
+                    Linux <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper light-green lighten-2">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Linux/">Linux</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>撕人定制 ArchLinux</h1>
+    
+
+
+            </div>
+            <time class="blue-link-context" datetime="2016-11-27T10:27:32.000Z"><a href="/2016/11/27/撕人定制ArchLinux/">2016-11-27</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/ArchLinux/" class="chip pink lighten-3">ArchLinux</a>
+        
+            <a href="/tags/系统安装/" class="chip pink lighten-3">系统安装</a>
+        
+    </div>
+
+
+            <div class="toc blue-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-准备工作"><span class="section table-of-contents-text">1 准备工作</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-制作启动盘"><span class="section table-of-contents-text">1.1 制作启动盘</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-设置UEFI模式"><span class="section table-of-contents-text">1.2 设置UEFI模式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-3-在硬盘里留出30G以上的空闲空间"><span class="section table-of-contents-text">1.3 在硬盘里留出30G以上的空闲空间</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-为正式安装做好铺垫"><span class="section table-of-contents-text">2 为正式安装做好铺垫　　</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-1-进入-ArchISO"><span class="section table-of-contents-text">2.1 进入 ArchISO</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-2-验证启动模式"><span class="section table-of-contents-text">2.2 验证启动模式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-3-连接到因特网"><span class="section table-of-contents-text">2.3 连接到因特网</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-4-更新系统时间"><span class="section table-of-contents-text">2.4 更新系统时间</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-5-硬盘分区"><span class="section table-of-contents-text">2.5 硬盘分区</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-6-挂载分区"><span class="section table-of-contents-text">2.6 挂载分区</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3-安装及基本配置"><span class="section table-of-contents-text">3 安装及基本配置</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-1-选择镜像"><span class="section table-of-contents-text">3.1 选择镜像</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-2-安装基本系统"><span class="section table-of-contents-text">3.2 安装基本系统</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-3-基本配置"><span class="section table-of-contents-text">3.3 基本配置</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-1-Fstab"><span class="section table-of-contents-text">3.3.1 Fstab</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-2-Chroot"><span class="section table-of-contents-text">3.3.2 Chroot</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-3-时区"><span class="section table-of-contents-text">3.3.3 时区</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-4-Locale"><span class="section table-of-contents-text">3.3.4 Locale</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-5-主机名"><span class="section table-of-contents-text">3.3.5 主机名</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-6-Root-密码"><span class="section table-of-contents-text">3.3.6 Root 密码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-7-安装引导程序"><span class="section table-of-contents-text">3.3.7 安装引导程序</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-3-8-重启"><span class="section table-of-contents-text">3.3.8 重启</span></a></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#4-gnome桌面安装"><span class="section table-of-contents-text">4 gnome桌面安装</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-1-添加普通用户"><span class="section table-of-contents-text">4.1 添加普通用户</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-2-连接网络"><span class="section table-of-contents-text">4.2 连接网络</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-3-安装基本的图形环境以及驱动程序"><span class="section table-of-contents-text">4.3 安装基本的图形环境以及驱动程序</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#4-4-安装gnome桌面"><span class="section table-of-contents-text">4.4 安装gnome桌面</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#5-常用软件的安装"><span class="section table-of-contents-text">5 常用软件的安装</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-1-yourt"><span class="section table-of-contents-text">5.1 yourt</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-2-fcitx中文输入法"><span class="section table-of-contents-text">5.2 fcitx中文输入法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-2-chromium"><span class="section table-of-contents-text">5.2 chromium</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-3-sublime-text-3"><span class="section table-of-contents-text">5.3 sublime-text-3</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#5-3-1-安装"><span class="section table-of-contents-text">5.3.1 安装</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#5-3-2-无法输入中文的解决方案："><span class="section table-of-contents-text">5.3.2 无法输入中文的解决方案：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-4-VirtualBox"><span class="section table-of-contents-text">5.4 VirtualBox</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry blue-link-context">
+                <p>这是一篇关于如何定制 ArchLinux 的教程，其中绝大部分内容来自 Arch WiKi<br><a id="more"></a></p>
+<p><strong>前言:</strong><br>我的第一台爱本——灵越3543，是2015年初入手的。下面来回顾下我的”光荣“折腾史……</p>
+<blockquote>
+<ul>
+<li>2015.2-3：win8.1（电脑自带）</li>
+<li>2015.4-11：win7（虚拟机里体验过各种 ubuntu ， centOS ， openSUSE 等等）</li>
+<li>2015.12-2016.5：win7 + ubuntu15.10（刚装完的时候经常进 ubuntu ，实际上一个月以后每次都是直接进 win ）</li>
+<li>2016.5-6的某些天：win10（想体现下 win10 ，也仅仅只是体验下……）</li>
+<li>2016.6-7：centOS7.1（为配置自己的 mcm 工作环境，折腾了不止一点两点额）</li>
+<li>2016.8-11：ubuntu16.04（唯一感觉是比 centOS 舒服许多）</li>
+<li>2016.11.14-22：win10（双11入手的固态刚到，准备老老实实滚回 win ，却因为某软件问题开机蓝屏进不了系统而放弃治疗……）</li>
+<li>2016.11.25：archlinux（你的我一直在寻找的吗？）</li>
+</ul>
+</blockquote>
+<p>先来爆下料呗，哈哈，以下是现在博主爱本startx之后的样子～ </p>
+<p><img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-26/99662440.jpg" alt="">  </p>
+<p>另外，如果想按自己的喜好撕人定制，<strong>强烈建议移步 ArchLinux WiKi 的<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">安装指导</a>！</strong><br>实际上，本博文的绝大部分内容也是参考此 wiki 。  </p>
+<p>接下来，格好删除你的C盘，跟我一起来吧！  </p>
+<hr>
+<p><strong>准备:</strong></p>
+<blockquote>
+<ul>
+<li>普通U盘一个  </li>
+<li><a href="https://www.archlinux.org/download/" target="_blank" rel="external">ArchLinux 镜像</a> </li>
+<li>电脑一台</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-制作启动盘"><a href="#1-1-制作启动盘" class="headerlink" title="1.1 制作启动盘"></a>1.1 制作启动盘</h2><p> windows 下面，下载启动盘制作工具 <a href="https://rufus.akeo.ie/" target="_blank" rel="external">rufus</a>，将镜像写入U盘，<strong>注意</strong>制作过程中会格式化，记得备份。<br>在此安利下， rufus 真的是一个很给力的工具，目前为止，本人装过的所有 Linux 系统都是用它做的启动盘。</p>
+<h2 id="1-2-设置UEFI模式"><a href="#1-2-设置UEFI模式" class="headerlink" title="1.2 设置UEFI模式"></a>1.2 设置UEFI模式</h2><p>不同电脑有所不同，具体步骤自行 baidu 吧。<br>下面的步骤都是基于的 UEFI 模式的。实际上， BIOS 和 UEFI 两种模式的安装步骤中也仅仅只是分区和安装引导程序的过程有稍许不同。<br>选择 UEFI 的原因？唔……本人认为 UEFI 是趋势吧。　　</p>
+<h2 id="1-3-在硬盘里留出30G以上的空闲空间"><a href="#1-3-在硬盘里留出30G以上的空闲空间" class="headerlink" title="1.3 在硬盘里留出30G以上的空闲空间"></a>1.3 在硬盘里留出30G以上的空闲空间</h2><p>如果以前装的是 windows ，现在准备装双系统了，那么就进磁盘管理选择一个盘进行删除卷操作。<br>如果以前装的是 windows ，现在准备装 ArchLinux 单系统了，那么直接进大白菜删除所有分区。<br>如果以前装的是 linux ，那就跳过这步吧……</p>
+<hr>
+<h1 id="2-为正式安装做好铺垫"><a href="#2-为正式安装做好铺垫" class="headerlink" title="2 为正式安装做好铺垫　　"></a>2 为正式安装做好铺垫　　</h1><h2 id="2-1-进入-ArchISO"><a href="#2-1-进入-ArchISO" class="headerlink" title="2.1 进入 ArchISO"></a>2.1 进入 ArchISO</h2><p>开机前将U盘插入，设置成从U盘启动。<br>开机能看到 ArchISO 的选择界面，一般选第一个就行，默认装64位。 想装32位就选第二个。<br>进去以后即默认获取 root 权限。</p>
+<h2 id="2-2-验证启动模式"><a href="#2-2-验证启动模式" class="headerlink" title="2.2 验证启动模式"></a>2.2 验证启动模式</h2><p>如果 UEFI 模式已经启用 , Archiso 将会使用 systemd-boot 来启动 Arch Linux 。如果你要验证启动模式, 可以尝试列出 efivars 目录:</p>
+<pre><code># ls /sys/firmware/efi/efivars
+</code></pre><p>如果出现 No such file or directory 的提示，则需要重新开机检查设置。</p>
+<h2 id="2-3-连接到因特网"><a href="#2-3-连接到因特网" class="headerlink" title="2.3 连接到因特网"></a>2.3 连接到因特网</h2><p>守护进程 dhcpcd 已被默认启用来探测有线设备, 并会尝试连接。因此最省事的方法就是找个路由器设置为 dhcp 的地方。<br>如需验证网络是否正常, 可以使用 ping:</p>
+<pre><code># ping -c 3 baidu.com
+</code></pre><h2 id="2-4-更新系统时间"><a href="#2-4-更新系统时间" class="headerlink" title="2.4 更新系统时间"></a>2.4 更新系统时间</h2><p>用 systemd-timesyncd 确保系统时间是正确的：</p>
+<pre><code># timedatectl set-ntp true
+</code></pre><h2 id="2-5-硬盘分区"><a href="#2-5-硬盘分区" class="headerlink" title="2.5 硬盘分区"></a>2.5 硬盘分区</h2><p>找到你的硬盘名称，我的固态显示为 /dev/sdb：</p>
+<pre><code># fdisk -l
+</code></pre><p>下面使用 parted 工具进行分区，四个分区依次为 /boot/EFI , / , swap , /home：</p>
+<pre><code># parted /dev/sdb
+(parted) mkpart p 0 512M        &lt;== /boot/EFI
+(parted) mkpart p 512M 40G      &lt;== /
+(parted) mkpart p 40G 48G       &lt;== swap
+(parted) mkpart e 48G -1        &lt;== /home
+</code></pre><p>接下来，还需要用合适的文件系统来对每个分区进行格式化操作：</p>
+<pre><code># mkfs.vfat sdb1                &lt;== /boot/EFI
+# mkfs.ext4 sdb2                &lt;== /
+# mkswap sdb3                   &lt;== swap
+# mkfs.ext4 sdb4                &lt;== home
+</code></pre><h2 id="2-6-挂载分区"><a href="#2-6-挂载分区" class="headerlink" title="2.6 挂载分区"></a>2.6 挂载分区</h2><p>首先将根分区挂载到 /mnt：</p>
+<pre><code># mount /dev/sdb2 /mnt
+</code></pre><p>创建目录并挂载 /boot/EFI：</p>
+<pre><code># mkdir /mnt/boot
+# mkdir /mnt/boot/EFI
+# mount /dev/sdb1 /mnt/boot/EFI
+</code></pre><p>创建目录并挂载 /home：</p>
+<pre><code># mkdir /mnt/home
+# mount /dev/sdb4 /mnt/home
+</code></pre><p>激活 sdb3 作为交换分区：</p>
+<pre><code># swapon /dev/sdb3
+</code></pre><hr>
+<h1 id="3-安装及基本配置"><a href="#3-安装及基本配置" class="headerlink" title="3 安装及基本配置"></a>3 安装及基本配置</h1><h2 id="3-1-选择镜像"><a href="#3-1-选择镜像" class="headerlink" title="3.1 选择镜像"></a>3.1 选择镜像</h2><p>编辑 /etc/pacman.d/mirrorlist  </p>
+<pre><code># nano /etc/pacman.d/mirrorlist
+</code></pre><p>选择中国的镜像。</p>
+<h2 id="3-2-安装基本系统"><a href="#3-2-安装基本系统" class="headerlink" title="3.2 安装基本系统"></a>3.2 安装基本系统</h2><p>执行 pacstrap 脚本，默认会安装 base 组：</p>
+<pre><code># pacstrap /mnt
+</code></pre><p>如果你想通过 AUR 或者 ABS 编译安装软件包,需要装上 base-devel：</p>
+<pre><code># pacstrap -i /mnt base base-devel
+</code></pre><p>安装完成后会提示 ==&gt; Image creation successful.</p>
+<h2 id="3-3-基本配置"><a href="#3-3-基本配置" class="headerlink" title="3.3 基本配置"></a>3.3 基本配置</h2><h3 id="3-3-1-Fstab"><a href="#3-3-1-Fstab" class="headerlink" title="3.3.1 Fstab"></a>3.3.1 Fstab</h3><p>用以下命令生成 fstab 文件 (用 -U 或 -L 选项设置 UUID 或卷标)：</p>
+<pre><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="3-3-2-Chroot"><a href="#3-3-2-Chroot" class="headerlink" title="3.3.2 Chroot"></a>3.3.2 Chroot</h3><p>Change root 到新安装的系统：</p>
+<pre><code># arch-chroot /mnt /bin/bash
+</code></pre><h3 id="3-3-3-时区"><a href="#3-3-3-时区" class="headerlink" title="3.3.3 时区"></a>3.3.3 时区</h3><p>设置时区:</p>
+<pre><code># ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</code></pre><p>调整时间漂移:</p>
+<pre><code># hwclock --systohc --utc
+</code></pre><h3 id="3-3-4-Locale"><a href="#3-3-4-Locale" class="headerlink" title="3.3.4 Locale"></a>3.3.4 Locale</h3><p>本地化的程序与库若要本地化文本，都依赖 Locale, 后者明确规定地域、货币、时区日期的格式、字符排列方式和其他本地化标准等等。在下面两个文件设置：locale.gen 与 locale.conf.<br>/etc/locale.gen 是一个仅包含注释文档的文本文件。指定需要的本地化类型，只需移除对应行前面的注释符号（＃）即可，建议选择帶UTF-8的項：</p>
+<pre><code># nano /etc/locale.gen
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_TW.UTF-8 UTF-8
+</code></pre><p>接着执行locale-gen以生成locale讯息：</p>
+<pre><code># locale-gen
+</code></pre><p>/etc/locale.gen 生成指定的本地化文件，每次 glibc 更新之后也要运行 locale-gen。<br>创建 locale.conf 并提交你的本地化选项：</p>
+<h3 id="3-3-5-主机名"><a href="#3-3-5-主机名" class="headerlink" title="3.3.5 主机名"></a>3.3.5 主机名</h3><p>要设置 hostname，将其添加 到 /etc/hostname, myhostname 是需要的主机名:</p>
+<pre><code># echo myhostname &gt; /etc/hostname
+</code></pre><h3 id="3-3-6-Root-密码"><a href="#3-3-6-Root-密码" class="headerlink" title="3.3.6 Root 密码"></a>3.3.6 Root 密码</h3><p>设置 root 密码:</p>
+<pre><code># passwd
+</code></pre><h3 id="3-3-7-安装引导程序"><a href="#3-3-7-安装引导程序" class="headerlink" title="3.3.7 安装引导程序"></a>3.3.7 安装引导程序</h3><p>安装软件包 grub 和 efibootmgr：</p>
+<pre><code># pacman -S grub
+# pacman -S efibootmgr
+</code></pre><p>接下来的步骤安装 GRUB UEFI 程序到 $esp/EFI/grub中, 安装其模块到/boot/grub/x86_64-efi，其中 $esp 为 /boot/EFI</p>
+<pre><code># grub-install --target=x86_64-efi --efi-directory=$esp --bootloader-id=grub
+</code></pre><p>然后将可以启动的 grubx64.efi 复制到 $esp/EFI/grub.</p>
+<pre><code># cp grubx64.efi $esp/EFI/grub
+</code></pre><p>安装后,需要生成主配置文件 grub.cfg。配置文件的生成过程受到 /etc/default/grub 和 /etc/grub.d/ 下脚本的影响。<br>使用下面命令生成 grub.cfg:</p>
+<pre><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>每次修改 /etc/default/grub 后，都需要重新生成主配置文件</p>
+<h3 id="3-3-8-重启"><a href="#3-3-8-重启" class="headerlink" title="3.3.8 重启"></a>3.3.8 重启</h3><p>输入 exit 或按 Ctrl+D 退出 chroot。<br>现在重启系统，移除安装介质并执行 reboot，新系统启动后用 root 登录。</p>
+<hr>
+<h1 id="4-gnome桌面安装"><a href="#4-gnome桌面安装" class="headerlink" title="4 gnome桌面安装"></a>4 gnome桌面安装</h1><h2 id="4-1-添加普通用户"><a href="#4-1-添加普通用户" class="headerlink" title="4.1 添加普通用户"></a>4.1 添加普通用户</h2><p>新安装的系统只有一个超级用户，即 root 。<br>添加名为 myUsername 普通用户：</p>
+<pre><code># useradd myUsername
+</code></pre><p>并为所创建用户设定密码：</p>
+<pre><code># passwd myUsername
+</code></pre><p>权限提升——安装sudo让普通用户执行root命令：</p>
+<pre><code># pacman -S sudo
+# nano /etc/sudoers
+&lt;== 添加　myUsername ALL＝ALL(ALL)
+</code></pre><h2 id="4-2-连接网络"><a href="#4-2-连接网络" class="headerlink" title="4.2 连接网络"></a>4.2 连接网络</h2><p>连接 dhcp 有线网络：</p>
+<pre><code>$ sudo ip link set enp7s0 up
+$ sudo dhcpcd enp7s0
+</code></pre><h2 id="4-3-安装基本的图形环境以及驱动程序"><a href="#4-3-安装基本的图形环境以及驱动程序" class="headerlink" title="4.3 安装基本的图形环境以及驱动程序"></a>4.3 安装基本的图形环境以及驱动程序</h2><p>安装xorg核心组件：</p>
+<pre><code>$ sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
+</code></pre><p>安装开源显卡驱动，或者安装闭源驱动catalyst：</p>
+<pre><code>$ sudo pacman -S xf86-video-ati
+</code></pre><p>安装触摸板驱动：</p>
+<pre><code>$ sudo pacman -S xf86-input-synaptics
+</code></pre><h2 id="4-4-安装gnome桌面"><a href="#4-4-安装gnome桌面" class="headerlink" title="4.4 安装gnome桌面"></a>4.4 <a href="https://wiki.archlinux.org/index.php/GNOME_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85" target="_blank" rel="external">安装gnome桌面</a></h2><p>安装基本桌面环境和精选的应用程序：</p>
+<pre><code>$ sudo pacman -S gnome
+</code></pre><p>安装剩余的可选工具：</p>
+<pre><code>$ sudo pacman -S gnome-extra
+</code></pre><p>进入桌面：</p>
+<pre><code>$ startx
+</code></pre><h1 id="5-常用软件的安装"><a href="#5-常用软件的安装" class="headerlink" title="5 常用软件的安装"></a>5 常用软件的安装</h1><hr>
+<h2 id="5-1-yourt"><a href="#5-1-yourt" class="headerlink" title="5.1 yourt"></a>5.1 yourt</h2><p>在/etc/pacman.conf中添加软件仓库：</p>
+<pre><code>$ sudo vim /etc/pacman.conf
+&lt;== 添加
+[ArchLinuxfr]
+SigLevel = Optional TrustAll
+Server = http://repo.ArchLinux.fr/$arch
+</code></pre><p>然后命令行中安装：</p>
+<pre><code>$ sudo pacman -Sy yaourt
+</code></pre><p>使用yaourt来更新所有系统中的包：</p>
+<pre><code>$ yaourt -Syua
+</code></pre><h2 id="5-2-fcitx中文输入法"><a href="#5-2-fcitx中文输入法" class="headerlink" title="5.2 fcitx中文输入法"></a>5.2 fcitx中文输入法</h2><p>安装fcitx输入法作为中文输入法：</p>
+<pre><code>$ sudo pacman -S fcitx-im
+</code></pre><p>为保证fcitx能够正常在各个环境中使用，安装：</p>
+<pre><code>$ sudo pacman -S fcitx-qt5
+</code></pre><p>安装AUR里的搜狗拼音输入法：</p>
+<pre><code>$ sudo yaourt -S fcitx-sogoupinyin
+</code></pre><p>安装图形配置工具：</p>
+<pre><code>$ sudo pacman -S fcitx-configtool
+</code></pre><p>设置开机自启，在.xinitrc文件中写入配置信息：</p>
+<pre><code>$ sudo vim ~/.xinitrc
+&lt;== 添加
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=&quot;@im=fcitx&quot;    //让fcitx成为默认输入法
+</code></pre><h2 id="5-2-chromium"><a href="#5-2-chromium" class="headerlink" title="5.2 chromium"></a>5.2 chromium</h2><pre><code>$ sudo pacman -S chromium
+</code></pre><h2 id="5-3-sublime-text-3"><a href="#5-3-sublime-text-3" class="headerlink" title="5.3 sublime-text-3"></a>5.3 sublime-text-3</h2><h3 id="5-3-1-安装"><a href="#5-3-1-安装" class="headerlink" title="5.3.1 安装"></a>5.3.1 安装</h3><pre><code>$ sudo pacman -S sublime-text-dev
+</code></pre><h3 id="5-3-2-无法输入中文的解决方案："><a href="#5-3-2-无法输入中文的解决方案：" class="headerlink" title="5.3.2 无法输入中文的解决方案："></a>5.3.2 无法输入中文的解决方案：</h3><p>下载必要的文件并复制到相应的目录：</p>
+<pre><code>$ git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+$ cd sublime-text-imfix
+$ sudo cp ./lib/libsublime-imfix.so /opt/sublime_text/
+$ sudo cp ./src/subl /usr/bin/
+</code></pre><p>在～下新建文件名为sublime</p>
+<pre><code>$ vim sublime
+&lt;== 添加
+#!/bin/bash
+LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so subl
+</code></pre><p>重新运行 sublime 就可以输入中文了</p>
+<pre><code>$ bash ~/sublime
+</code></pre><p>以后都要用上面这条语句运行sublime </p>
+<h2 id="5-4-VirtualBox"><a href="#5-4-VirtualBox" class="headerlink" title="5.4 VirtualBox"></a>5.4 <a href="https://wiki.archlinux.org/index.php/VirtualBox_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.9C.A8Archlinux.E4.B8.AD.E5.AE.89.E8.A3.85VirtualBox.E7.9A.84.E5.AE.89.E8.A3.85.E6.AD.A5.E9.AA.A4" target="_blank" rel="external">VirtualBox</a></h2><p>用 pacman 安装软件包 virtualbox：</p>
+<pre><code>$ sudo pacman -S virtualbox
+</code></pre><p>选择 linux 内核模块获取方式，安装 virtualbox-host-modules-arch：</p>
+<pre><code>$ sudo pacman -S virtualbox-host-modules-arch
+</code></pre><p>要使用基于 Qt 的图形界面：</p>
+<pre><code>$ sudo pacman -S qt5-x11extras 
+</code></pre><p>VirtualBox 在 Linux 上运行需要使用自己的内核模块，vboxdrv 模块必须在虚拟机运行前加载。<br>手动加载模块：</p>
+<pre><code>$sudo modprobe vboxdrv
+</code></pre><p>运行　VirtualBox。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong>   <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">ArchLinux官方教程</a><br><strong>【２】</strong>   <a href="http://blog.csdn.net/u011152627/article/details/18925121" target="_blank" rel="external">寒假折腾Archlinux的一些经验（新手向）–桌面配置篇</a>  </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 27 日 </p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/11/27/撕人定制ArchLinux/" data-title="撕人定制 ArchLinux" data-url="http://yoursite.com/2016/11/27/撕人定制ArchLinux/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'irislr'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large purple lighten-3">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect lime" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse blue lighten-3"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer light-green lighten-2 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/5566419150" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/IrisLr" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+            <div class="col m9 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="https://www.ctguqmx.com/" target="_blank">启明星工作室</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright blue-link-context">
+        <div class="container">
+            © 2016 irislr.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2 lighten-2');
+
+            
+            // 添加new标签
+            $('').append('<span class="new badge green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=59377395" charset="UTF-8"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
