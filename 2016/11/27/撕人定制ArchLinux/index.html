@@ -352,7 +352,7 @@ zh_TW.UTF-8 UTF-8
 </code></pre><h3 id="3-3-7-安装引导程序"><a href="#3-3-7-安装引导程序" class="headerlink" title="3.3.7 安装引导程序"></a>3.3.7 安装引导程序</h3><p>安装软件包 grub 和 efibootmgr：</p>
 <pre><code># pacman -S grub
 # pacman -S efibootmgr
-</code></pre><p>接下来的步骤安装 GRUB UEFI 程序到 $esp/EFI/grub中, 安装其模块到/boot/grub/x86_64-efi，其中 $esp 为 /boot/EFI</p>
+</code></pre><p>接下来的步骤安装 GRUB UEFI 程序到 esp/EFI/grub中, 安装其模块到/boot/grub/x86_64-efi，我这里下面的 $esp 为 /boot/EFI</p>
 <pre><code># grub-install --target=x86_64-efi --efi-directory=$esp --bootloader-id=grub
 </code></pre><p>然后将可以启动的 grubx64.efi 复制到 $esp/EFI/grub.</p>
 <pre><code># cp grubx64.efi $esp/EFI/grub
