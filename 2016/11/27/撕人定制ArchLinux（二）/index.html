@@ -7,7 +7,7 @@
 
     
 
-    <title>Hexo | </title>
+    <title>撕人定制 ArchLinux（二） | </title>
     <meta name="author" content="Iris">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="撕人定制 ArchLinux（二）"/>
     <meta property="og:site_name" content="Iris&#39;s Blog"/>
 
     
@@ -209,30 +209,131 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper light-green lighten-2">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Linux/">Linux</a>
+
 
         
-            <a class="breadcrumb" href="/tags/Hexo/">Hexo</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>撕人定制 ArchLinux（二）</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="blue-link-context" datetime="2016-11-27T10:27:32.000Z"><a href="/2016/11/27/撕人定制ArchLinux（二）/">2016-11-27</a></time>
+
+            
+    <div class="tags-row">
         
-            <a href="/2016/11/28/基于github的Hexo静态Blog（在电脑重装后的相关部署）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-11-28T01:45:34.000Z">2016-11-28</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                基于github的Hexo静态Blog（在电脑重装后的相关部署）
-            </a>
+            <a href="/tags/ArchLinux/" class="chip pink lighten-3">ArchLinux</a>
+        
+            <a href="/tags/系统安装/" class="chip pink lighten-3">系统安装</a>
         
     </div>
+
+
+            <div class="toc blue-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-安装及基本配置"><span class="section table-of-contents-text">1 安装及基本配置</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-选择镜像"><span class="section table-of-contents-text">1.1 选择镜像</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-安装基本系统"><span class="section table-of-contents-text">1.2 安装基本系统</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-3-基本配置"><span class="section table-of-contents-text">1.3 基本配置</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-1-Fstab"><span class="section table-of-contents-text">1.3.1 Fstab</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-2-Chroot"><span class="section table-of-contents-text">1.3.2 Chroot</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-3-时区"><span class="section table-of-contents-text">1.3.3 时区</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-4-Locale"><span class="section table-of-contents-text">1.3.4 Locale</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-5-主机名"><span class="section table-of-contents-text">1.3.5 主机名</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-6-Root-密码"><span class="section table-of-contents-text">1.3.6 Root 密码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-7-安装引导程序"><span class="section table-of-contents-text">1.3.7 安装引导程序</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-3-8-重启"><span class="section table-of-contents-text">1.3.8 重启</span></a></li></ol></li></ol></li></ol>
+</div>
+
+
+            <div class="entry blue-link-context">
+                <p>此博文继[撕人定制 ArchLinux（二）][]后，主要介绍了安装基本系统的具体过程。<br><a id="more"></a></p>
+<h1 id="1-安装及基本配置"><a href="#1-安装及基本配置" class="headerlink" title="1 安装及基本配置"></a>1 安装及基本配置</h1><h2 id="1-1-选择镜像"><a href="#1-1-选择镜像" class="headerlink" title="1.1 选择镜像"></a>1.1 选择镜像</h2><p>编辑 /etc/pacman.d/mirrorlist  </p>
+<pre><code># nano /etc/pacman.d/mirrorlist
+</code></pre><p>选择中国的镜像。</p>
+<h2 id="1-2-安装基本系统"><a href="#1-2-安装基本系统" class="headerlink" title="1.2 安装基本系统"></a>1.2 安装基本系统</h2><p>执行 pacstrap 脚本，默认会安装 base 组：</p>
+<pre><code># pacstrap /mnt
+</code></pre><p>如果你想通过 AUR 或者 ABS 编译安装软件包,需要装上 base-devel：</p>
+<pre><code># pacstrap -i /mnt base base-devel
+</code></pre><p>安装完成后会提示 ==&gt; Image creation successful.</p>
+<h2 id="1-3-基本配置"><a href="#1-3-基本配置" class="headerlink" title="1.3 基本配置"></a>1.3 基本配置</h2><h3 id="1-3-1-Fstab"><a href="#1-3-1-Fstab" class="headerlink" title="1.3.1 Fstab"></a>1.3.1 Fstab</h3><p>用以下命令生成 fstab 文件 (用 -U 或 -L 选项设置 UUID 或卷标)：</p>
+<pre><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="1-3-2-Chroot"><a href="#1-3-2-Chroot" class="headerlink" title="1.3.2 Chroot"></a>1.3.2 Chroot</h3><p>Change root 到新安装的系统：</p>
+<pre><code># arch-chroot /mnt /bin/bash
+</code></pre><h3 id="1-3-3-时区"><a href="#1-3-3-时区" class="headerlink" title="1.3.3 时区"></a>1.3.3 时区</h3><p>设置时区:</p>
+<pre><code># ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</code></pre><p>调整时间漂移:</p>
+<pre><code># hwclock --systohc --utc
+</code></pre><h3 id="1-3-4-Locale"><a href="#1-3-4-Locale" class="headerlink" title="1.3.4 Locale"></a>1.3.4 Locale</h3><p>本地化的程序与库若要本地化文本，都依赖 Locale, 后者明确规定地域、货币、时区日期的格式、字符排列方式和其他本地化标准等等。在下面两个文件设置：locale.gen 与 locale.conf.<br>/etc/locale.gen 是一个仅包含注释文档的文本文件。指定需要的本地化类型，只需移除对应行前面的注释符号（＃）即可，建议选择帶UTF-8的項：</p>
+<pre><code># nano /etc/locale.gen
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+</code></pre><p>接着执行locale-gen以生成locale讯息：</p>
+<pre><code># locale-gen
+</code></pre><p>/etc/locale.gen 生成指定的本地化文件，每次 glibc 更新之后也要运行 locale-gen。<br>创建 locale.conf 并提交你的本地化选项：</p>
+<h3 id="1-3-5-主机名"><a href="#1-3-5-主机名" class="headerlink" title="1.3.5 主机名"></a>1.3.5 主机名</h3><p>要设置 hostname，将其添加 到 /etc/hostname, myhostname 是需要的主机名:</p>
+<pre><code># echo myhostname &gt; /etc/hostname
+</code></pre><h3 id="1-3-6-Root-密码"><a href="#1-3-6-Root-密码" class="headerlink" title="1.3.6 Root 密码"></a>1.3.6 Root 密码</h3><p>设置 root 密码:</p>
+<pre><code># passwd
+</code></pre><h3 id="1-3-7-安装引导程序"><a href="#1-3-7-安装引导程序" class="headerlink" title="1.3.7 安装引导程序"></a>1.3.7 安装引导程序</h3><p>安装软件包 grub 和 efibootmgr：</p>
+<pre><code># pacman -S grub
+# pacman -S efibootmgr
+</code></pre><p>接下来的步骤安装 GRUB UEFI 程序到 esp/EFI/grub中, 安装其模块到/boot/grub/x86_64-efi，我这里下面的 $esp 为 /boot/EFI</p>
+<pre><code># grub-install --target=x86_64-efi --efi-directory=$esp --bootloader-id=grub
+</code></pre><p>然后将可以启动的 grubx64.efi 复制到 $esp/EFI/grub.</p>
+<pre><code># cp grubx64.efi $esp/EFI/grub
+</code></pre><p>安装后,需要生成主配置文件 grub.cfg。配置文件的生成过程受到 /etc/default/grub 和 /etc/grub.d/ 下脚本的影响。<br>使用下面命令生成 grub.cfg:</p>
+<pre><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>每次修改 /etc/default/grub 后，都需要重新生成主配置文件</p>
+<h3 id="1-3-8-重启"><a href="#1-3-8-重启" class="headerlink" title="1.3.8 重启"></a>1.3.8 重启</h3><p>输入 exit 或按 Ctrl+D 退出 chroot。<br>现在重启系统，移除安装介质并执行 reboot，新系统启动后用 root 登录。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong>   <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">ArchLinux官方教程</a>  </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 27 日 </p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/11/27/撕人定制ArchLinux（二）/" data-title="撕人定制 ArchLinux（二）" data-url="http://yoursite.com/2016/11/27/撕人定制ArchLinux（二）/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'irislr'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
