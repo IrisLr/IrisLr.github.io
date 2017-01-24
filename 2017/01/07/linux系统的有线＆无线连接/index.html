@@ -171,8 +171,24 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Algorithm/">
+                    Algorithm <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/大数据/">
+                    大数据 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Linux/">
-                    Linux <span class="right">4 篇</span></a>
+                    Linux <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -238,7 +254,7 @@
 
 
             <div class="toc blue-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-有线连接"><span class="section table-of-contents-text">1 有线连接</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-ubuntu"><span class="section table-of-contents-text">1.1 ubuntu</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-archlinux"><span class="section table-of-contents-text">1.2 archlinux</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-无线连接"><span class="section table-of-contents-text">2 无线连接</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-1-ubuntu"><span class="section table-of-contents-text">2.1 ubuntu</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-2-archlinux"><span class="section table-of-contents-text">2.2 archlinux</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-有线连接"><span class="section table-of-contents-text">1 有线连接</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-ubuntu"><span class="section table-of-contents-text">1.1 ubuntu</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-archlinux"><span class="section table-of-contents-text">1.2 archlinux</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-无线连接"><span class="section table-of-contents-text">2 无线连接</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-1-ubuntu"><span class="section table-of-contents-text">2.1 ubuntu</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-2-archlinux"><span class="section table-of-contents-text">2.2 archlinux</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3-通过手机-USB-给电脑共享网络"><span class="section table-of-contents-text">3 通过手机 USB 给电脑共享网络</span></a></li></ol>
 </div>
 
 
@@ -318,7 +334,28 @@ $ sudo pacman -S netctl
 <pre><code>$ sudo netctl start profile
 </code></pre><p>iwconfig 即可看到已连上 wifi。</p>
 <hr>
+<h1 id="3-通过手机-USB-给电脑共享网络"><a href="#3-通过手机-USB-给电脑共享网络" class="headerlink" title="3 通过手机 USB 给电脑共享网络"></a>3 通过手机 USB 给电脑共享网络</h1><p>你是否遇到过这样的窘境，既找不到有线网也搜不到无线网，手机成了与外界沟通的唯一方式。<br>毕竟有些事情，用手机也不方便，比如刷 ACM ……<br>这个时候，你肯定会想到通过 USB 将网络共享给电脑吧！在 windows 10 下简单地将手机连上就能上网，同样，在 linux 下也只需要那么一两步就能让你“重见天日”！<br>如果你的电脑是 linux ，如果你的手机支持 USB 共享网络，那么下面将是你迫不及待想看到的——<br><strong>第一步：</strong>将你的手机通过 usb 线连接到电脑上，紧接着打开手机的 usb 共享网络开关。如果你要问具体怎么打开的话，还是去百度一下或者翻翻说明书，实在不行就给客服打电话，哈哈！<br><strong>第二步：</strong>查看手机热点在你电脑上得到的“专属名称”。  </p>
+<pre><code>$ iwconfig
+-----------------------
+lo        no wireless extensions.
+
+enp0s29u1u3  no wireless extensions.
+
+enp7s0    no wireless extensions.
+
+wlp6s0    IEEE 802.11  ESSID:off/any  
+      Mode:Managed  Access Point: Not-Associated   
+      Retry short limit:7   RTS thr:off   Fragment thr:off
+      Power Management:off
+</code></pre><p>很明显，我的多出了 enp0s29u1u3 ，这个就是手机热点对应的设备名称啦！<br><strong>第三步：</strong>接下来的步骤就类似于上面提到的有线 dhcp 连接方式了。  </p>
+<pre><code>$ sudo ip link set enp0s29u1u3 up
+$ sudo dhcpcd enp0s29u1u3  
+</code></pre><p>最后，检验下是否真的能上网了！  </p>
+<pre><code>$ ping -c 3 baidu.com 
+</code></pre><p>能成功返回数据就表示已连上网！</p>
+<hr>
 <p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=116&amp;t=481394" target="_blank" rel="external">ubuntu14.04 网卡BCM43142 make网卡驱动的候出现如下问题</a><br><strong>【２】</strong><a href="https://www.yumao.name/read/archlinux-systemd-rc-local/" target="_blank" rel="external">ArchLinux Systemd 增加rc-local自运行</a><br><strong>【３】</strong><a href="http://www.itdadao.com/articles/c15a466909p0.html" target="_blank" rel="external">archlinux配置BCM43142无线网卡</a></p>
+<hr>
 <p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 1 月 7 日 </p>
 
             </div>
