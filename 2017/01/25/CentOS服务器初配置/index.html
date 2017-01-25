@@ -7,7 +7,7 @@
 
     
 
-    <title>CentOS服务器初配置 | </title>
+    <title>利用 SSH 远程登录 VPS 的初尝试 | </title>
     <meta name="author" content="Iris">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="CentOS服务器初配置"/>
+    <meta property="og:title" content="利用 SSH 远程登录 VPS 的初尝试"/>
     <meta property="og:site_name" content="Iris&#39;s Blog"/>
 
     
@@ -242,12 +242,12 @@
             <div class="article-title">
                 
     
-        <h1>CentOS服务器初配置</h1>
+        <h1>利用 SSH 远程登录 VPS 的初尝试</h1>
     
 
 
             </div>
-            <time class="blue-link-context" datetime="2017-01-24T11:31:57.000Z"><a href="/2017/01/24/CentOS服务器初配置/">2017-01-24</a></time>
+            <time class="blue-link-context" datetime="2017-01-25T11:31:57.000Z"><a href="/2017/01/25/CentOS服务器初配置/">2017-01-25</a></time>
 
             
     <div class="tags-row">
@@ -256,24 +256,34 @@
         
             <a href="/tags/VPS/" class="chip pink lighten-3">VPS</a>
         
+            <a href="/tags/SSH/" class="chip pink lighten-3">SSH</a>
+        
+            <a href="/tags/Windows-Server/" class="chip pink lighten-3">Windows Server</a>
+        
     </div>
 
 
             <div class="toc blue-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-网站备案（域名＋-VPS）"><span class="section table-of-contents-text">1 网站备案（域名＋ VPS）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-创建普通用户"><span class="section table-of-contents-text">2 创建普通用户</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3"><span class="section table-of-contents-text">3</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-CentOS-环境"><span class="section table-of-contents-text">1 CentOS 环境</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-通过公网-IP-登录-VPS"><span class="section table-of-contents-text">1.1 通过公网 IP 登录 VPS</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-创建普通用户"><span class="section table-of-contents-text">1.2 创建普通用户</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-Windows-Sever-环境"><span class="section table-of-contents-text">2 Windows Sever 环境</span></a></li></ol>
 </div>
 
 
             <div class="entry blue-link-context">
-                <p><strong>前言：</strong><br>最近在腾讯上 1 元学生特惠</p>
+                <p><strong>前言：</strong><br>最近在腾讯云上注册了 1 元学生特惠（云服务器＋域名）。为了以后能一起愉快的玩耍，首先要学会远程登录，然后还要进行一些必要的配置。</p>
 <a id="more"></a>
 <hr>
-<p><strong>环境：</strong> </p>
+<p><strong>环境：</strong>  </p>
 <blockquote>
+<ul>
+<li>本地系统：Linux 4.8.10-1-ARCH linux x64</li>
+<li>VPS 系统 1：CentOS 6.5 64bits  </li>
+<li>VPS 系统 2：Windows Server 2012     </li>
+</ul>
 </blockquote>
 <hr>
-<h1 id="1-网站备案（域名＋-VPS）"><a href="#1-网站备案（域名＋-VPS）" class="headerlink" title="1 网站备案（域名＋ VPS）"></a>1 网站备案（域名＋ VPS）</h1><hr>
-<h1 id="2-创建普通用户"><a href="#2-创建普通用户" class="headerlink" title="2 创建普通用户"></a>2 <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart" target="_blank" rel="external">创建普通用户</a></h1><p>添加用户和密码：</p>
+<h1 id="1-CentOS-环境"><a href="#1-CentOS-环境" class="headerlink" title="1 CentOS 环境"></a>1 CentOS 环境</h1><h2 id="1-1-通过公网-IP-登录-VPS"><a href="#1-1-通过公网-IP-登录-VPS" class="headerlink" title="1.1 通过公网 IP 登录 VPS"></a>1.1 通过公网 IP 登录 VPS</h2><pre><code>$ ssh root@公网 IP
+</code></pre><p>输入 root 密码后即可以 root 身份进入系统。</p>
+<h2 id="1-2-创建普通用户"><a href="#1-2-创建普通用户" class="headerlink" title="1.2 创建普通用户"></a>1.2 <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart" target="_blank" rel="external">创建普通用户</a></h2><p>添加用户和密码：</p>
 <pre><code># adduser USERNAME
 # passwd USERNAME 
 </code></pre><p>添加 sudo 功能：</p>
@@ -286,13 +296,13 @@ USERNAME ALL=(ALL) ALL
 # usermod -aG wheel USERNAME 
 </code></pre><p>切换至新用户：</p>
 <pre><code># sudo - USERNAME 
-</code></pre><hr>
-<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><pre><code>$ sudo yum -y update
-</code></pre><hr>
-<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart" target="_blank" rel="external">How To Create a Sudo User on CentOS [Quickstart]</a><br><strong>【２】</strong>[][]<br><strong>【３】</strong>[][]<br><strong>【４】</strong>[][]</p>
+</code></pre><p>更新下，</p>
+<pre><code>$ sudo yum -y update
+</code></pre><h1 id="2-Windows-Sever-环境"><a href="#2-Windows-Sever-环境" class="headerlink" title="2 Windows Sever 环境"></a>2 Windows Sever 环境</h1><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart" target="_blank" rel="external">How To Create a Sudo User on CentOS [Quickstart]</a><br><strong>【２】</strong><a href="https://cnzhx.net/blog/using-terminal-ssh-logon-vps/" target="_blank" rel="external">使用 Linux 终端 SSH 登录 VPS</a><br><strong>【３】</strong>[][]<br><strong>【４】</strong>[][]</p>
 <hr>
-<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br> 年  月  日 </p>
-<p>[3]: </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 1 月 25 日 </p>
+<p>[4]: </p>
 
             </div>
         </div>
@@ -306,7 +316,7 @@ USERNAME ALL=(ALL) ALL
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2017/01/24/CentOS服务器初配置/" data-title="CentOS服务器初配置" data-url="http://yoursite.com/2017/01/24/CentOS服务器初配置/"></div>
+                <div class="ds-thread" data-thread-key="2017/01/25/CentOS服务器初配置/" data-title="利用 SSH 远程登录 VPS 的初尝试" data-url="http://yoursite.com/2017/01/25/CentOS服务器初配置/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));
