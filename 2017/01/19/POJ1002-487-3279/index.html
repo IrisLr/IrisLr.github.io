@@ -179,14 +179,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/VPS/">
-                    VPS <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Algorithm/">
                     Algorithm <span class="right">2 篇</span></a>
                 </a>
@@ -203,8 +195,24 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/VPS/">
+                    VPS <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Hexo/">
                     Hexo <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Windows/">
+                    Windows <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -267,7 +275,7 @@
 
 
             <div class="entry blue-link-context">
-                <p><strong>前言：</strong><br>首先我要说，这种类似的题我至少做过三道以上，而且无一不是以 <code>TLE</code> 告结。这一“离奇悬案”一直以来也的是心头一大疙瘩，如今能在这么闲暇的时刻再次相遇，也只能用缘分解释了Ｏ（∩＿∩）Ｏ哈哈～<br>在破解本案后，你只需要记住一句话——大数据的输入效率不容忽视！  </p>
+                <p><strong>前言：</strong><br>首先我要说，这种类似的题我至少做过三道以上，而且无一不是以 <code>TLE</code> 告结。这一“离奇悬案”一直以来也算是心头一大疙瘩，如今能在这么闲暇的时刻再次相遇，也只能用缘分解释了Ｏ（∩＿∩）Ｏ哈哈～<br>在破解本案后，你只需要记住一句话——大数据的输入效率不容忽视！  </p>
 <a id="more"></a>
 <hr>
 <h1 id="1-思路理顺"><a href="#1-思路理顺" class="headerlink" title="1 思路理顺"></a>1 思路理顺</h1><p>首先，对问题先做个简化处理。忽略字符串中的 <code>-</code> ，将所有的字母转换成对应的数字，将每个电话号码字符串转换成一个７位或以下的数字，小 case ！<br>接下来，我们需要两个大数组。一个大小是 10000000 ，负责存储号码出现的次数，对应的数组下标就是拥有该次数的号码；另一个大小为 50000 ，依次存储出现次数为一次以上的号码，最后用 <code>sort</code> 对它进行排序输出即可。<br>上面这种做法算是典型的利用空间来换取时间吧，反正目前为止还没遇到过空间超出的 <code>DC</code> ……</p>
