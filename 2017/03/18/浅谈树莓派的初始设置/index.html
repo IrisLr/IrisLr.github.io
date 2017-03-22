@@ -281,7 +281,7 @@
 
 
             <div class="entry blue-link-context">
-                <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以给 Geek 玩出新花样。<br>我不算 Geek，但对树莓派很感兴趣。哈哈，现在就开始吧！</p>
+                <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。<br>怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！</p>
 <a id="more"></a>
 <hr>
 <p><strong>环境：</strong> </p>
@@ -306,7 +306,7 @@ gateway
 <pre><code>$ su
 </code></pre><p>然后输入刚设置的密码，即可进入 root 账户！</p>
 <hr>
-<h1 id="3-远程操作树莓派"><a href="#3-远程操作树莓派" class="headerlink" title="3 远程操作树莓派"></a>3 远程操作树莓派</h1><p>在我的电脑上，用于与树莓派进行远程操作的有3个软件。<br>其中，<strong>Putty</strong> 和 <strong>WinSCP</strong> 用的是 SSH 协议，树莓派的 Raspbian 系统是自动开启 SSH 服务的，所以我们不需要进行额外的配置。连上网得到其 IP 地址就能连。<br>用 Putty 进命令行控制树莓派，我最喜欢这种方式——黑色的框框，独立于世。<br>用 WinSCP 与服务器交换文件，很方便。<br>如果想在自己电脑上进树莓派的图形桌面，上面两个软件是满足不了你的。<br>这时 <strong>TightVNCViewer</strong> 就派上用场了！<br>得到了 IP 地址还不够，我们要在树莓派上<strong>配置 VNC 服务</strong>，如下——<br>安装 tightvncserver：</p>
+<h1 id="3-远程操作树莓派"><a href="#3-远程操作树莓派" class="headerlink" title="3 远程操作树莓派"></a>3 远程操作树莓派</h1><p>在我的电脑上，用于对树莓派进行远程操作的有3个软件。<br>其中，<strong>Putty</strong> 和 <strong>WinSCP</strong> 用的是 SSH 协议，树莓派的 Raspbian 系统是自动开启 SSH 服务的，所以我们不需要进行额外的配置。连上网得到其 IP 地址就能连。<br>用 Putty 进命令行控制树莓派，是我最喜欢的方式——黑色的框框，独立于世。<br>用 WinSCP 与服务器交换文件，很方便。<br>如果想在自己电脑上进树莓派的图形桌面，上面两个软件是满足不了你的。<br>这时 <strong>TightVNCViewer</strong> 就派上用场了！<br>得到了 IP 地址还不够，我们要在树莓派上<strong>配置 VNC 服务</strong>，如下——<br>安装 tightvncserver：</p>
 <pre><code>$ sudo apt-get update
 $ sudo apt-get install tightvncserver
 </code></pre><p>配置连接密码：</p>
@@ -321,6 +321,7 @@ $ sudo /etc/init.d/tightvncserver start
 $ reboot
 </code></pre><hr>
 <h1 id="4-更换源"><a href="#4-更换源" class="headerlink" title="4 更换源"></a>4 更换源</h1><p>这个可以参考这篇<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">博文</a>，但我按照他的方法更换源后，安装有些软件的时候会提示找不到，于是我又换回官方源了，虽然慢点，但至少有啊…… </p>
+<hr>
 <h1 id="5-安装-Firefox"><a href="#5-安装-Firefox" class="headerlink" title="5 安装 Firefox"></a>5 安装 Firefox</h1><pre><code>$ sudo apt-get update
 $ sudo apt-get install iceweasel
 </code></pre><hr>
