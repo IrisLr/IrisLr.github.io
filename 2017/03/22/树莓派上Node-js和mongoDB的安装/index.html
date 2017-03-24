@@ -7,7 +7,7 @@
 
     
 
-    <title>VPS | </title>
+    <title>树莓派上Node.js和MongoDB的安装 | </title>
     <meta name="author" content="Iris">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="树莓派上Node.js和MongoDB的安装"/>
     <meta property="og:site_name" content="Iris&#39;s Blog"/>
 
     
@@ -250,29 +250,111 @@
     <main>
         <div class="container main-container">
     
+<article>
+    <div class="card">
+        <div class="card-content">
+            
 
-<nav class="page-nav hide-on-small-only">
-    <div class="nav-wrapper light-green lighten-2">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
+            <div class="article-title">
+                
+    
+        <h1>树莓派上Node.js和MongoDB的安装</h1>
+    
 
+
+            </div>
+            <time class="blue-link-context" datetime="2017-03-22T14:28:16.000Z"><a href="/2017/03/22/树莓派上Node-js和mongoDB的安装/">2017-03-22</a></time>
+
+            
+    <div class="tags-row">
         
-            <a class="breadcrumb" href="/categories/VPS/">VPS</a>
+            <a href="/tags/Raspberry-pi/" class="chip pink lighten-3">Raspberry pi</a>
+        
+            <a href="/tags/Node-js/" class="chip pink lighten-3">Node.js</a>
+        
+            <a href="/tags/MongoDB/" class="chip pink lighten-3">MongoDB</a>
         
     </div>
-</nav>
 
 
+            <div class="toc blue-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-安装-Node-js"><span class="section table-of-contents-text">1 安装 Node.js</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-安装-Serialport"><span class="section table-of-contents-text">2 安装 Serialport</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3-安装-MongoDB"><span class="section table-of-contents-text">3 安装 MongoDB</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#4-在-Node-js-中使用-MongoDB"><span class="section table-of-contents-text">4 在 Node.js 中使用 MongoDB</span></a></li></ol>
+</div>
 
-    <div class="collection mt-0">
-        
-            <a href="/2017/01/25/利用SSH远程登录VPS的初尝试/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-01-25T11:31:57.000Z">2017-01-25</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                利用 SSH 远程登录 VPS 的初尝试
-            </a>
-        
+
+            <div class="entry blue-link-context">
+                <p><strong>前言：</strong> </p>
+<a id="more"></a>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>Raspberry pi：3B+<br>树莓派 OS：Raspbian<br>Node.js：v7.1.0<br>npm：3.10.9<br>mongoDB：  </p>
+</blockquote>
+<hr>
+<h1 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1 安装 Node.js"></a>1 安装 Node.js</h1><p>总的来说，Node.js 在 linux 下有四种安装方法。<br>第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；<br>第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的版本。最接近的有 ubuntu 和 debian 版本，基于 x86_64 ，树莓派需要的是 arm7l ，也只能望而却步。<br>第三种是手动编译 Node.js 官网提供的源码，这种方式虽然麻烦点，但却是获取最新版本的唯一途径。而事实证明，适合的比最新的好用……<br>第四种方法，下载官网已经编译好的包，解压后简单配置下就能用，重要的是版本一定要找对！<br>在树莓派上，上面这四种方法我都一一试过了，从编译源码解决各种依赖，到找 deb 包找到生无可恋，再到已编译包各种版本之间的徘徊不前。所以，笔者要告诉每一个看到这篇博文的你，为了少走弯路，优先尝试第四种方式！<br>废话不多说，下面介绍方法四的步骤：<br>首先，如何选择适合我们系统的版本呢？<br>到<a href="http://nodejs.org/dist/" target="_blank" rel="external">这里</a>可以看到所有的版本，令人眼花缭乱。不过没关系，在选择版本的过程中，只需要记住两点，一是系统内核，二是系统发布时间。这两个信息可以通过一条命令获得，如下：</p>
+<pre><code>$ uname -a
+</code></pre><p>版本选好后，可以选择 wget 下载，也可以先在自己电脑上下载好再传过去。我选择的是后者，因为 IDM 快很多……<br>解压：</p>
+<pre><code>$ tar -xf node-vX.X.X-linux-armvXl.tar.xz
+</code></pre><p>安装：</p>
+<pre><code>$ sudo mv node-vX.X.X-linux-armvXl /usr/local/node
+</code></pre><p>最后建个硬链接，和添 path 路径是一个效果：</p>
+<pre><code>$ cd /usr/local/bin
+$ sudo ln -s /usr/local/node/bin/node node
+$ sudo ln -s /usr/local/node/bin/npm npm
+</code></pre><p>测试：</p>
+<pre><code>$ node -v
+$ npm -v
+</code></pre><p>成功！</p>
+<hr>
+<h1 id="2-安装-Serialport"><a href="#2-安装-Serialport" class="headerlink" title="2 安装 Serialport"></a>2 安装 Serialport</h1><pre><code>$ sudo npm install serialport --unsafe-perm --build-from-source
+</code></pre><hr>
+<h1 id="3-安装-MongoDB"><a href="#3-安装-MongoDB" class="headerlink" title="3 安装 MongoDB"></a>3 安装 MongoDB</h1><pre><code>$ sudo apt-get install mongodb-server -y
+
+$ sudo mkdir -p /data/db
+
+$ sudo service mongodb start
+</code></pre><p>测试：</p>
+<hr>
+<h1 id="4-在-Node-js-中使用-MongoDB"><a href="#4-在-Node-js-中使用-MongoDB" class="headerlink" title="4 在 Node.js 中使用 MongoDB"></a>4 在 Node.js 中使用 MongoDB</h1><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://github.com/nebrius/raspi-io/wiki/Getting-a-Raspberry-Pi-ready-for-NodeBots" target="_blank" rel="external">Getting a Raspberry Pi ready for NodeBots</a><br><strong>【２】</strong><a href="https://github.com/EmergingTechnologyAdvisors/node-serialport#raspberry-pi-linux" target="_blank" rel="external">EmergingTechnologyAdvisors/node-serialport</a><br><strong>【３】</strong><a href="http://raspberrypituts.com/nodejs-mongodb-web-server-raspberry-pi-tutorial/" target="_blank" rel="external">NodeJS + MongoDB Web Server Raspberry Pi Tutorial</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 3 月 22 日 </p>
+
+            </div>
+        </div>
     </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/03/22/树莓派上Node-js和mongoDB的安装/" data-title="树莓派上Node.js和MongoDB的安装" data-url="http://yoursite.com/2017/03/22/树莓派上Node-js和mongoDB的安装/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'irislr'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
