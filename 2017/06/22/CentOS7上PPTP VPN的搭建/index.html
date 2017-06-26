@@ -7,7 +7,7 @@
 
     
 
-    <title>QQ | </title>
+    <title>CentOS7 上 PPTP VPN 的搭建 | </title>
     <meta name="author" content="Iris">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="CentOS7 上 PPTP VPN 的搭建"/>
     <meta property="og:site_name" content="Iris&#39;s Blog"/>
 
     
@@ -179,6 +179,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Internet/">
+                    Internet <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Algorithm/">
                     Algorithm <span class="right">2 篇</span></a>
                 </a>
@@ -189,14 +197,6 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/VPS/">
                     VPS <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/大数据/">
-                    大数据 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -219,8 +219,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Windows/">
-                    Windows <span class="right">1 篇</span></a>
+                <a class="no-padding" href="/categories/大数据/">
+                    大数据 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -250,29 +250,194 @@
     <main>
         <div class="container main-container">
     
+<article>
+    <div class="card">
+        <div class="card-content">
+            
 
-<nav class="page-nav hide-on-small-only">
-    <div class="nav-wrapper light-green lighten-2">
-        <span class="breadcrumb">当前位置（标签）</span>
-        
+            <div class="article-title">
+                
+    
+        <h1>CentOS7 上 PPTP VPN 的搭建</h1>
+    
 
+
+            </div>
+            <time class="blue-link-context" datetime="2017-06-22T08:18:29.000Z"><a href="/2017/06/22/CentOS7上PPTP VPN的搭建/">2017-06-22</a></time>
+
+            
+    <div class="tags-row">
         
-            <a class="breadcrumb" href="/tags/QQ/">QQ</a>
+            <a href="/tags/CentOS/" class="chip pink lighten-3">CentOS</a>
+        
+            <a href="/tags/VPN/" class="chip pink lighten-3">VPN</a>
         
     </div>
-</nav>
 
 
+            <div class="toc blue-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-检测系统环境"><span class="section table-of-contents-text">1 检测系统环境</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-1-是否支持-MPPE-补丁"><span class="section table-of-contents-text">1.1 是否支持 MPPE 补丁</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-2-是否开启-TUN-TAP-支持"><span class="section table-of-contents-text">1.2 是否开启 TUN/TAP 支持</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-3-是否开启ppp支持"><span class="section table-of-contents-text">1.3 是否开启ppp支持</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-关闭SELINUX"><span class="section table-of-contents-text">2 关闭SELINUX</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3-PPTP-的安装和配置"><span class="section table-of-contents-text">3 PPTP 的安装和配置</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-1-安装"><span class="section table-of-contents-text">3.1 安装</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#3-2-参数配置"><span class="section table-of-contents-text">3.2 参数配置</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#4-启动-PPTP-服务"><span class="section table-of-contents-text">4 启动 PPTP 服务</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#5-修改防火墙规则"><span class="section table-of-contents-text">5 修改防火墙规则</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-1-关闭默认防火墙启-用-iptables-防火墙"><span class="section table-of-contents-text">5.1 关闭默认防火墙启 用 iptables 防火墙</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#5-2-修改防火墙规则文件"><span class="section table-of-contents-text">5.2 修改防火墙规则文件</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#6-测试"><span class="section table-of-contents-text">6 测试</span></a></li></ol>
+</div>
 
-    <div class="collection mt-0">
-        
-            <a href="/2017/01/31/用最low的方法实现qq名片自动点赞/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-01-31T04:27:28.000Z">2017-01-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                用最low的方法实现qq名片自动点赞
-            </a>
-        
+
+            <div class="entry blue-link-context">
+                <p><strong>前言：</strong><br> 我目前的需求：为了方便调试阿里云上的网站，希望能像访问本地磁盘一样访问云服务器上的程序，达到自动同步的效果。<br>首先，利用 VPN 协议能将两台不同局域网的计算机拉到同一个局域网内。<br>其次，局域网内的文件共享方式大体分三种——FTP、NFS、Samba。FTP 不能实现在线修改；NFS 能同步，但只支持 linux 系统之间的挂载；而 Samba 则能实现 windows 与 linux 之间的同步访问。<br>经过各方面的考虑，最终，我选择了 VPN 与 Samba 协议结合的方式。下面将陆续介绍这两个服务器的搭建步骤。<br>VPN 已经是一个老生常谈的东西了，像各大视频网站上的 VIP 的特权，又像通往个人空间的光速隧道，简单，安全。其中，VPN 搭建的过程中最麻烦最容易出问题的步骤是防火墙的设置，需要特别注意。<br><a id="more"></a></p>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>云服务器系统：CentOS7<br>本地系统：Win7</p>
+</blockquote>
+<hr>
+<h1 id="1-检测系统环境"><a href="#1-检测系统环境" class="headerlink" title="1 检测系统环境"></a>1 检测系统环境</h1><h2 id="1-1-是否支持-MPPE-补丁"><a href="#1-1-是否支持-MPPE-补丁" class="headerlink" title="1.1 是否支持 MPPE 补丁"></a>1.1 是否支持 MPPE 补丁</h2><pre><code>$ modprobe ppp-compress-18 &amp;&amp; echo success
+</code></pre><p>显示 success 说明系统支持 MPPE 补丁，如果不支持，则需要安装 kernel-devel  </p>
+<pre><code>$ sudo yum install kernel-devel
+</code></pre><h2 id="1-2-是否开启-TUN-TAP-支持"><a href="#1-2-是否开启-TUN-TAP-支持" class="headerlink" title="1.2 是否开启 TUN/TAP 支持"></a>1.2 是否开启 TUN/TAP 支持</h2><pre><code>$ cat /dev/net/tun
+</code></pre><p>显示结果为下面的文本，则表明通过：</p>
+<pre><code>cat:/dev/net/tun: File descriptor in bad state
+</code></pre><h2 id="1-3-是否开启ppp支持"><a href="#1-3-是否开启ppp支持" class="headerlink" title="1.3 是否开启ppp支持"></a>1.3 是否开启ppp支持</h2><pre><code>$ cat /dev/ppp
+</code></pre><p>显示结果为下面的文本，则表明通过：</p>
+<pre><code>cat:/dev/ppp: No such device or address
+</code></pre><p>上面三条必须同时满足，否则不能安装pptp vpn</p>
+<hr>
+<h1 id="2-关闭SELINUX"><a href="#2-关闭SELINUX" class="headerlink" title="2 关闭SELINUX"></a>2 关闭SELINUX</h1><pre><code>$ sudo vim /etc/selinux/config
+#######################################
+# 修改
+SELINUX=disabled
+</code></pre><p>使配置立即生效：</p>
+<pre><code>$ setenforce 0 
+</code></pre><hr>
+<h1 id="3-PPTP-的安装和配置"><a href="#3-PPTP-的安装和配置" class="headerlink" title="3 PPTP 的安装和配置"></a>3 PPTP 的安装和配置</h1><h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><pre><code>$ sudo yum install -y ppp iptables pptpd
+</code></pre><h2 id="3-2-参数配置"><a href="#3-2-参数配置" class="headerlink" title="3.2 参数配置"></a>3.2 参数配置</h2><p>配置 PPTP 参数</p>
+<pre><code>$ sudo vim /etc/ppp/options.pptpd
+##################################
+ms-dns 8.8.8.8
+ms-dns 114.114.114.114
+</code></pre><p>设置 PPTP 客户端用户和密码</p>
+<pre><code>$ sudo vim /etc/ppp/chap-secrets
+##################################
+#client  server   secret  IP addresses
+user     pptpd     pass     *
+</code></pre><p>设置 PPTP 服务器和客户端的局域网 IP 地址</p>
+<pre><code>$ sudo vim /etc/pptpd.conf
+##################################
+localip 192.168.1.1  # 服务器的局域网 IP 地址
+remoteip 192.168.1.2-254  # 客户端的局域网 IP 地址
+# 据说这里最后一行需要为空内容..
+</code></pre><p>修改内核转发参数</p>
+<pre><code>$ sudo vim /etc/sysctl.conf
+##################################    
+net.ipv4.ip_forward = 1  #设置为1
+</code></pre><p>使设置立刻生效</p>
+<pre><code>$ /sbin/sysctl -p
+</code></pre><hr>
+<h1 id="4-启动-PPTP-服务"><a href="#4-启动-PPTP-服务" class="headerlink" title="4 启动 PPTP 服务"></a>4 启动 PPTP 服务</h1><p>启动pptp</p>
+<pre><code>$ sudo systemctl start pptpd.service
+</code></pre><p>查看pptp状态</p>
+<pre><code>$ sudo systemctl status pptpd.service
+</code></pre><p>设置开机启动</p>
+<pre><code>$ sudo systemctl enable pptpd.service
+</code></pre><hr>
+<h1 id="5-修改防火墙规则"><a href="#5-修改防火墙规则" class="headerlink" title="5 修改防火墙规则"></a>5 修改防火墙规则</h1><h2 id="5-1-关闭默认防火墙启-用-iptables-防火墙"><a href="#5-1-关闭默认防火墙启-用-iptables-防火墙" class="headerlink" title="5.1 关闭默认防火墙启 用 iptables 防火墙"></a>5.1 关闭默认防火墙启 用 iptables 防火墙</h2><p><strong>关闭 firewall</strong></p>
+<p>停止firewall：</p>
+<pre><code>$ sudo systemctl stop firewalld.service
+</code></pre><p>禁止firewall开机启动：</p>
+<pre><code>$ sudo systemctl disable firewalld.service
+</code></pre><p>查看默认防火墙状态（关闭后显示 notrunning，开启后显示 running）</p>
+<pre><code>$ sudo firewall-cmd --state
+</code></pre><p><strong>关闭 iptables</strong></p>
+<p>安装 iptables 防火墙：</p>
+<pre><code>$ sudo yum install -y iptables
+</code></pre><p>启动防火墙：</p>
+<pre><code>$ sudo systemctl start iptables.service
+</code></pre><p>设置防火墙开机启动：</p>
+<pre><code>$ sudo systemctl enable iptables.service
+</code></pre><h2 id="5-2-修改防火墙规则文件"><a href="#5-2-修改防火墙规则文件" class="headerlink" title="5.2 修改防火墙规则文件"></a>5.2 修改防火墙规则文件</h2><p>主要是添加1723端口和gre协议，并添加 nat 转发，配置规则如下：</p>
+<pre><code>$ sudo vim /etc/sysconfig/iptables
+##################################
+# sample configuration for iptables service
+# you can edit this manually or use system-config-firewall
+# please do not ask us to add additional ports/services to this default configuration
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m state --state NEW,RELATED,ESTABLISHED -m tcp --dport 22 -jACCEPT
+-A INPUT -p tcp -m state --state NEW,RELATED,ESTABLISHED -m tcp --dport 1723 -jACCEPT
+-A INPUT -p gre -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i ppp+ -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -m state --state INVALID -j DROP
+-A OUTPUT -m state --state INVALID -j DROP
+COMMIT
+
+*nat
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A POSTROUTING -s 192.168.1.1/24 -o eth0 -j MASQUERADE
+COMMIT
+</code></pre><p>还需将 nat 转发添加到 local 文件中：</p>
+<pre><code>$ sudo vim /etc/rc.d/rc.local
+##################################
+iptables -t nat -A POSTROUTING -s 192.168.1.1/24 -o eth0 -j MASQUERADE
+</code></pre><p>重启iptables使得规则生效</p>
+<pre><code>$ sudo systemctl restart iptables.service
+</code></pre><p>查看路由表及iptables规则</p>
+<pre><code>$ iptables -t nat -L
+$ iptables -t filter -L
+</code></pre><p>加载iptables模块</p>
+<pre><code>$ modprobeip_nat_pptp
+$ modprobeip_conntrack_pptp
+</code></pre><p>查看模块是否加载</p>
+<pre><code>$ lsmod|grep pptp
+</code></pre><h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6 测试"></a>6 测试</h1><p>安装net-tools，查看1723端口</p>
+<pre><code>$ sudo yum install -y net-tools
+$ netstat -nap | grep 1723 | grep pptpd
+</code></pre><p>win7 连接 VPN 后发现无法上网，解决方法在<a href="http://jingyan.baidu.com/article/dca1fa6f438a65f1a44052b0.html" target="_blank" rel="external">这里</a>。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://mannerwang.blog.51cto.com/12009183/1854931/" target="_blank" rel="external">Centos 7 配置PPTP VPN攻略</a><br><strong>【２】</strong><a href="http://www.linuxidc.com/Linux/2015-05/117473.htm" target="_blank" rel="external">CentOS 7.0关闭默认防火墙启用iptables防火墙</a><br><strong>【３】</strong><a href="http://jingyan.baidu.com/article/dca1fa6f438a65f1a44052b0.html" target="_blank" rel="external">连接VPN后不能上网的解决办法</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 6 月 22 日 </p>
+
+            </div>
+        </div>
     </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/06/22/CentOS7上PPTP VPN的搭建/" data-title="CentOS7 上 PPTP VPN 的搭建" data-url="http://yoursite.com/2017/06/22/CentOS7上PPTP VPN的搭建/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'irislr'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
