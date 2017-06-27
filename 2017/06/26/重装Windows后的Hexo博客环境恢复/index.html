@@ -38,7 +38,7 @@
 <body>
     <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-    <nav class="black">
+    <nav class="light-green lighten-2">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -97,7 +97,7 @@
                 
             </ul>
             <div>
-    <ul class="side-nav black" id="main-menu">
+    <ul class="side-nav blue lighten-3" id="main-menu">
         
         <li class="side-user">
             <div class="row">
@@ -165,7 +165,7 @@
         
     </ul>
 
-    <ul class="side-nav black" id="category-menu">
+    <ul class="side-nav blue lighten-3" id="category-menu">
     
 
             
@@ -250,7 +250,7 @@
     <main>
         <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
-    <div class="nav-wrapper black">
+    <div class="nav-wrapper light-green lighten-2">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
             
@@ -278,7 +278,7 @@
 
 
             </div>
-            <time class="pink lighten-3-link-context" datetime="2017-06-26T07:25:16.000Z"><a href="/2017/06/26/重装Windows后的Hexo博客环境恢复/">2017-06-26</a></time>
+            <time class="blue-link-context" datetime="2017-06-26T07:25:16.000Z"><a href="/2017/06/26/重装Windows后的Hexo博客环境恢复/">2017-06-26</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -295,12 +295,12 @@
     </div>
 
 
-            <div class="toc pink lighten-3-link-context hide-on-med-and-down">
+            <div class="toc blue-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-关联-github"><span class="section table-of-contents-text">1 关联 github</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-安装-Hexo"><span class="section table-of-contents-text">2 安装 Hexo</span></a></li></ol>
 </div>
 
 
-            <div class="entry pink lighten-3-link-context">
+            <div class="entry blue-link-context">
                 <p><strong>前言：</strong><br>由于本人换系统较为频繁，这种操作不止一两次了。<br>这次换系统后，觉得重搭环境麻烦，导致很久都没有更博了。<br>搭完后，发现过程并不复杂，于是记录下来，方便下次。。</p>
 <a id="more"></a>
 <hr>
@@ -331,7 +331,7 @@
                 
 
 
-<p class="pink lighten-3-link-context">
+<p class="blue-link-context">
     <a href="/2017/06/22/CentOS7上PPTP VPN的搭建/" rel="next" title="CentOS7 上 PPTP VPN 的搭建">
     下一篇：CentOS7 上 PPTP VPN 的搭建
   </a>
@@ -363,17 +363,17 @@
 </div>
 
         <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large grey">
+    <a class="btn-floating btn-large purple lighten-3">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
     <ul>
       <li><a class="btn-return-top btn-floating waves-effect lime" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse blue lighten-3"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
     </main>
-    <footer class="page-footer black darken-1">
+    <footer class="page-footer light-green lighten-2 darken-1">
     
     <div class="footer-container container">
         <div class="row">
@@ -424,7 +424,7 @@
     </div>
     
 
-    <div class="footer-copyright pink lighten-3-link-context">
+    <div class="footer-copyright blue-link-context">
         <div class="container">
             © 2016 irislr.me, All rights reserved.
             <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
@@ -522,7 +522,7 @@
             $('li.tab a').hover(function() {
                 $(this).toggleClass('text-lighten-4');
             });
-            $('.indicator').addClass('yellow darken-1 lighten-2');
+            $('.indicator').addClass('light-green lighten-2 lighten-2');
 
             
             // 添加new标签
@@ -601,7 +601,7 @@
                             if (isMatch) {
                                 keywords.forEach(function(keyword) {
                                     var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-3 lighten-2\">" + keyword + "</span>");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
                                 });
 
                                 str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
@@ -623,7 +623,7 @@
                                     // highlight all keywords
                                     keywords.forEach(function(keyword) {
                                         var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-3 lighten-2\">" + keyword + "</span>");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
                                     });
 
                                     str += "<p class=\"search-result\">..." + match_content + "...</p>"
