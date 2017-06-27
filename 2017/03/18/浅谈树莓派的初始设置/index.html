@@ -7,7 +7,7 @@
 
     
 
-    <title>浅谈树莓派的初始设置 | </title>
+    <title>浅谈树莓派的初始设置 | 鸢尾旅人</title>
     <meta name="author" content="鸢尾旅人">
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
@@ -38,7 +38,7 @@
 <body>
     <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-    <nav class="light-green lighten-2">
+    <nav class="indigo">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -97,7 +97,7 @@
                 
             </ul>
             <div>
-    <ul class="side-nav blue lighten-3" id="main-menu">
+    <ul class="side-nav indigo darken-1" id="main-menu">
         
         <li class="side-user">
             <div class="row">
@@ -165,7 +165,7 @@
         
     </ul>
 
-    <ul class="side-nav blue lighten-3" id="category-menu">
+    <ul class="side-nav indigo darken-1" id="category-menu">
     
 
             
@@ -249,7 +249,22 @@
 
     <main>
         <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
     
+    
+    <a class="breadcrumb" href="/categories/树莓派/">树莓派</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
 <article>
     <div class="card">
         <div class="card-content">
@@ -263,24 +278,29 @@
 
 
             </div>
-            <time class="blue-link-context" datetime="2017-03-18T06:28:21.000Z"><a href="/2017/03/18/浅谈树莓派的初始设置/">2017-03-18</a></time>
+            <time class="pink-link-context" datetime="2017-03-18T06:28:21.000Z"><a href="/2017/03/18/浅谈树莓派的初始设置/">2017-03-18</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
 
             
     <div class="tags-row">
         
-            <a href="/tags/Raspberry-pi/" class="chip pink lighten-3">Raspberry pi</a>
+            <a href="/tags/Raspberry-pi/" class="chip pink lighten-1">Raspberry pi</a>
         
-            <a href="/tags/RASPBIAN/" class="chip pink lighten-3">RASPBIAN</a>
+            <a href="/tags/RASPBIAN/" class="chip pink lighten-1">RASPBIAN</a>
         
     </div>
 
 
-            <div class="toc blue-link-context hide-on-med-and-down">
+            <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#1-烧写系统"><span class="section table-of-contents-text">1 烧写系统</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#2-解锁-root-账户"><span class="section table-of-contents-text">2 解锁 root 账户</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#3-远程操作树莓派"><span class="section table-of-contents-text">3 远程操作树莓派</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#4-更换源"><span class="section table-of-contents-text">4 更换源</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#5-安装-Firefox"><span class="section table-of-contents-text">5 安装 Firefox</span></a></li></ol>
 </div>
 
 
-            <div class="entry blue-link-context">
+            <div class="entry pink-link-context">
                 <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。<br>怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！</p>
 <a id="more"></a>
 <hr>
@@ -329,7 +349,24 @@ $ sudo apt-get install iceweasel
 <hr>
 <p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 3 月 18 日 </p>
 
+                
+<p class="pink-link-context">
+    <a href="/2017/03/22/树莓派上Node-js和mongoDB的安装/" rel="next" title="树莓派上Node.js和MongoDB的安装">
+    上一篇：树莓派上Node.js和MongoDB的安装
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/01/25/利用SSH远程登录VPS的初尝试/" rel="next" title="利用 SSH 远程登录 VPS 的初尝试">
+    下一篇：利用 SSH 远程登录 VPS 的初尝试
+  </a>
+</p>
+
+
             </div>
+			
         </div>
     </div>
 </article>
@@ -337,54 +374,38 @@ $ sudo apt-get install iceweasel
 
 
 
-    <section id="comment">
-        <div class="card">
-            <div class="card-content">
-                <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2017/03/18/浅谈树莓派的初始设置/" data-title="浅谈树莓派的初始设置" data-url="http://irislr.me/2017/03/18/浅谈树莓派的初始设置/"></div>
-
-                <script type="text/javascript">
-                    console.log(document.querySelector('.ds-thread'));
-                    var duoshuoQuery = {
-                        short_name: 'irislr'
-                    };
-                    (function() {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';
-                        ds.async = true;
-                        ds.src = (document.location.protocol == 'https:'
-                            ? 'https:'
-                            : 'http:') + '//static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                    })();
-                </script>
-                <!-- Duoshuo Comment END -->
-            </div>
-        </div>
-    </section>
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "167ffa6018ff4e22be5428e8a8af0c49",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 
 
 
 </div>
 
         <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large purple lighten-3">
+    <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
     <ul>
-      <li><a class="btn-return-top btn-floating waves-effect lime" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse blue lighten-3"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
     </main>
-    <footer class="page-footer light-green lighten-2 darken-1">
+    <footer class="page-footer indigo darken-1">
     
-    <div class="container">
+    <div class="footer-container container">
         <div class="row">
             
-            <div class="social-group col m3 s12">
+            <div class="social-group col m4 s12">
                 <h5 class="white-text">社交</h5>
                 
                     <a class="social-link" href="http://weibo.com/5566419150" target="_blank">
@@ -399,11 +420,27 @@ $ sudo apt-get install iceweasel
                         <i class="fa fa-2x fa-rss"></i>
                     </a>
                 
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
             </div>
             
 
             
-            <div class="col m9 s12">
+            <div class="col m8 s12">
                 <h5 class="white-text">友情链接</h5>
                 
                     <a class="social-link" href="https://www.ctguqmx.com/" target="_blank">启明星工作室</a>
@@ -414,9 +451,9 @@ $ sudo apt-get install iceweasel
     </div>
     
 
-    <div class="footer-copyright blue-link-context">
+    <div class="footer-copyright pink-link-context">
         <div class="container">
-            © 2016 irislr.com, All rights reserved.
+            © 2016 irislr.me, All rights reserved.
             <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
         </div>
     </div>
@@ -476,6 +513,22 @@ $ sudo apt-get install iceweasel
 
             // 文章目录
             $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
             // 修正文章目录的left-border颜色
             var color = $('.table-of-contents-text').css('color');
             $('.table-of-contents-link').css('border-left-color', color);
@@ -495,11 +548,11 @@ $ sudo apt-get install iceweasel
             $('li.tab a').hover(function() {
                 $(this).toggleClass('text-lighten-4');
             });
-            $('.indicator').addClass('light-green lighten-2 lighten-2');
+            $('.indicator').addClass('pink lighten-2');
 
             
             // 添加new标签
-            $('').append('<span class="new badge green"></span>');
+            $('').append('<span class="new badge pink"></span>');
             
 
             // 搜索功能
@@ -574,7 +627,7 @@ $ sudo apt-get install iceweasel
                             if (isMatch) {
                                 keywords.forEach(function(keyword) {
                                     var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
                                 });
 
                                 str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
@@ -596,7 +649,7 @@ $ sudo apt-get install iceweasel
                                     // highlight all keywords
                                     keywords.forEach(function(keyword) {
                                         var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
                                     });
 
                                     str += "<p class=\"search-result\">..." + match_content + "...</p>"
@@ -625,7 +678,7 @@ $ sudo apt-get install iceweasel
 
 
 
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=59377395" charset="UTF-8"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=62765098" charset="UTF-8"></script>
 
 
 
