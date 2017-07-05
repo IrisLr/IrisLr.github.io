@@ -410,13 +410,13 @@ iptables -t nat -A POSTROUTING -s 192.168.1.1/24 -o eth0 -j MASQUERADE
 <pre><code>$ iptables -t nat -L
 $ iptables -t filter -L
 </code></pre><p>加载iptables模块</p>
-<pre><code>$ modprobeip_nat_pptp
-$ modprobeip_conntrack_pptp
+<pre><code>$ sudo modprobe ip_nat_pptp
+$ sudo modprobe ip_conntrack_pptp
 </code></pre><p>查看模块是否加载</p>
 <pre><code>$ lsmod|grep pptp
 </code></pre><h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6 测试"></a>6 测试</h1><p>安装net-tools，查看1723端口</p>
 <pre><code>$ sudo yum install -y net-tools
-$ netstat -nap | grep 1723 | grep pptpd
+$ sudo netstat -nap | grep 1723 | grep pptpd
 </code></pre><p>win7 连接 VPN 后发现无法上网，解决方法在<a href="http://jingyan.baidu.com/article/dca1fa6f438a65f1a44052b0.html" target="_blank" rel="external">这里</a>。</p>
 <hr>
 <p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://mannerwang.blog.51cto.com/12009183/1854931/" target="_blank" rel="external">Centos 7 配置PPTP VPN攻略</a><br><strong>【２】</strong><a href="http://www.linuxidc.com/Linux/2015-05/117473.htm" target="_blank" rel="external">CentOS 7.0关闭默认防火墙启用iptables防火墙</a><br><strong>【３】</strong><a href="http://jingyan.baidu.com/article/dca1fa6f438a65f1a44052b0.html" target="_blank" rel="external">连接VPN后不能上网的解决办法</a>  </p>
