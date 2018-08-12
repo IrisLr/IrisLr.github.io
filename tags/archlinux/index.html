@@ -171,14 +171,6 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Internet/">
-                    Internet <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Algorithm/">
                     Algorithm <span class="right">2 篇</span></a>
                 </a>
@@ -195,16 +187,24 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/VPS/">
-                    VPS <span class="right">1 篇</span></a>
+                <a class="no-padding" href="/categories/Linux/">
+                    Linux <span class="right">6 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Linux/">
-                    Linux <span class="right">6 篇</span></a>
+                <a class="no-padding" href="/categories/Internet/">
+                    Internet <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/VPS/">
+                    VPS <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -367,8 +367,8 @@
 <script>
     (function($) {
         $(document).ready(function() {
-            // 隐藏禁用javasy(function() {
-            // 隐藏禁用javascript（针对微信内置浏览�);
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
 
             // 图片缩放效果
             var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
@@ -475,7 +475,6 @@
                         return {
                             title: $("title", this).text(),
                             content: $("content", this).text(),
-                            url: $("url"ext(),
                             url: $("url", this).text()
                         };
                     }).get();
@@ -507,7 +506,8 @@
                                         isMatch = false;
                                     } else {
                                         if (index_content < 0) {
-                                                        }
+                                            index_content = 0;
+                                        }
                                         if (i == 0) {
                                             first_occur = index_content;
                                         }
@@ -542,8 +542,6 @@
                                         var regS = new RegExp(keyword, "gi");
                                         match_content = match_content.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
                                     });
-
-                                          });
 
                                     str += "<p class=\"search-result\">..." + match_content + "...</p>"
                                 }
@@ -593,6 +591,13 @@ MathJax.Hub.Config({
 </script>
 <script type="text/javascript" async
   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
+eX-MML-AM_CHTML">
 </script>
 
 
