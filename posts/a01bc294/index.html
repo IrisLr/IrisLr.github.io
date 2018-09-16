@@ -53,7 +53,7 @@
         <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <link id="style" rel="stylesheet" href="//unpkg.com/hexo-theme-tomatoes@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -63,7 +63,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu"  class="hide" >
+    <aside id="menu"   >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -378,41 +378,8 @@ zh_CN.UTF-8 UTF-8
 
     
     
-<section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
-    <script>
-        var gitment = new Gitment({
-            owner: '',
-            repo: '',
-            oauth: {
-                client_id: '',
-                client_secret: '',
-            },
-        })
-        gitment.render('comments')
-    </script>
-</section>
-
 
     
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var gitalk = new Gitalk({
-            clientID: '',
-            clientSecret: '',
-            repo: '',
-            owner: '',
-            admin: ['']
-        });
-        gitalk.render('gitalk-container');
-    </script>
-</section>
-
 
     
     <!-- Valine Comments -->
@@ -429,8 +396,8 @@ zh_CN.UTF-8 UTF-8
             el: '#comments',
             notify: 'true' == 'true',
             verify: 'true' == 'true',
-            appId: "null",
-            appKey: "null",
+            appId: "WTUjEQpcmGK83lgK8AeR6r1C-gzGzoHsz",
+            appKey: "QBTFejI24dxA6zHGK72OWuSJ",
             avatar: "mm",
             placeholder: "Just go go",
             guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
@@ -575,7 +542,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </script>
 
 <!-- jquery -->
-<script src="/js/jquery.min.js?v=3.0"></script>
+<script src="//unpkg.com/hexo-theme-tomatoes@latest/js/jquery.min.js"></script>
 
 <!-- 搜索 -->
 
@@ -590,10 +557,10 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 <!-- main博客脚本 -->
-<script src="/js/main.min.js?v=3.0" ></script>
+<script src="//unpkg.com/hexo-theme-tomatoes@latest/js/main.min.js" ></script>
 
 <!-- 动画&配置 -->
-<script src="/js/script.min.js?v=3.0" ></script>
+<script src="//unpkg.com/hexo-theme-tomatoes@latest/js/script.min.js" ></script>
 
 <!-- 脚本管理 -->
 <script>
