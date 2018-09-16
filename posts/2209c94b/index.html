@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vim的优化 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Vim,Archlinux">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="前言：之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？估计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim的优化">
+<meta property="og:url" content="http://irislr.me/posts/2209c94b/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="前言：之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？估计">
+<meta property="og:updated_time" content="2017-01-25T13:44:18.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim的优化">
+<meta name="twitter:description" content="前言：之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？估计">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vim的优化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-颜色配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 颜色配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-括号自动补全"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 括号自动补全</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-自动缩进"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 自动缩进</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-gvim-菜单栏与工具栏隐藏与显示动态切换"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 gvim 菜单栏与工具栏隐藏与显示动态切换</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-vim的优化"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vim的优化</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2017-01-15 19:46:41" datetime="2017-01-15T11:46:41.000Z"  itemprop="datePublished">2017-01-15</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">4</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>前言：</strong><br>之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？<br>什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！<br>说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？<br>估计装了这个系统后就一直在忙考试，而没时间整这些，惭愧惭愧。</p>
+<a id="more"></a>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>系统：Linux 4.8.10-1-ARCH linux x64</p>
+</blockquote>
+<hr>
+<h1 id="1-颜色配置"><a href="#1-颜色配置" class="headerlink" title="1 颜色配置"></a>1 颜色配置</h1><p>关于配色，我依旧钟情于 Solarized 的配色方案。它的 dark backgroud ，时尚而不失真诚，优雅却不乏热情。<br>开始吧！首先，先新建几个必要的文件夹  </p>
+<pre><code>$ mkdir ~/.vim
+$ mkdir ~/.vim/colors 
+</code></pre><p>接着，去官网提供的 github 托管<a href="https://github.com/altercation/vim-colors-solarized" target="_blank" rel="external">地址</a>，咱也不忙着下载，先去看看 readme ！<br>有优雅的下载方式等着我们呢！  </p>
+<pre><code>$ cd ~/Download
+$ git clone git://github.com/altercation/vim-colors-solarized.git
+$ cd vim-colors-solarized/colors
+$ mv solarized.vim ~/.vim/colors/
+</code></pre><p>配色文件放好后，后面就要修改 .vimrc ，来将配色主题设置进去了：</p>
+<pre><code>$ vim ~/.vimrc
+####################
+在后面添加：
+&quot;打开语法高亮，显示行号
+set nu!
+colorscheme desert
+syntax enable
+syntax on
+&quot;设置配色
+set background=dark
+colorscheme solarized
+</code></pre><p>打开语法高亮，以便正确显示。<br>重启使 Vim 生效后，发现 gvim 能正常显示，而 vim 的色调却阴阳怪气的，这是因为 Vim 配色与 Terminal的配色发生混叠的结果。<br>既然如此，将 <code>set background=dark</code> 改为：</p>
+<pre><code>if has(&apos;gui_running&apos;)
+    set background=light
+else
+    set background=dark
+endif
+</code></pre><p>重启看看效果吧！</p>
+<hr>
+<h1 id="2-括号自动补全"><a href="#2-括号自动补全" class="headerlink" title="2 括号自动补全"></a>2 <a href="https://blog.oldj.net/2011/06/17/vim-parenthesis/" target="_blank" rel="external">括号自动补全</a></h1><p>很多现代 IDE 都有自动补全配对括号的功能，比如输入了左括号“(”，IDE 就自动在后面添加一个对应的右括号“)”，并且将光标移到括号中间。Vim 虽然没有直接提供这个功能，但要实现其实非常简单，只要在你的 .vimrc 文件中添加下面的内容就可以了：</p>
+<pre><code>$ vim ~/.vimrc
+####################
+在后面添加匹配括号：
+inoremap ( ()&lt;LEFT&gt;
+inoremap [ []&lt;LEFT&gt;
+inoremap { {}&lt;LEFT&gt;
+</code></pre><p>原理很简单，就是将左括号的键映射为一个新的操作，在输入左括号时，让 Vim 立刻输入右括号，同时再将光标左移一格到括号中间。<br>另外，在自动补全了右括号之后，如果用户再输入右括号会怎么样呢？一般来说，比较合理的做法似乎是忽略掉这个后输入的多余的右括号，直接将光标向右移到一格。代码如下：</p>
+<pre><code>&quot; 输入的前一个字符是左括号时时，如果后一个字符是右括号，则删除它，避免出现重复字符
+function! RemoveNextDoubleChar(char)
+    let l:line = getline(&quot;.&quot;)
+    let l:next_char = l:line[col(&quot;.&quot;)]        &quot; 取得当前光标后一个字符
+    if a:char == l:next_char
+        execute &quot;normal! l&quot;
+    else
+        execute &quot;normal! i&quot; . a:char . &quot;&quot;
+    end
+endfunction
+inoremap ) &lt;ESC&gt;:call RemoveNextDoubleChar(&apos;)&apos;)&lt;CR&gt;a
+inoremap ] &lt;ESC&gt;:call RemoveNextDoubleChar(&apos;]&apos;)&lt;CR&gt;a
+inoremap } &lt;ESC&gt;:call RemoveNextDoubleChar(&apos;}&apos;)&lt;CR&gt;a
+</code></pre><hr>
+<h1 id="3-自动缩进"><a href="#3-自动缩进" class="headerlink" title="3 自动缩进"></a>3 自动缩进</h1><p>换行时需要根据语法规则进行自动缩进。并且按照习惯，将 <code>tab</code> 的缩进定义成 4 格：</p>
+<pre><code>$ vim ~/.vimrc
+####################
+在后面添加：
+&quot;设置tab为缩进４格
+set ts=4
+set sw=4
+&quot;自动缩进
+set expandtab
+set autoindent
+</code></pre><hr>
+<h1 id="4-gvim-菜单栏与工具栏隐藏与显示动态切换"><a href="#4-gvim-菜单栏与工具栏隐藏与显示动态切换" class="headerlink" title="4 gvim 菜单栏与工具栏隐藏与显示动态切换"></a>4 <a href="http://liyanrui.is-programmer.com/posts/1791.html" target="_blank" rel="external">gvim 菜单栏与工具栏隐藏与显示动态切换</a></h1><p>新建 .gvimrc ，并添加内容：</p>
+<pre><code>$ vim ~/.gvimrc
+####################
+添加：
+&quot;Toggle Menu and Toolbar
+set guioptions-=m
+set guioptions-=T
+map &lt;silent&gt; &lt;F2&gt; :if &amp;guioptions =~# &apos;T&apos; &lt;Bar&gt;
+        \set guioptions-=T &lt;Bar&gt;
+        \set guioptions-=m &lt;bar&gt;
+    \else &lt;Bar&gt;
+        \set guioptions+=T &lt;Bar&gt;
+        \set guioptions+=m &lt;Bar&gt;
+    \endif&lt;CR&gt;
+</code></pre><p>再次启动 gvim 时，菜单栏与工具栏默认是隐藏的，这样可以充分利用窗口空间，使其显示更多的文本内容。<br>在必要时，可使用 F2 键呼出菜单栏/工具栏；待不使用时，用 F2 键将其关闭。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://www.cnblogs.com/tsingke/p/3820672.html" target="_blank" rel="external">Vim以及Terminal 配色方案—“Solarized”配色</a><br><strong>【２】</strong><a href="https://blog.oldj.net/2011/06/17/vim-parenthesis/" target="_blank" rel="external">VIM中括号的自动补全与删除</a><br><strong>【３】</strong><a href="http://liyanrui.is-programmer.com/posts/1791.html" target="_blank" rel="external">gvim 菜单栏与工具栏隐藏与显示动态切换</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 1 月 15 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-01-25T13:44:18.267Z" itemprop="dateUpdated">2017-01-25 21:44:18</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/2209c94b/" target="_blank" rel="external">http://irislr.me//posts/2209c94b/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Archlinux/">Archlinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/2209c94b/&title=《vim的优化》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/2209c94b/&title=《vim的优化》 — 鸢尾旅人的博客&source=前言：之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/2209c94b/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vim的优化》 — 鸢尾旅人的博客&url=http://irislr.me/posts/2209c94b/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/2209c94b/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/f52fb2ab/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：POJ1001-求高精度幂
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/f1af8126/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：Spark+Hadoop+JDK+Scala 的环境搭建">下一篇：Spark+Hadoop+JDK+Scala 的环境搭建</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/2209c94b/&title=《vim的优化》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/2209c94b/&title=《vim的优化》 — 鸢尾旅人的博客&source=前言：之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/2209c94b/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vim的优化》 — 鸢尾旅人的博客&url=http://irislr.me/posts/2209c94b/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/2209c94b/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuUlEQVR42u3aOXLDMAwFUN//0k6bhvIHIdBK5rHyeKEeXWCI5fWK1/vXWn1afX/16Q0LFxe3zX1frtV3+ge+3n/5LFxc3IPc6zC02jr51fXhy6EQFxf3wdwkwF2/g4uL+5+4e+icjouL+xxukvzk3IQ+nqvh4uI2uHlRY+71SH0XFxd3i/suroljFJ6Oi4t7hJsHlPfWqiZUUTsWFxf3ILdTykzGLJJyatTQxcXFHebmZYu70piknPrhRoaLi/slbv6AfNyqE8JwcXGfxq0Gnf7hl0/ExcU9zq22PPvjF9W2DS4u7nludTyiWk7Nh72WlyRcXNwj3JyYJDadokm+My4u7jS3U7CoXomq4bKVq+Hi4ja41WtHQukMWyStF1xc3JPcD/egZKPi9eWGwSxcXNxhbn/r6jjFXjEFFxf3Cdwqq5DG7IVIXFzcYW4nrFRDVV4ciWIkLi7uGLdansibrNX0KTkSLi7uSW5/DCsPbdW/IOoJ4+LijnH7jZAkkO0lP7i4uH+Lm19ubmvf4uLiPpg7mGlNXHFwcXG3uNVkJmftJUi4uLjf5VbDStJS3Wve3FzfxcXF3eH+AJVo4jF1Nau5AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

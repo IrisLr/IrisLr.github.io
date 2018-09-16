@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>撕人定制 ArchLinux（二） | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="ArchLinux,系统安装">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="此博文继撕人定制 ArchLinux（一）后，主要介绍了安装基本系统的具体过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="撕人定制 ArchLinux（二）">
+<meta property="og:url" content="http://irislr.me/posts/a01bc294/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="此博文继撕人定制 ArchLinux（一）后，主要介绍了安装基本系统的具体过程。">
+<meta property="og:updated_time" content="2016-11-29T10:40:27.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="撕人定制 ArchLinux（二）">
+<meta name="twitter:description" content="此博文继撕人定制 ArchLinux（一）后，主要介绍了安装基本系统的具体过程。">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">撕人定制 ArchLinux（二）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-安装及基本配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 安装及基本配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-选择镜像"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 选择镜像</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-安装基本系统"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 安装基本系统</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-基本配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 基本配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-1-Fstab"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1.3.1 Fstab</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-2-Chroot"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">1.3.2 Chroot</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-3-时区"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">1.3.3 时区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-4-Locale"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">1.3.4 Locale</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-5-主机名"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">1.3.5 主机名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-6-Root-密码"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">1.3.6 Root 密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-7-安装引导程序"><span class="post-toc-number">1.3.7.</span> <span class="post-toc-text">1.3.7 安装引导程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-8-重启"><span class="post-toc-number">1.3.8.</span> <span class="post-toc-text">1.3.8 重启</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-撕人定制ArchLinux（二）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">撕人定制 ArchLinux（二）</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2016-11-27 18:28:32" datetime="2016-11-27T10:28:32.000Z"  itemprop="datePublished">2016-11-27</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">2</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>此博文继<a href="https://irislr.github.io/2016/11/27/%E6%92%95%E4%BA%BA%E5%AE%9A%E5%88%B6ArchLinux%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">撕人定制 ArchLinux（一）</a>后，主要介绍了安装基本系统的具体过程。<br><a id="more"></a></p>
+<h1 id="1-安装及基本配置"><a href="#1-安装及基本配置" class="headerlink" title="1 安装及基本配置"></a>1 安装及基本配置</h1><h2 id="1-1-选择镜像"><a href="#1-1-选择镜像" class="headerlink" title="1.1 选择镜像"></a>1.1 选择镜像</h2><p>编辑 /etc/pacman.d/mirrorlist  </p>
+<pre><code># nano /etc/pacman.d/mirrorlist
+</code></pre><p>选择中国的镜像。</p>
+<h2 id="1-2-安装基本系统"><a href="#1-2-安装基本系统" class="headerlink" title="1.2 安装基本系统"></a>1.2 安装基本系统</h2><p>执行 pacstrap 脚本，默认会安装 base 组：</p>
+<pre><code># pacstrap /mnt
+</code></pre><p>如果你想通过 AUR 或者 ABS 编译安装软件包,需要装上 base-devel：</p>
+<pre><code># pacstrap -i /mnt base base-devel
+</code></pre><p>安装完成后会提示 ==&gt; Image creation successful.</p>
+<h2 id="1-3-基本配置"><a href="#1-3-基本配置" class="headerlink" title="1.3 基本配置"></a>1.3 基本配置</h2><h3 id="1-3-1-Fstab"><a href="#1-3-1-Fstab" class="headerlink" title="1.3.1 Fstab"></a>1.3.1 Fstab</h3><p>用以下命令生成 fstab 文件 (用 -U 或 -L 选项设置 UUID 或卷标)：</p>
+<pre><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="1-3-2-Chroot"><a href="#1-3-2-Chroot" class="headerlink" title="1.3.2 Chroot"></a>1.3.2 Chroot</h3><p>Change root 到新安装的系统：</p>
+<pre><code># arch-chroot /mnt /bin/bash
+</code></pre><h3 id="1-3-3-时区"><a href="#1-3-3-时区" class="headerlink" title="1.3.3 时区"></a>1.3.3 时区</h3><p>设置时区:</p>
+<pre><code># ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</code></pre><p>调整时间漂移:</p>
+<pre><code># hwclock --systohc --utc
+</code></pre><h3 id="1-3-4-Locale"><a href="#1-3-4-Locale" class="headerlink" title="1.3.4 Locale"></a>1.3.4 Locale</h3><p>本地化的程序与库若要本地化文本，都依赖 Locale, 后者明确规定地域、货币、时区日期的格式、字符排列方式和其他本地化标准等等。在下面两个文件设置：locale.gen 与 locale.conf.<br>/etc/locale.gen 是一个仅包含注释文档的文本文件。指定需要的本地化类型，只需移除对应行前面的注释符号（＃）即可，建议选择帶UTF-8的項：</p>
+<pre><code># nano /etc/locale.gen
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+</code></pre><p>接着执行locale-gen以生成locale讯息：</p>
+<pre><code># locale-gen
+</code></pre><p>/etc/locale.gen 生成指定的本地化文件，每次 glibc 更新之后也要运行 locale-gen。<br>创建 locale.conf 并提交你的本地化选项：</p>
+<h3 id="1-3-5-主机名"><a href="#1-3-5-主机名" class="headerlink" title="1.3.5 主机名"></a>1.3.5 主机名</h3><p>要设置 hostname，将其添加 到 /etc/hostname, myhostname 是需要的主机名:</p>
+<pre><code># echo myhostname &gt; /etc/hostname
+</code></pre><h3 id="1-3-6-Root-密码"><a href="#1-3-6-Root-密码" class="headerlink" title="1.3.6 Root 密码"></a>1.3.6 Root 密码</h3><p>设置 root 密码:</p>
+<pre><code># passwd
+</code></pre><h3 id="1-3-7-安装引导程序"><a href="#1-3-7-安装引导程序" class="headerlink" title="1.3.7 安装引导程序"></a>1.3.7 安装引导程序</h3><p>安装软件包 grub 和 efibootmgr：</p>
+<pre><code># pacman -S grub
+# pacman -S efibootmgr
+</code></pre><p>接下来的步骤安装 GRUB UEFI 程序到 esp/EFI/grub中, 安装其模块到/boot/grub/x86_64-efi，我这里下面的 $esp 为 /boot/EFI</p>
+<pre><code># grub-install --target=x86_64-efi --efi-directory=$esp --bootloader-id=grub
+</code></pre><p>然后将可以启动的 grubx64.efi 复制到 $esp/EFI/grub.</p>
+<pre><code># cp grubx64.efi $esp/EFI/grub
+</code></pre><p>安装后,需要生成主配置文件 grub.cfg。配置文件的生成过程受到 /etc/default/grub 和 /etc/grub.d/ 下脚本的影响。<br>使用下面命令生成 grub.cfg:</p>
+<pre><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><p>每次修改 /etc/default/grub 后，都需要重新生成主配置文件</p>
+<h3 id="1-3-8-重启"><a href="#1-3-8-重启" class="headerlink" title="1.3.8 重启"></a>1.3.8 重启</h3><p>输入 exit 或按 Ctrl+D 退出 chroot。<br>现在重启系统，移除安装介质并执行 reboot，新系统启动后用 root 登录。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong>   <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">ArchLinux官方教程</a>  </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 27 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2016-11-29T10:40:27.893Z" itemprop="dateUpdated">2016-11-29 18:40:27</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/a01bc294/" target="_blank" rel="external">http://irislr.me//posts/a01bc294/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统安装/">系统安装</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/a01bc294/&title=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/a01bc294/&title=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&source=此博文继撕人定制 ArchLinux（一）后，主要介绍了安装基本系统的具体过程。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/a01bc294/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/a01bc294/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/a01bc294/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/ed0561c6/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：撕人定制 ArchLinux（三）
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/900d2e4c/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：撕人定制 ArchLinux（一）">下一篇：撕人定制 ArchLinux（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/a01bc294/&title=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/a01bc294/&title=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&source=此博文继撕人定制 ArchLinux（一）后，主要介绍了安装基本系统的具体过程。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/a01bc294/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（二）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/a01bc294/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/a01bc294/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aQW7DMAwEwPz/0y7QaxB3ScqqAoxOQWA74xwIccXXK17X73r/5v37+7vye0cLFxd3zL1u1/sPJ8T7ez9dc2/AxcXdz70vQ/c/kFDya/6w4eLiHsbtbYPyAoeLi/uN3KQ8zem4uLjncJPmJwlH8mse79VwcXEH3Gpg+sTnB/NdXFzcIvcqrqRU5XFq+ddxcXG3cJNGZdWhy6p2CBcXdw83AeWjFXmBy/8UXFzcndxqoemVpFXhCy4u7k5ufkBSjTvzhicZ8MLFxd3DnRB7TVQ1Uok2Ori4uEu5vfijF6pOSuEorcHFxS1yezuH+fhFNV7BxcXdyc2HpeajGPn26ONfgIuLewC32rRMWiZcXNzTuPnRSDUkzZ/QPErBxcV9gNvbspRnOgZ3FYYwcHFxF3Gr0WceieaHpoVhDlxc3I3cJPKoHp2uWri4uP/F7R2gVgew5tsdXFzcPdzJEex8nCJ5ZrNQ4uLijrmrBq2SItUriIXqi4uLu5Q7n4OqjllUXx4XF/dMbq9UrXoyLi7ut3AnZa7XMuHi4u7k9kLS5IXz5icqiLi4uFu4vcA0iU2rr4qLi3sA9wf8Td1EiNp8dwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

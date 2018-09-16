@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>linux 系统的有线＆无线连接 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="archlinux,ubuntu,wifi">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="前言：archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二来，总觉得网络是个很高深的东西，算是从心底里有种畏惧吧。现在，临近寒假了，想在回家之前把这个问题解决掉。不巧，正好有两个朋友想玩 linux ，我帮他们装了 ubuntu 16.04 ，有线能识别，但是识别不了 wifi ，通过 google ，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 系统的有线＆无线连接">
+<meta property="og:url" content="http://irislr.me/posts/9d3eead8/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="前言：archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二来，总觉得网络是个很高深的东西，算是从心底里有种畏惧吧。现在，临近寒假了，想在回家之前把这个问题解决掉。不巧，正好有两个朋友想玩 linux ，我帮他们装了 ubuntu 16.04 ，有线能识别，但是识别不了 wifi ，通过 google ，">
+<meta property="og:updated_time" content="2017-01-13T07:08:13.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux 系统的有线＆无线连接">
+<meta name="twitter:description" content="前言：archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二来，总觉得网络是个很高深的东西，算是从心底里有种畏惧吧。现在，临近寒假了，想在回家之前把这个问题解决掉。不巧，正好有两个朋友想玩 linux ，我帮他们装了 ubuntu 16.04 ，有线能识别，但是识别不了 wifi ，通过 google ，">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">linux 系统的有线＆无线连接</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-有线连接"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 有线连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-ubuntu"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 ubuntu</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-archlinux"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 archlinux</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-无线连接"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 无线连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-ubuntu"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 ubuntu</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-archlinux"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 archlinux</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-通过手机-USB-给电脑共享网络"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 通过手机 USB 给电脑共享网络</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-linux系统的有线＆无线连接"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">linux 系统的有线＆无线连接</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2017-01-07 21:21:24" datetime="2017-01-07T13:21:24.000Z"  itemprop="datePublished">2017-01-07</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">5</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>前言：</strong><br>archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。<br>一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二来，总觉得网络是个很高深的东西，算是从心底里有种畏惧吧。<br>现在，临近寒假了，想在回家之前把这个问题解决掉。不巧，正好有两个朋友想玩 linux ，我帮他们装了 ubuntu 16.04 ，有线能识别，但是识别不了 wifi ，通过 <a href="http://forum.ubuntu.org.cn/viewtopic.php?f=116&amp;t=481394" target="_blank" rel="external">google</a> ，原来是 BIOS 的设置问题，这种无法解释的事情，我觉得有必要记下来……</p>
+<a id="more"></a>
+<hr>
+<h1 id="1-有线连接"><a href="#1-有线连接" class="headerlink" title="1 有线连接"></a>1 有线连接</h1><h2 id="1-1-ubuntu"><a href="#1-1-ubuntu" class="headerlink" title="1.1 ubuntu"></a>1.1 ubuntu</h2><p>在生活中遇到最多的就是动态分配的路由器了吧！<br>如果想要开机自动连接这类路由器，需要修改网络配置文件——</p>
+<pre><code>$ sudo vim /etc/network/interfaces
+</code></pre><p>添加如下内容：</p>
+<pre><code>$ auto eth0
+$ iface eth0 inet dhcp
+</code></pre><p>至于这里的 eth0 ，只不过是网卡名称的代名词。要具体情况具体定（ ps: 像我的就是enp7s0 ）。<br>一般驱动是自动装好的，执行如下命令可以查看本机的 eth0：</p>
+<pre><code>$ ifconfig -a
+</code></pre><h2 id="1-2-archlinux"><a href="#1-2-archlinux" class="headerlink" title="1.2 archlinux"></a>1.2 archlinux</h2><p>同样是连接动态分配 ip 的路由器，命令行如下：</p>
+<pre><code>$ sudo ip link set enp7s0 up
+$ sudo dhcpcd enp7s0
+</code></pre><p>每次开机都要手动输入很不方便，那就加入<a href="https://www.yumao.name/read/archlinux-systemd-rc-local/" target="_blank" rel="external"><strong>开机自启</strong></a>吧!</p>
+<p>新建 rc-local.service</p>
+<pre><code>$ sudo vim /usr/lib/systemd/system/rc-local.service
+</code></pre><p>写入以下内容：</p>
+<pre><code>[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+[Service]
+Type=forking
+ExecStart=/etc/rc.local
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>然后新建 rc.local </p>
+<pre><code>$ sudo vim /etc/rc.local 
+</code></pre><p>写入：    </p>
+<pre><code>#!/bin/bash
+ip link set enp7s0 up
+dhcpcd enp7s0
+</code></pre><p>保存之后将其权限设置为可执行</p>
+<pre><code>$ sudo chmod +x /etc/rc.local 
+</code></pre><p>最后使用systemctl开机自启动此service</p>
+<pre><code>$ sudo systemctl enable rc-local.service
+</code></pre><p>重启后发现能自动连网了！</p>
+<hr>
+<h1 id="2-无线连接"><a href="#2-无线连接" class="headerlink" title="2 无线连接"></a>2 无线连接</h1><h2 id="2-1-ubuntu"><a href="#2-1-ubuntu" class="headerlink" title="2.1 ubuntu"></a>2.1 ubuntu</h2><p>这个在前言里面已经提到过了，修改 BIOS 的 secure boot 为 disable即可自动识别。  </p>
+<h2 id="2-2-archlinux"><a href="#2-2-archlinux" class="headerlink" title="2.2 archlinux"></a>2.2 archlinux</h2><p>先列出网络适配器型号</p>
+<pre><code>$ lspci -k | grep -A 2 -i network
+---------------------------
+06:00.0 Network controller: Broadcom Limited BCM43142 802.11b/g/n (rev 01)
+Subsystem: Dell Wireless 1704 802.11n + BT 4.0
+Kernel driver in use: wl
+</code></pre><p>iwconfig 只输出 lo 和 enp7s0 ，<br>而 iw dev 无输出，显然是驱动没装好，google 好久，看了网上对博通网卡驱动的各种吐槽，快要放弃的时候，看到了这篇<a href="http://www.itdadao.com/articles/c15a466909p0.html" target="_blank" rel="external">文章</a>，真是救命草啊！</p>
+<pre><code>$ sudo yaourt -S broadcom-wl-dkms
+</code></pre><p>reboot 重启后，再 iw dev 就发现有 wlp6s0 了。</p>
+<pre><code>$ iw dev
+---------------------------
+lo        no wireless extensions.
+
+enp7s0    no wireless extensions.
+
+wlp6s0    IEEE 802.11  ESSID:off/any  
+      Mode:Managed  Access Point: Not-Associated   
+      Retry short limit:7   RTS thr:off   Fragment thr:off
+      Power Management:off
+</code></pre><p>首先，安装必要软件包</p>
+<pre><code>$ sudo pacman -S wireless_tools
+$ sudo pacman -S wpa_supplicant
+$ sudo pacman -S netctl
+</code></pre><p>启用 wlp6s0 </p>
+<pre><code>$ sudo ip link set wlp6s0 up
+</code></pre><p>扫描可用热点</p>
+<pre><code>$ sudo iw dev wlp6s0 scan
+</code></pre><p>查看 wifi 的加密方式，根据不同方式采取不同措施。<br>其中加密方式为 WPA-PSK 用 wpa_supplicant；加密方式为 WEP 用 iw dev wlan0 connect your_essid key d:2:your_key 形式。<br>这里，用 netctl 工具来管理网络。<br>自动在 /etc/netctl/ 中生成配置文件：</p>
+<pre><code>$ sudo wifi-menu -o
+</code></pre><p>在创建好配置文件之后，可以尝试运行（仅需写出文件名，不包含完整路径）：</p>
+<pre><code>$ sudo netctl start profile
+</code></pre><p>iwconfig 即可看到已连上 wifi。</p>
+<hr>
+<h1 id="3-通过手机-USB-给电脑共享网络"><a href="#3-通过手机-USB-给电脑共享网络" class="headerlink" title="3 通过手机 USB 给电脑共享网络"></a>3 通过手机 USB 给电脑共享网络</h1><p>你是否遇到过这样的窘境，既找不到有线网也搜不到无线网，手机成了与外界沟通的唯一方式。<br>毕竟有些事情，用手机也不方便，比如刷 ACM ……<br>这个时候，你肯定会想到通过 USB 将网络共享给电脑吧！在 windows 10 下简单地将手机连上就能上网，同样，在 linux 下也只需要那么一两步就能让你“重见天日”！<br>如果你的电脑是 linux ，如果你的手机支持 USB 共享网络，那么下面将是你迫不及待想看到的——<br><strong>第一步：</strong>将你的手机通过 usb 线连接到电脑上，紧接着打开手机的 usb 共享网络开关。如果你要问具体怎么打开的话，还是去百度一下或者翻翻说明书，实在不行就给客服打电话，哈哈！<br><strong>第二步：</strong>查看手机热点在你电脑上得到的“专属名称”。  </p>
+<pre><code>$ iwconfig
+-----------------------
+lo        no wireless extensions.
+
+enp0s29u1u3  no wireless extensions.
+
+enp7s0    no wireless extensions.
+
+wlp6s0    IEEE 802.11  ESSID:off/any  
+      Mode:Managed  Access Point: Not-Associated   
+      Retry short limit:7   RTS thr:off   Fragment thr:off
+      Power Management:off
+</code></pre><p>很明显，我的多出了 enp0s29u1u3 ，这个就是手机热点对应的设备名称啦！<br><strong>第三步：</strong>接下来的步骤就类似于上面提到的有线 dhcp 连接方式了。  </p>
+<pre><code>$ sudo ip link set enp0s29u1u3 up
+$ sudo dhcpcd enp0s29u1u3  
+</code></pre><p>最后，检验下是否真的能上网了！  </p>
+<pre><code>$ ping -c 3 baidu.com 
+</code></pre><p>能成功返回数据就表示已连上网！</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=116&amp;t=481394" target="_blank" rel="external">ubuntu14.04 网卡BCM43142 make网卡驱动的候出现如下问题</a><br><strong>【２】</strong><a href="https://www.yumao.name/read/archlinux-systemd-rc-local/" target="_blank" rel="external">ArchLinux Systemd 增加rc-local自运行</a><br><strong>【３】</strong><a href="http://www.itdadao.com/articles/c15a466909p0.html" target="_blank" rel="external">archlinux配置BCM43142无线网卡</a></p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 1 月 7 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-01-13T07:08:13.501Z" itemprop="dateUpdated">2017-01-13 15:08:13</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/9d3eead8/" target="_blank" rel="external">http://irislr.me//posts/9d3eead8/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/archlinux/">archlinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/">wifi</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/9d3eead8/&title=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/9d3eead8/&title=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&source=前言：archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/9d3eead8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&url=http://irislr.me/posts/9d3eead8/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/9d3eead8/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/f1af8126/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：Spark+Hadoop+JDK+Scala 的环境搭建
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/895fff49/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：重装 Linux 后的 Hexo 博客环境恢复">下一篇：重装 Linux 后的 Hexo 博客环境恢复</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/9d3eead8/&title=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/9d3eead8/&title=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&source=前言：archlinux 下的 wifi 连接，一直是一个想要解决又懒得去碰的问题。一是电脑放在工作室，这里的网线充足，有线快，可以很好的满足我的需求；二..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/9d3eead8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux 系统的有线＆无线连接》 — 鸢尾旅人的博客&url=http://irislr.me/posts/9d3eead8/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/9d3eead8/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3ay5GDQAwFQOeftDcAL/AkMWNc1Zw4YGj5oBp9Xq/4en9c+a/O3/ZaceHi4o6579Pr6ANH98lXjt5wbsDFxd3PPU9Dn88k9F7wFzZcXNyf4p4/kweJi4v7u9xqaZTTcXFxn8NNip/k+byIWl6r4eLiDrjV1ueK+yX9XVxc3BZ3nozykKrJ659f4eLibuH2BiHJ6PQomPkABhcXdz+3V8D01ix6YePi4u7nVj8zT4LlvwMXF3cxN/9YdcWqOnxNyiRcXNz93N7oIklSefAXfw0uLu52bt7ETJ7PD0yFIxQuLu4WbvUQ0xuH5JRobIOLi7udmxQ2FyVKXAIlTduL7IuLi7uAWx2QVA86k4WMQq2Gi4t7KzenFNYjBmVPPojFxcVdza0OPyYhJUsbzcUsXFzcBdx8fSoJpto6yY9HuLi4O7nlhHJXGZOfwnBxcbdw52klT1jV1Q1cXNxvcXsLWL0GaLWgGjVWcHFxx9z5IKR6ABoFg4uLu5GbrERUj0q9DHrRiMHFxX0wt3fouWHEgouL+2DufDkjT2e35V1cXNwiNyl+qqmt2jRJ2rK4uLh7uNW0kpc91SWMm/u7uLi4He4fRvgBL4nYIKEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>重装 Linux 后的 Hexo 博客环境恢复 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Hexo,Blog">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="前言：由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和 Hexo 建站等流程。此博文仅仅是在新系统上的重新布置，和本人情况类似的游客下文可做一定参考，也劳烦 没有文件备份的游客移步他家。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重装 Linux 后的 Hexo 博客环境恢复">
+<meta property="og:url" content="http://irislr.me/posts/895fff49/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="前言：由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和 Hexo 建站等流程。此博文仅仅是在新系统上的重新布置，和本人情况类似的游客下文可做一定参考，也劳烦 没有文件备份的游客移步他家。">
+<meta property="og:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-28/95566873.jpg">
+<meta property="og:updated_time" content="2017-06-27T01:30:04.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重装 Linux 后的 Hexo 博客环境恢复">
+<meta name="twitter:description" content="前言：由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和 Hexo 建站等流程。此博文仅仅是在新系统上的重新布置，和本人情况类似的游客下文可做一定参考，也劳烦 没有文件备份的游客移步他家。">
+<meta name="twitter:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-28/95566873.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">重装 Linux 后的 Hexo 博客环境恢复</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-关联github"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 关联github</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-设置git"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 设置git</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-配置git私钥"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 配置git私钥</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-安装node-js和Hexo"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 安装node.js和Hexo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-安装node-js"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 安装node.js</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-安装Hexo"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 安装Hexo</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-绑定域名"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 绑定域名</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-重装Linux后的Hexo博客环境恢复"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">重装 Linux 后的 Hexo 博客环境恢复</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2016-11-28 09:45:34" datetime="2016-11-28T01:45:34.000Z"  itemprop="datePublished">2016-11-28</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Blog/">Blog</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">2</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>前言：</strong><br>由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和 Hexo 建站等流程。<br>此博文仅仅是在新系统上的重新布置，和本人情况类似的游客下文可做一定参考，也劳烦 没有文件备份的游客移步他家。</p>
+<a id="more"></a>
+<hr>
+<p><strong>环境：</strong></p>
+<blockquote>
+<ul>
+<li>os : Linux 4.8.10-1-ARCH linux x64</li>
+<li>git : 2.10.2</li>
+<li>node : 7.2.0</li>
+<li>npm : 4.0.2</li>
+<li>hexo-cli : 1.0.2</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="1-关联github"><a href="#1-关联github" class="headerlink" title="1 关联github"></a>1 关联github</h1><h2 id="1-1-设置git"><a href="#1-1-设置git" class="headerlink" title="1.1 设置git"></a>1.1 设置git</h2><p>系统中 git 已默认安装，设置 git 用户名称和邮件地址：</p>
+<pre><code>$ git config --global user.name &quot;username&quot;
+$ git config --global user.email &quot;username@example.com&quot;
+</code></pre><h2 id="1-2-配置git私钥"><a href="#1-2-配置git私钥" class="headerlink" title="1.2 配置git私钥"></a>1.2 配置git私钥</h2><p>安装 openssh</p>
+<pre><code>$ sudo pacman -S openssh
+</code></pre><p>生成 SSH key</p>
+<pre><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre><p>首先确保 ssh-agent 可运行：</p>
+<pre><code>$ ssh-agent -s
+</code></pre><p>然后添加SSH key：</p>
+<pre><code>$ ssh-add ~/.ssh/id_rsa
+</code></pre><p>拷贝 ~/.ssh/id_rsa.pub 中的内容，然后，在 GitHub 右上方点击头像，选择 ”Settings”，在右边的 ”Personal settings” 侧边栏选择 ”SSH Keys”。点击 ”Add key” 按钮添加，接着粘贴 key。</p>
+<p>测试：</p>
+<pre><code>$ ssh -T git@github.com
+</code></pre><hr>
+<h1 id="2-安装node-js和Hexo"><a href="#2-安装node-js和Hexo" class="headerlink" title="2 安装node.js和Hexo"></a>2 安装node.js和Hexo</h1><h2 id="2-1-安装node-js"><a href="#2-1-安装node-js" class="headerlink" title="2.1 安装node.js"></a>2.1 安装node.js</h2><p><strong>法一：</strong><br>按照 <a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo 官方</a>给出的安装方法，通过 nvm 进行安装。<br>安装 nvm：</p>
+<pre><code>$ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
+</code></pre><p>重启Terminal，安装 Node.js</p>
+<pre><code>$ nvm ls-remote
+$ nvm install v7.2.0
+</code></pre><p>网太慢的原因？下载总出错……果断尝试法二。</p>
+<p><strong>法二：</strong><br>按照 <a href="https://wiki.archlinux.org/index.php/Node.js_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">Arch wiki</a> 给出的安装方法。<br> nodejs 位于官方软件仓库，直接通过 pacman 安装：</p>
+<pre><code>$ sudo pacman -S nodejs
+</code></pre><p> npm 同上：</p>
+<pre><code>$ sudo pacman -S npm
+</code></pre><h2 id="2-2-安装Hexo"><a href="#2-2-安装Hexo" class="headerlink" title="2.2 安装Hexo"></a>2.2 安装Hexo</h2><p>使用 npm 完成 Hexo 的安装：</p>
+<pre><code>$ sudo npm install -g hexo-cli      &lt;== 注：这里不用 sudo 会报错
+</code></pre><p>由于本人在之前已经备份过 myHexo 的全部文件，因此不必 hexo init 了。<br>接下来，直接进入移动硬盘里面的 blog 文件目录：</p>
+<pre><code>$ hexo g
+$ hexo s                            &lt;== 本地 0.0.0.0:4000 预览
+$ hexo d                            &lt;== 部署至 github 
+</code></pre><p>访问 0.0.0.0:4000 大功告成!</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-28/95566873.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h1 id="3-绑定域名"><a href="#3-绑定域名" class="headerlink" title="3 绑定域名"></a>3 <a href="http://wanglongzhi.cn/blog/2016/11/29/1/" target="_blank" rel="external">绑定域名</a></h1><p>首先，进入博客根目录，执行：</p>
+<pre><code>$ echo &apos;yourYuming&apos;&gt;source/CNAME
+</code></pre><p>然后，去域名管理网站进行解析，A 记录 IP 可选择 192.30.252.153。</p>
+<hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more" target="_blank" rel="external">GitHub Pages + Hexo搭建博客</a><br><strong>【２】</strong><a href="http://wanglongzhi.cn/blog/2016/11/29/1/" target="_blank" rel="external">博客搭建过程</a> </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 28 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-06-27T01:30:04.589Z" itemprop="dateUpdated">2017-06-27 09:30:04</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/895fff49/" target="_blank" rel="external">http://irislr.me//posts/895fff49/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/895fff49/&title=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/895fff49/&title=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&source=前言：由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/895fff49/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&url=http://irislr.me/posts/895fff49/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/895fff49/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/9d3eead8/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：linux 系统的有线＆无线连接
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/ed0561c6/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：撕人定制 ArchLinux（三）">下一篇：撕人定制 ArchLinux（三）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/895fff49/&title=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/895fff49/&title=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&source=前言：由于本人之前已经在 windows 和 ubuntu 平台搭好过本地写 blog 平台，有全部文件备份。故本博文没有涉及到 github 账号申请和..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/895fff49/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《重装 Linux 后的 Hexo 博客环境恢复》 — 鸢尾旅人的博客&url=http://irislr.me/posts/895fff49/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/895fff49/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvElEQVR42u3aQXLDIAwF0Nz/0u4FavyFAKedx6qTcclzFhrpw+cTr+tmJf813u2zY+Hi4ra513DdPTMGJcTx/revhIuLe5A7LkN3W+dP5js82HBxcb+eOy46409wcXH/E3duKMrpuLi438NNhp85erXpWTar4eLiNrh5qLHv7y35Li4u7hT3Kq5q8NEZon7ZGRcX9wg3Lyjj4GNuBJr8Xlxc3CPctc1NjsuHqI29GC4ubsxNilH14sUYnbQ+uLi457nJQencqFO9bBE9j4uLu43bP+rIXzUpZA9lDhcX9yC3M4rk17MWtES4uLjHuUlg0T8O6QxCuLi4J7k5rhOnzv0ED8MPLi7uBm5OnAtN5uKS6qvi4uLu464KQ1uXJ/IyiouLu5m7A5r8HK17ZLi4uEe4q76m2tyUAxRcXNyD3M4liWVTVx6C4OLibuPOlZW5Y5Xq8S0uLu5b3Go8UW1ukhA2L5q4uLgnudXxI49IOoWsMPzg4uJu41avVlRbos7wg4uL+7e4ySedeKWQmuDi4r7KnRt4qvPWshYHFxe3wc2PRvqhanJ8i4uL+y63WlYKg0q7rWnlu7i4uDPcH1Y14jFS6FeEAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

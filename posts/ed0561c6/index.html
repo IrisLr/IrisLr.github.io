@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>撕人定制 ArchLinux（三） | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="ArchLinux,系统安装">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="此博文继撕人定制 ArchLinux（一）撕人定制 ArchLinux（二）后，介绍了 gnome 图形界面以及必要软件和驱动的安装。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="撕人定制 ArchLinux（三）">
+<meta property="og:url" content="http://irislr.me/posts/ed0561c6/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="此博文继撕人定制 ArchLinux（一）撕人定制 ArchLinux（二）后，介绍了 gnome 图形界面以及必要软件和驱动的安装。">
+<meta property="og:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-30/94273451.jpg">
+<meta property="og:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-30/95996939.jpg">
+<meta property="og:updated_time" content="2016-12-18T14:14:24.447Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="撕人定制 ArchLinux（三）">
+<meta name="twitter:description" content="此博文继撕人定制 ArchLinux（一）撕人定制 ArchLinux（二）后，介绍了 gnome 图形界面以及必要软件和驱动的安装。">
+<meta name="twitter:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-30/94273451.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">撕人定制 ArchLinux（三）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-gnome桌面安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 gnome桌面安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-添加普通用户"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 添加普通用户</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-连接网络"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 连接网络</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-安装基本的图形环境以及驱动程序"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 安装基本的图形环境以及驱动程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-安装gnome桌面"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1.4 安装gnome桌面</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-常用软件的安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 常用软件的安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-yaourt"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 yaourt</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-fcitx中文输入法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 fcitx中文输入法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-chromium"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 chromium</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-4-sublime-text-3"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">2.4 sublime-text-3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-5-VirtualBox"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">2.5 VirtualBox</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-6-Matlab-R2016a"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">2.6 Matlab R2016a</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-7-wps-office"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">2.7 wps-office</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-8-中文乱码问题"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">2.8 中文乱码问题</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-撕人定制ArchLinux（三）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">撕人定制 ArchLinux（三）</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2016-11-27 18:30:32" datetime="2016-11-27T10:30:32.000Z"  itemprop="datePublished">2016-11-27</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">4</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>此博文继<a href="https://irislr.github.io/2016/11/27/%E6%92%95%E4%BA%BA%E5%AE%9A%E5%88%B6ArchLinux%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">撕人定制 ArchLinux（一）</a><a href="https://irislr.github.io/2016/11/27/%E6%92%95%E4%BA%BA%E5%AE%9A%E5%88%B6ArchLinux%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="external">撕人定制 ArchLinux（二）</a>后，介绍了 gnome 图形界面以及必要软件和驱动的安装。</p>
+<a id="more"></a>
+<hr>
+<h1 id="1-gnome桌面安装"><a href="#1-gnome桌面安装" class="headerlink" title="1 gnome桌面安装"></a>1 gnome桌面安装</h1><h2 id="1-1-添加普通用户"><a href="#1-1-添加普通用户" class="headerlink" title="1.1 添加普通用户"></a>1.1 添加普通用户</h2><p>新安装的系统只有一个超级用户，即 root 。<br>添加名为 myUsername 普通用户：</p>
+<pre><code># useradd myUsername
+</code></pre><p>并为所创建用户设定密码：</p>
+<pre><code># passwd myUsername
+</code></pre><p>权限提升——安装sudo让普通用户执行root命令：</p>
+<pre><code># pacman -S sudo
+# nano /etc/sudoers
+&lt;== 添加　myUsername ALL＝ALL(ALL)
+</code></pre><h2 id="1-2-连接网络"><a href="#1-2-连接网络" class="headerlink" title="1.2 连接网络"></a>1.2 连接网络</h2><p>连接 dhcp 有线网络：</p>
+<pre><code>$ sudo ip link set enp7s0 up
+$ sudo dhcpcd enp7s0
+</code></pre><h2 id="1-3-安装基本的图形环境以及驱动程序"><a href="#1-3-安装基本的图形环境以及驱动程序" class="headerlink" title="1.3 安装基本的图形环境以及驱动程序"></a>1.3 安装基本的图形环境以及驱动程序</h2><p>安装xorg核心组件：</p>
+<pre><code>$ sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
+</code></pre><p>安装开源显卡驱动，或者安装闭源驱动catalyst：</p>
+<pre><code>$ sudo pacman -S xf86-video-ati
+</code></pre><p>安装触摸板驱动：</p>
+<pre><code>$ sudo pacman -S xf86-input-synaptics
+</code></pre><h2 id="1-4-安装gnome桌面"><a href="#1-4-安装gnome桌面" class="headerlink" title="1.4 安装gnome桌面"></a>1.4 <a href="https://wiki.archlinux.org/index.php/GNOME_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85" target="_blank" rel="external">安装gnome桌面</a></h2><p>安装基本桌面环境和精选的应用程序：</p>
+<pre><code>$ sudo pacman -S gnome
+</code></pre><p>安装剩余的可选工具：</p>
+<pre><code>$ sudo pacman -S gnome-extra
+</code></pre><p>进入桌面：</p>
+<pre><code>$ startx
+</code></pre><hr>
+<h1 id="2-常用软件的安装"><a href="#2-常用软件的安装" class="headerlink" title="2 常用软件的安装"></a>2 常用软件的安装</h1><h2 id="2-1-yaourt"><a href="#2-1-yaourt" class="headerlink" title="2.1 yaourt"></a>2.1 yaourt</h2><p>在/etc/pacman.conf中添加软件仓库：</p>
+<pre><code>$ sudo vim /etc/pacman.conf
+&lt;== 添加
+[ArchLinuxfr]
+SigLevel = Optional TrustAll
+Server = http://repo.ArchLinux.fr/$arch
+</code></pre><p>然后命令行中安装：</p>
+<pre><code>$ sudo pacman -Sy yaourt
+</code></pre><p>使用yaourt来更新所有系统中的包：</p>
+<pre><code>$ yaourt -Syua
+</code></pre><h2 id="2-2-fcitx中文输入法"><a href="#2-2-fcitx中文输入法" class="headerlink" title="2.2 fcitx中文输入法"></a>2.2 fcitx中文输入法</h2><p>安装fcitx输入法作为中文输入法：</p>
+<pre><code>$ sudo pacman -S fcitx-im
+</code></pre><p>为保证fcitx能够正常在各个环境中使用，安装：</p>
+<pre><code>$ sudo pacman -S fcitx-qt5
+</code></pre><p>安装AUR里的搜狗拼音输入法：</p>
+<pre><code>$ sudo yaourt -S fcitx-sogoupinyin
+</code></pre><p>安装图形配置工具：</p>
+<pre><code>$ sudo pacman -S fcitx-configtool
+</code></pre><p>设置开机自启，在.xinitrc文件中写入配置信息：</p>
+<pre><code>$ sudo vim ~/.xinitrc
+&lt;== 添加
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=&quot;@im=fcitx&quot;    //让fcitx成为默认输入法
+</code></pre><h2 id="2-3-chromium"><a href="#2-3-chromium" class="headerlink" title="2.3 chromium"></a>2.3 chromium</h2><p>安装</p>
+<pre><code>$ sudo pacman -S chromium
+</code></pre><p>为 chromium 安装 flash 插件</p>
+<pre><code>$ sudo yaourt -S pepper-flash
+$ sudo yaourt -S chromium-widevine
+</code></pre><h2 id="2-4-sublime-text-3"><a href="#2-4-sublime-text-3" class="headerlink" title="2.4 sublime-text-3"></a>2.4 sublime-text-3</h2><p>安装</p>
+<pre><code>$ sudo pacman -S sublime-text-dev
+</code></pre><p>无法输入中文的解决方案——下载必要的文件并复制到相应的目录：</p>
+<pre><code>$ git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+$ cd sublime-text-imfix
+$ sudo cp ./lib/libsublime-imfix.so /opt/sublime_text/
+$ sudo cp ./src/subl /usr/bin/
+</code></pre><p>在～下新建文件名为sublime</p>
+<pre><code>$ vim sublime
+&lt;== 添加
+#!/bin/bash
+LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so subl
+</code></pre><p>重新运行 sublime 就可以输入中文了</p>
+<pre><code>$ bash ~/sublime
+</code></pre><p>以后都要用上面这条语句运行sublime </p>
+<h2 id="2-5-VirtualBox"><a href="#2-5-VirtualBox" class="headerlink" title="2.5 VirtualBox"></a>2.5 <a href="https://wiki.archlinux.org/index.php/VirtualBox_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.9C.A8Archlinux.E4.B8.AD.E5.AE.89.E8.A3.85VirtualBox.E7.9A.84.E5.AE.89.E8.A3.85.E6.AD.A5.E9.AA.A4" target="_blank" rel="external">VirtualBox</a></h2><p><strong>安装：</strong><br>用 pacman 安装软件包 virtualbox：</p>
+<pre><code>$ sudo pacman -S virtualbox
+</code></pre><p>选择 linux 内核模块获取方式，安装 virtualbox-host-modules-arch：</p>
+<pre><code>$ sudo pacman -S virtualbox-host-modules-arch
+</code></pre><p>要使用基于 Qt 的图形界面：</p>
+<pre><code>$ sudo pacman -S qt5-x11extras 
+</code></pre><p>VirtualBox 在 Linux 上运行需要使用自己的内核模块，vboxdrv 模块必须在虚拟机运行前加载。<br>手动加载模块：</p>
+<pre><code>$sudo modprobe vboxdrv
+</code></pre><p>运行　VirtualBox。</p>
+<p><strong>优化 vbox 体验：</strong><br>装完 xp 虚拟机后，发现没有适应屏幕的分辨率，并且鼠标移动迟钝，<a href="http://www.ruanme.com/virtualbox-full-screen.html" target="_blank" rel="external">baidu</a> 后才知道是因为还没安装增强软件包～   </p>
+<p><strong>step1：</strong>添加留空光驱<br>（１）关闭虚拟机，回到 VirtualBox 管理器中，然后选中你创建的虚拟机，右击点 <code>setting</code>。<br>（２）在弹出的虚拟机设置中，在左侧列表中找到 <code>storage</code> 选项。<br>（３）在右边存储树列表中，点击添加虚拟光驱。如图：红线圈中，光驱选择留空就行了。</p>
+<p><strong>step2：</strong>安装增强软件包<br>打开虚拟机，点击 <code>Device</code> -&gt; <code>Insert Guest Additions CD image</code>。<br>vBox 会自动将增强包挂载到虚拟机的光驱上，双击安装即可。</p>
+<p><strong>step3：</strong>添加共享文件夹<br>这个很简单。创建完共享文件夹后，虚拟机 xp 端通过 <code>我的电脑</code> -&gt; <code>映射网络驱动器</code> 进行访问。  </p>
+<h2 id="2-6-Matlab-R2016a"><a href="#2-6-Matlab-R2016a" class="headerlink" title="2.6 Matlab R2016a"></a>2.6 Matlab R2016a</h2><p>按照网上的<a href="http://blog.csdn.net/jnulzl/article/details/51779342" target="_blank" rel="external">教程</a>一路安装下来，没啥问题，但是 ./matlab 启动的时候报错了，错误截图如下 ==&gt;<br><img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-30/94273451.jpg" alt=""></p>
+<p>所幸 google 后找到<a href="https://forum.antergos.com/topic/5074/matlab-r2016a-and-antergos" target="_blank" rel="external">解决办法</a></p>
+<pre><code>$ sudo ln -s /usr/lib/libncursesw.so.6  /usr/local/MATLAB/R2016a/bin/glnxa64/libncurses.so.5
+</code></pre><p>再执行 ./matlab 的时候会提示选择许可文件激活，但是报错了 ==&gt;  </p>
+<p><img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-30/95996939.jpg" alt=""></p>
+<p>从错误可以很明显看出是权限问题，于是 sudo ./matlab<br>许可文件位置选 /usr/local/MATLAB/R2016a/bin/licenses<br>搞定！  </p>
+<p>最后，设置命令行任意位置启动matlab：  </p>
+<pre><code>$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab   /usr/local/bin/matlab
+</code></pre><p>接下来还需要解决：<br><a href="http://blog.csdn.net/hcx25909/article/details/7560675" target="_blank" rel="external">中文乱码的解决</a><br><a href="http://www.ilovematlab.cn/thread-114298-1-1.html" target="_blank" rel="external">不能输入中文的问题</a></p>
+<h2 id="2-7-wps-office"><a href="#2-7-wps-office" class="headerlink" title="2.7 wps-office"></a>2.7 <a href="https://wiki.archlinux.org/index.php/WPS_Office_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">wps-office</a></h2><pre><code>$ sudo yaourt -S wps-office
+</code></pre><h2 id="2-8-中文乱码问题"><a href="#2-8-中文乱码问题" class="headerlink" title="2.8 中文乱码问题"></a>2.8 <a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.9F.BA.E6.9C.AC.E4.B8.AD.E6.96.87.E6.94.AF.E6.8C.81" target="_blank" rel="external">中文乱码问题</a></h2><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong>   <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">ArchLinux官方教程</a><br><strong>【２】</strong>   <a href="http://blog.csdn.net/u011152627/article/details/18925121" target="_blank" rel="external">寒假折腾Archlinux的一些经验（新手向）–桌面配置篇</a><br><strong>【３】</strong>   <a href="http://www.ruanme.com/virtualbox-full-screen.html" target="_blank" rel="external">如何设置 Oracle VM VirtualBox 虚拟机全屏</a><br><strong>【４】</strong>   <a href="http://blog.csdn.net/jnulzl/article/details/51779342" target="_blank" rel="external">Ubuntu 16.04下安装MATLAB R2016a</a></p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 27 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2016-12-18T14:14:24.447Z" itemprop="dateUpdated">2016-12-18 22:14:24</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/ed0561c6/" target="_blank" rel="external">http://irislr.me//posts/ed0561c6/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统安装/">系统安装</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/ed0561c6/&title=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/ed0561c6/&title=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&source=此博文继撕人定制 ArchLinux（一）撕人定制 ArchLinux（二）后，介绍了 gnome 图形界面以及必要软件和驱动的安装。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/ed0561c6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/ed0561c6/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/ed0561c6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/895fff49/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：重装 Linux 后的 Hexo 博客环境恢复
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/a01bc294/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：撕人定制 ArchLinux（二）">下一篇：撕人定制 ArchLinux（二）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/ed0561c6/&title=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/ed0561c6/&title=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&source=此博文继撕人定制 ArchLinux（一）撕人定制 ArchLinux（二）后，介绍了 gnome 图形界面以及必要软件和驱动的安装。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/ed0561c6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（三）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/ed0561c6/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/ed0561c6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3aS26EMBAFwLn/pSdSVokiyHtuTIhUrBBocHkWrf749Yqv9+f19f7nk/Nf/Xx+9PaCCxcXd8x9n15H3ORr51s9f364JVxc3Bu5efDKl2y5USjExcV9GDe/bxMjXFzc/8tNwtOcjouL+xxunr60ycrRk+21Gi4u7oC71jC99n57fxcXF/eiqcRamyNvp9ar4+Li3sLNk5I2WcmHLm05hIuLu5u71ryYDFzbwxlFCMPFxb2UmyQobRMk/8753/FtFVxc3D/i/hJK4nQnb4YmG6sXwMXFHXCj8DHewNomo/8YFxd3G3c+p5gXRfV4FRcXdxs3XyZvjqyVQ/WQFRcX9xZum3ysHdEYjVVwcXFv5La4PFSttT9wcXGfw22Lojx4JYe6ilEKLi7uZm5b8OQlTd5wacszXFzc3dzkE23TJC9y6sNhuLi4N3LXupF5MKobo+eBDBcX9xbuZLDajmknDVlcXNx7uG1AyY9ctAe51lIrXFzcfdw8eE0SlPZQV3Q8CxcXdzO3DV5r5VB7FGM0SsHFxb2Fm7xtG6x1UYSLi/tI7lqakh/AwsXFfQ53rVBZS4ny0mjUFsHFxR1wr2qYJmnKtakSLi7uBu4Hofm0ewrlJkgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

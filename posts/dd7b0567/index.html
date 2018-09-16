@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>浅谈树莓派的初始设置 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Raspberry pi,RASPBIAN">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="前言：树莓派，一个美丽与神奇并存的小电脑，易学，好玩。可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈树莓派的初始设置">
+<meta property="og:url" content="http://irislr.me/posts/dd7b0567/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="前言：树莓派，一个美丽与神奇并存的小电脑，易学，好玩。可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！">
+<meta property="og:updated_time" content="2017-03-22T14:28:06.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈树莓派的初始设置">
+<meta name="twitter:description" content="前言：树莓派，一个美丽与神奇并存的小电脑，易学，好玩。可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">浅谈树莓派的初始设置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-烧写系统"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 烧写系统</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-解锁-root-账户"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 解锁 root 账户</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-远程操作树莓派"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 远程操作树莓派</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-更换源"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 更换源</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-安装-Firefox"><span class="post-toc-number">5.</span> <span class="post-toc-text">5 安装 Firefox</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-浅谈树莓派的初始设置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">浅谈树莓派的初始设置</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2017-03-18 14:28:21" datetime="2017-03-18T06:28:21.000Z"  itemprop="datePublished">2017-03-18</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/树莓派/">树莓派</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">3</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。<br>怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！</p>
+<a id="more"></a>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>Raspberry pi：3B+<br>树莓派 OS：Raspbian<br>本地系统：Windows 10  </p>
+</blockquote>
+<hr>
+<h1 id="1-烧写系统"><a href="#1-烧写系统" class="headerlink" title="1 烧写系统"></a>1 <a href="https://www.howtoforge.com/tutorial/howto-install-raspbian-on-raspberry-pi/" target="_blank" rel="external">烧写系统</a></h1><p><strong>第一步</strong>，进<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">官网</a>下载 Raspbian 系统。<br><strong>第二步</strong>，安装烧写软件 Win32DiskImager ，然后选择相应的 SD 卡和镜像，点击 <code>write</code>，等上个 10 来分钟即可。<br><strong>第三步</strong>，连上显示器，进入系统。<br><strong>第四步</strong>，对于 99% 的人，进系统后的第一件事就是连网吧！<br>连无线好说，连设置为 dhcp 的路由器也好说，毕竟 Raspbain 默认就有很好的图形化界面。<br>至于连接需要设置 IP 的有线，我采用的是下面的方法：<br>进入 /etc/network</p>
+<pre><code>$ cd /etc/network
+$ sudo nano interfaces
+---------------------
+添加：
+address
+netmask 
+gateway
+</code></pre><p>连好网后，就来装个 vim 吧。原因？—— 熟悉。</p>
+<h1 id="2-解锁-root-账户"><a href="#2-解锁-root-账户" class="headerlink" title="2 解锁 root 账户"></a>2 解锁 root 账户</h1><p>进入系统的默认用户 pi，密码是 raspberry。<br>由于初始系统的 root 用户是被锁定的，如果装完系统后不做这一步，以后出了些什么问题的话解决起来就有点麻烦了。<br>我在这点上还是深有体会的……<br>曾经因为改错了 sudoer 文件，pi 下的 sudo 命令用不了了，由于之前没有解锁 root ，那个时候想解锁也不可能（因为解锁需要 sudo ）。当时想着，这个系统基本是没法用了吧，要重装吗？——别啊，里面装了好多东西呢，一定会有解决方法的……后来，几经周折，把 SD<br>卡通过读卡器在另一个树莓派的系统上改过来的。其实也不一定要是树莓派，只要有个 linux 系统就行，不过我没有。庆幸当时手上还有个树莓派啊。<br>所以，要是提前解锁了 root 不就啥事儿都没有了吗？<br>执行下面的命令设置 root 密码，会提示输入两次：</p>
+<pre><code>$ sudo passwd root
+</code></pre><p>解锁：</p>
+<pre><code>$ sudo passwd --unlock root
+</code></pre><p>现在，输入：</p>
+<pre><code>$ su
+</code></pre><p>然后输入刚设置的密码，即可进入 root 账户！</p>
+<hr>
+<h1 id="3-远程操作树莓派"><a href="#3-远程操作树莓派" class="headerlink" title="3 远程操作树莓派"></a>3 远程操作树莓派</h1><p>在我的电脑上，用于对树莓派进行远程操作的有3个软件。<br>其中，<strong>Putty</strong> 和 <strong>WinSCP</strong> 用的是 SSH 协议，树莓派的 Raspbian 系统是自动开启 SSH 服务的，所以我们不需要进行额外的配置。连上网得到其 IP 地址就能连。<br>用 Putty 进命令行控制树莓派，是我最喜欢的方式——黑色的框框，独立于世。<br>用 WinSCP 与服务器交换文件，很方便。<br>如果想在自己电脑上进树莓派的图形桌面，上面两个软件是满足不了你的。<br>这时 <strong>TightVNCViewer</strong> 就派上用场了！<br>得到了 IP 地址还不够，我们要在树莓派上<strong>配置 VNC 服务</strong>，如下——<br>安装 tightvncserver：</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install tightvncserver
+</code></pre><p>配置连接密码：</p>
+<pre><code>$ tightvncserver
+</code></pre><p>设置开机自启：</p>
+<pre><code>$ wget http://www.penguintutor.com/otherfiles/tightvncserver-init.txt
+$ sudo mv tightvncserver-init.txt /etc/init.d/tightvncserver
+$ sudo chown root:root /etc/init.d/tightvncserver
+$ sudo chmod 755 /etc/init.d/tightvncserver
+$ sudo update-rc.d tightvncserver defaults
+$ sudo /etc/init.d/tightvncserver start 
+$ reboot
+</code></pre><hr>
+<h1 id="4-更换源"><a href="#4-更换源" class="headerlink" title="4 更换源"></a>4 更换源</h1><p>这个可以参考这篇<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">博文</a>，但我按照他的方法更换源后，安装有些软件的时候会提示找不到，于是我又换回官方源了，虽然慢点，但至少有啊…… </p>
+<hr>
+<h1 id="5-安装-Firefox"><a href="#5-安装-Firefox" class="headerlink" title="5 安装 Firefox"></a>5 安装 Firefox</h1><pre><code>$ sudo apt-get update
+$ sudo apt-get install iceweasel
+</code></pre><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://www.howtoforge.com/tutorial/howto-install-raspbian-on-raspberry-pi/" target="_blank" rel="external">Raspberry Pi Basics: installing Raspbian and getting it up and running</a><br><strong>【２】</strong><a href="http://qqhack8.blog.163.com/blog/static/114147985201532072924213/" target="_blank" rel="external">树莓派2代无显示器安装系统(固定IP+VNC开机自启动)</a><br><strong>【３】</strong><a href="https://my.oschina.net/menghaoqi/blog/760817" target="_blank" rel="external">树莓派 ( Raspberry pi ) 安装火狐浏览器</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 3 月 18 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-03-22T14:28:06.120Z" itemprop="dateUpdated">2017-03-22 22:28:06</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/dd7b0567/" target="_blank" rel="external">http://irislr.me//posts/dd7b0567/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RASPBIAN/">RASPBIAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-pi/">Raspberry pi</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/dd7b0567/&title=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/dd7b0567/&title=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&source=前言：树莓派，一个美丽与神奇并存的小电脑，易学，好玩。可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。怎么说我也算得上半个 Geek 吧，不玩玩..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/dd7b0567/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&url=http://irislr.me/posts/dd7b0567/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/dd7b0567/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/19738ae3/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：树莓派上Node.js和MongoDB的安装
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/a409b975/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：利用 SSH 远程登录 VPS 的初尝试">下一篇：利用 SSH 远程登录 VPS 的初尝试</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/dd7b0567/&title=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/dd7b0567/&title=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&source=前言：树莓派，一个美丽与神奇并存的小电脑，易学，好玩。可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。怎么说我也算得上半个 Geek 吧，不玩玩..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/dd7b0567/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈树莓派的初始设置》 — 鸢尾旅人的博客&url=http://irislr.me/posts/dd7b0567/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/dd7b0567/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0UlEQVR42u3aS5LDIAxFUe9/0860BzHcJwFxV11GqTiB44kKfa4Lr/vPenpKfvn0r8VLrly5be49XE+/IQc/7TN+yfFZcuXKPcnl4enpyHEgGwc7YpArV+6bufyakl6M5MqV+3+56TGr9pErV+55Lkl+xv/iTw/lanLlym1weZVy3+ct9V25cuWWuHdj8asM+QadKFeu3CNcXr7kJRICal105MqVu5nbSWDScioJgpM95cqVe5DLB6r4i9UuN5PUS65cuT/i1gIZ36FWuZErV+55Li9o8oA1bp/wYHeR7EquXLkbuGkwShG1/siX15ArV+5Bbq0YumoUI7gGyZUr90fcWmUSjVqC0Da5bMmVK/cgN52JSgNcGoXkypX7Bi5vcnQapbUkCs2JyJUrdymXFEnXVizJNxOJXLlyN3NvvGp1idrIxSSEyZUrdzM3Hcnin2uBEqVMcuXK3cy9w5UWSjohL+jHypUrdyk3bY3wRCUNfPGQlly5cjdzedqTjlOk6RAqnciVK/cgN82ZakMbPPlBrRS5cuW+gMsbomn5I2i3yJUr92XcWurSacduibty5cptt1o5lzRQ05JrK1eTK1dug8sLpuRIzuU7yJUr9yD3A+Z9JQv1fEGwAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

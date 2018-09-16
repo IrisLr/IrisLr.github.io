@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>POJ1001-求高精度幂 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Algorithm,C++,POJ">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="前言：高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……在成功做完本题后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ1001-求高精度幂">
+<meta property="og:url" content="http://irislr.me/posts/f52fb2ab/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="前言：高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……在成功做完本题后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情">
+<meta property="og:updated_time" content="2017-01-18T14:12:54.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="POJ1001-求高精度幂">
+<meta name="twitter:description" content="前言：高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……在成功做完本题后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">POJ1001-求高精度幂</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-思路理顺"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 思路理顺</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-调试技巧"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 调试技巧</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-源代码（C＋＋）"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 源代码（Ｃ＋＋）</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-经验＋"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 经验＋</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-POJ1001-求高精度幂"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">POJ1001-求高精度幂</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2017-01-18 19:44:47" datetime="2017-01-18T11:44:47.000Z"  itemprop="datePublished">2017-01-18</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">4</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>前言：</strong><br>高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。<br>这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……<br>在成功做完<a href="http://poj.org/problem?id=1001&amp;lang=zh-CN&amp;change=true" target="_blank" rel="external">本题</a>后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情况的考虑。  </p>
+<a id="more"></a>
+<hr>
+<h1 id="1-思路理顺"><a href="#1-思路理顺" class="headerlink" title="1 思路理顺"></a>1 思路理顺</h1><p><strong>输入如何接收并处理？</strong><br>定义两个 <code>string</code> 类型的变量，用于进行接收，然后转存到 <code>vector</code> 容器中，同时记录小数点的位置并删除之。<br><strong>注：</strong>之所以选择 <code>vector</code> ，是因为 <code>vector</code> 自带 <code>size</code> 属性，而且不必涉及内存分配的问题，否则定义一个结构体也可以。   </p>
+<p><strong>幂计算过程？</strong><br>完全模拟手算过程。<br>定义两个 vector 变量，一个存储当前乘数，一个存储当前相乘临时结果。<br>其中，这一轮的临时结果成为下一轮的一个乘数，因此要进行循环赋值操作。</p>
+<p><strong>数据的存储方式？</strong><br>考虑到手算过程是从后往前算的，而且计算没有结束之前是无法确定结果位数的，因此中间变量大数和最终结果大数一律选择倒着存储。  </p>
+<p><strong>如何输出？</strong><br>输出之前，有两个 <code>tips</code> 需要处理，一是前导后导去零，二是定位小数点位置。<br>最后的结果在 <code>vector</code> 里面，并且是倒着的，因此要倒着输出。  </p>
+<p><strong>特殊情况？</strong><br>对题目进行“咬文嚼字”，尽量试验边沿情况，找出错误的输入。找出错误后就好解决了！</p>
+<hr>
+<h1 id="2-调试技巧"><a href="#2-调试技巧" class="headerlink" title="2 调试技巧"></a>2 调试技巧</h1><p>如果了解了本题的基本解法，过样例是很容易的事。<br>关键的是下面几种特殊情况：</p>
+<blockquote>
+<ul>
+<li>98.999  1</li>
+<li>0.0010  3</li>
+<li>10.000  1</li>
+</ul>
+</blockquote>
+<p>一般，样例＋上面3个能通过的话，基本就没啥大问题了！</p>
+<hr>
+<h1 id="3-源代码（C＋＋）"><a href="#3-源代码（C＋＋）" class="headerlink" title="3 源代码（Ｃ＋＋）"></a>3 源代码（Ｃ＋＋）</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#define MAX 500
+using namespace std;
+
+vector&lt;int&gt; R;  // 基数
+
+// 幂计算过程，完全模拟手算
+vector&lt;int&gt; myProb(vector&lt;int&gt; a){
+    int b[MAX] = {0};
+    int tmp, c, k;
+    for(int i = 0; i &lt; 5; i++){
+        c = 0;
+        for(int j = 0; j &lt; a.size(); j++){
+            k = i + j;
+            tmp = R[i] * a[j] + c + b[k];        
+            c = tmp / 10;
+            b[k] = tmp % 10;
+        }
+        if(c)   b[++k] = c;
+    }
+    // 因为上面用 vector 需要有时候是 push_back 而有时候又是直接赋值，
+    // 所以选择先用数组存着，后面再做转化。可谓 vector 
+    // 实现了动态分配内存，而又不可避免要面对这种问题。
+    vector&lt;int&gt; rb;
+    for(int i = 0; i &lt;= k; i++)
+        rb.push_back(b[i]);
+    return rb;
+}
+
+int main(){
+    int n;
+    string tmpR, tmpn;  // 临时接收
+    while(cin &gt;&gt; tmpR &gt;&gt; tmpn){
+        int point;
+        R.clear();  // 必须清空
+        // 处理基数 R
+        for(int i = 0; i &lt;= 5; i++){
+            if(tmpR[i] == &apos;.&apos;)  point = 5 - i;  // 记录小数位数
+            else    R.push_back(tmpR[i] - 48);  // 将除小数点外的数字一一写进数组中
+        }
+        reverse(R.begin(), R.end());    // 翻转
+        // 计算指数ｎ
+        n = 0;
+        for(int i = 0; i &lt; tmpn.length(); i++)
+            n = n * 10 + tmpn[i] - 48;
+        point = point * n;  // 计算结果的小数位数
+        // 幂乘
+        vector&lt;int&gt; r1, r2;
+        r1 = R; // 将 r1 的初值设为 R ，是因为在 n = 1 的情况下，不会进入下面的循环，最后结果即为基数 R
+        for(int i = 0; i &lt; n - 1; i++){
+            r2 = myProb(r1);
+            r1 = r2;
+        }
+        //输出
+        int tmp = 0;    // tmp 是去除后导 0 后的终点位置
+        while(!r1[tmp] &amp;&amp; tmp &lt; point) tmp++;   // 由于10.000  1 的特例输出应为 10，加了 tmp &lt; point
+        if(tmp == r1.size())    cout &lt;&lt; 0;
+        for(int i = r1.size() - 1; i &gt;= tmp; i--){
+            // 唯一需要去除前导 0 的情况是——基数为零点几几，因此加入下句判断即可
+            if(i == r1.size() - 1 &amp;&amp; i == point &amp;&amp; r1[i] == 0)    continue;
+            if(i == point - 1)  cout &lt;&lt; &apos;.&apos;;    // 插入小数点
+            cout &lt;&lt; r1[i];
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><h1 id="4-经验＋"><a href="#4-经验＋" class="headerlink" title="4 经验＋"></a>4 经验＋</h1><p><strong>string の 用法</strong><br><code>cin &gt;&gt; string</code> 以空格结束。 </p>
+<p><strong>reverse の 用法</strong>  </p>
+<pre><code>#include &lt;algorithm&gt;
+reserve(begin, end);
+</code></pre><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="http://blog.csdn.net/alongela/article/details/6788237" target="_blank" rel="external">POJ1001 高精度乘法</a><br><strong>【２】</strong><a href="http://poj.org/problem?id=1001&amp;lang=zh-CN&amp;change=true" target="_blank" rel="external">求高精度幂</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 1 月 18 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-01-18T14:12:54.559Z" itemprop="dateUpdated">2017-01-18 22:12:54</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/f52fb2ab/" target="_blank" rel="external">http://irislr.me//posts/f52fb2ab/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POJ/">POJ</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/f52fb2ab/&title=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/f52fb2ab/&title=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&source=前言：高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/f52fb2ab/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&url=http://irislr.me/posts/f52fb2ab/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/f52fb2ab/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/605d4c67/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：POJ1002-487-3279
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/2209c94b/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：vim的优化">下一篇：vim的优化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/f52fb2ab/&title=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/f52fb2ab/&title=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&source=前言：高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/f52fb2ab/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《POJ1001-求高精度幂》 — 鸢尾旅人的博客&url=http://irislr.me/posts/f52fb2ab/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/f52fb2ab/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aS3LCQAwFQO5/aXKAxOZJygiSaq8owOOGhUq/xyO+nsF1ddf9aY8TFy4u7pibIK7euWfdE6/Of/FH4OLiLnLvw9D371wdd49I6C9suLi4H8lNHp/fhYuL+z+4ecCanI+Li/sJ3KT4mbRLep/i4uK+i5t3Kc+9PtLfxcXFbXGfxWte2OTB64en4+LirnAng5BeajIfwODi4u5w87HHvDSqLmdc/iRcXNx1bnXFqlqzJGsZhV4OLi7uAW5yQ3XFKgmO1WCKi4u7w60mLtWUJX8n+mtwcXHXub1RaLV1Mhnb4OLi7nCrK1Z5MMoHMHkhhIuLu8mdrFhVy6E8eEXhDBcXd4WbH5GvU1TbJYVAhouLe4xbnrrEJU217IlGNbi4uIvccpLRenC0WpHskeHi4q5w8+FHL03JS6xoJoyLi7vCzdHV8qaa7rz4Di4u7mHuPKxU780XL3Bxcd/F7ZUu+WA1aZrkiRQuLu4mtxe8kteTQBYVP7i4uIe5eaDpDVZ7qxi4uLh/hVtNWe5DVXnEgouL+5HcJHH5rc7Gr8VdXFzcFjdJVnqt1Xl6hIuLu8/thZVqO2M+bsHFxV3hfgHbDNhXQdiurgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>树莓派上Node.js和MongoDB的安装 | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="Raspberry pi,Node.js,MongoDB">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="环境： 
+
+Raspberry pi：3B+树莓派 OS：RaspbianNode.js：v7.1.0npm：3.10.9mongoDB：  
+
+
+1 安装 Node.js总的来说，Node.js 在 linux 下有四种安装方法。第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派上Node.js和MongoDB的安装">
+<meta property="og:url" content="http://irislr.me/posts/19738ae3/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="环境： 
+
+Raspberry pi：3B+树莓派 OS：RaspbianNode.js：v7.1.0npm：3.10.9mongoDB：  
+
+
+1 安装 Node.js总的来说，Node.js 在 linux 下有四种安装方法。第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的">
+<meta property="og:updated_time" content="2017-06-27T01:00:06.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派上Node.js和MongoDB的安装">
+<meta name="twitter:description" content="环境： 
+
+Raspberry pi：3B+树莓派 OS：RaspbianNode.js：v7.1.0npm：3.10.9mongoDB：  
+
+
+1 安装 Node.js总的来说，Node.js 在 linux 下有四种安装方法。第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">树莓派上Node.js和MongoDB的安装</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-安装-Node-js"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 安装 Node.js</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-安装-Serialport"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 安装 Serialport</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-安装-MongoDB"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 安装 MongoDB</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-在-Node-js-中使用-MongoDB"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 在 Node.js 中使用 MongoDB</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-树莓派上Node-js和mongoDB的安装"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">树莓派上Node.js和MongoDB的安装</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2017-03-22 22:28:16" datetime="2017-03-22T14:28:16.000Z"  itemprop="datePublished">2017-03-22</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/树莓派/">树莓派</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">2</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <a id="more"></a>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>Raspberry pi：3B+<br>树莓派 OS：Raspbian<br>Node.js：v7.1.0<br>npm：3.10.9<br>mongoDB：  </p>
+</blockquote>
+<hr>
+<h1 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1 安装 Node.js"></a>1 安装 Node.js</h1><p>总的来说，Node.js 在 linux 下有四种安装方法。<br>第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；<br>第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的版本。最接近的有 ubuntu 和 debian 版本，基于 x86_64 ，树莓派需要的是 arm7l ，也只能望而却步。<br>第三种是手动编译 Node.js 官网提供的源码，这种方式虽然麻烦点，但却是获取最新版本的唯一途径。而事实证明，适合的比最新的好用……<br>第四种方法，下载官网已经编译好的包，解压后简单配置下就能用，重要的是版本一定要找对！<br>在树莓派上，上面这四种方法我都一一试过了，从编译源码解决各种依赖，到找 deb 包找到生无可恋，再到已编译包各种版本之间的徘徊不前。所以，笔者要告诉每一个看到这篇博文的你，为了少走弯路，优先尝试第四种方式！<br>废话不多说，下面介绍方法四的步骤：<br>首先，如何选择适合我们系统的版本呢？<br>到<a href="http://nodejs.org/dist/" target="_blank" rel="external">这里</a>可以看到所有的版本，令人眼花缭乱。不过没关系，在选择版本的过程中，只需要记住两点，一是系统内核，二是系统发布时间。这两个信息可以通过一条命令获得，如下：</p>
+<pre><code>$ uname -a
+</code></pre><p>版本选好后，可以选择 wget 下载，也可以先在自己电脑上下载好再传过去。我选择的是后者，因为 IDM 快很多……<br>解压：</p>
+<pre><code>$ tar -xf node-vX.X.X-linux-armvXl.tar.xz
+</code></pre><p>安装：</p>
+<pre><code>$ sudo mv node-vX.X.X-linux-armvXl /usr/local/node
+</code></pre><p>最后建个硬链接，和添 path 路径是一个效果：</p>
+<pre><code>$ cd /usr/local/bin
+$ sudo ln -s /usr/local/node/bin/node node
+$ sudo ln -s /usr/local/node/bin/npm npm
+</code></pre><p>测试：</p>
+<pre><code>$ node -v
+$ npm -v
+</code></pre><p>成功！</p>
+<hr>
+<h1 id="2-安装-Serialport"><a href="#2-安装-Serialport" class="headerlink" title="2 安装 Serialport"></a>2 安装 Serialport</h1><pre><code>$ sudo npm install serialport --unsafe-perm --build-from-source
+</code></pre><hr>
+<h1 id="3-安装-MongoDB"><a href="#3-安装-MongoDB" class="headerlink" title="3 安装 MongoDB"></a>3 安装 MongoDB</h1><pre><code>$ sudo apt-get install mongodb-server -y
+
+$ sudo mkdir -p /data/db
+
+$ sudo service mongodb start
+</code></pre><p>测试：</p>
+<hr>
+<h1 id="4-在-Node-js-中使用-MongoDB"><a href="#4-在-Node-js-中使用-MongoDB" class="headerlink" title="4 在 Node.js 中使用 MongoDB"></a>4 在 Node.js 中使用 MongoDB</h1><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://github.com/nebrius/raspi-io/wiki/Getting-a-Raspberry-Pi-ready-for-NodeBots" target="_blank" rel="external">Getting a Raspberry Pi ready for NodeBots</a><br><strong>【２】</strong><a href="https://github.com/EmergingTechnologyAdvisors/node-serialport#raspberry-pi-linux" target="_blank" rel="external">EmergingTechnologyAdvisors/node-serialport</a><br><strong>【３】</strong><a href="http://raspberrypituts.com/nodejs-mongodb-web-server-raspberry-pi-tutorial/" target="_blank" rel="external">NodeJS + MongoDB Web Server Raspberry Pi Tutorial</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 3 月 22 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2017-06-27T01:00:06.001Z" itemprop="dateUpdated">2017-06-27 09:00:06</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/19738ae3/" target="_blank" rel="external">http://irislr.me//posts/19738ae3/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-pi/">Raspberry pi</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/19738ae3/&title=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/19738ae3/&title=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&source=花开时折直须折,莫待无花空折枝" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/19738ae3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&url=http://irislr.me/posts/19738ae3/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/19738ae3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/79e47cfb/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：CentOS7 上 PPTP VPN 的搭建
+        </h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/dd7b0567/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：浅谈树莓派的初始设置">下一篇：浅谈树莓派的初始设置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/19738ae3/&title=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/19738ae3/&title=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&source=花开时折直须折,莫待无花空折枝" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/19738ae3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《树莓派上Node.js和MongoDB的安装》 — 鸢尾旅人的博客&url=http://irislr.me/posts/19738ae3/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/19738ae3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3aS4oDMQwFwNz/0hmYVWAY50lyOx0or5p82qWNkCU/HvF6/q7X59eV/Ovv5+v/jhYuLu6Y+1yu9cbrYPJQEwMuLu557gSRUPLfvLHh4uLejLum/xdA/k5cXNxv5CZFSV4S4eLi3p+bbJ+ksHXpUw0eFxf3U9xew3Tv8+X9XVxc3E1TiTx55QOS52Dh4uKe4SbNiwTUS1vVUgkXF/cMt3fgyS9h5Nzozbi4uEe41StT1QbHpPmSBIaLi3sFtzdEyQ82yfWLQjmFi4t7kJuPMfKCpvpJtCMuLu5xbu8Qsvf6RWEajIuLe4SbNzSr6Swf3z56NRQuLu4F3GrLIx+NVIevb/bFxcW9AXc+Gum1P3Bxce/AzY8ik0TWq1JwcXHPc3u4wsx2crWiN1DBxcUdc+cN0+qqjltwcXE/xc2TUZ7a5o1UXFzcz3Lztd64d1gqJEpcXNwj3F5psm6gTEqZ/FtcXNyruZP2aLW1kYdauJ6Fi4t7Gbd5JSIOoBrem1EKLi7ubbiTkKqDmQ2JDBcX9yC3V6bkF7BwcXHvw81fXS1iqiFta4vg4uIOuL2G6d6BynyIi4uLu4n7A+mRTdQ5JSVxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>

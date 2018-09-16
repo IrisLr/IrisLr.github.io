@@ -1,1010 +1,838 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Language" content="zh-cn">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    
+    
+    <title>鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="IrisLr">
+    
+    
 
     
 
-    <title>鸢尾旅人</title>
-    <meta name="author" content="鸢尾旅人">
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
     
     <meta name="description" content="花开时折直须折,莫待无花空折枝">
+<meta property="og:type" content="website">
+<meta property="og:title" content="鸢尾旅人的博客">
+<meta property="og:url" content="http://irislr.me/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="花开时折直须折,莫待无花空折枝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鸢尾旅人的博客">
+<meta name="twitter:description" content="花开时折直须折,莫待无花空折枝">
     
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
     
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
 
+    <!-- custom head -->
     
-    <meta property="og:site_name" content="鸢尾旅人的博客"/>
-
-    
-    <meta property="og:image" content="undefined"/>
-    
-
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="鸢尾旅人的博客" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/lib/materialize.min.css">
-    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-
-    
-        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
-    
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+            
 </head>
 
-
 <body>
-    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
-
-    <nav class="light-green lighten-2">
-    <div class="nav-wrapper">
-        <a href="#" data-activates="main-menu" class="button-collapse">
-            <i class="fa fa-navicon"></i>
+    <div id="loading" class="active"></div>
+    <aside id="menu"   >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
         </a>
-        <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">鸢尾旅人的博客</a>
-            <ul class="right hide-on-med-and-down">
-                
-                    <li>
-                        <a class="menu-home " href="/" >
-                            <i class="fa fa-home "></i>
-                            
-                            首页
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-archive " href="/archives" >
-                            <i class="fa fa-archive "></i>
-                            
-                            归档
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                            <i class="fa fa-bookmark "></i>
-                            
-                            分类
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-book "></i>
-                            
-                            读书
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-about " href="/about" >
-                            <i class="fa fa-user "></i>
-                            
-                            关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-search modal-trigger " href="#search" >
-                            <i class="fa fa-search "></i>
-                            
-                            搜索
-                        </a>
-                    </li>
-                
-            </ul>
-            <div>
-    <ul class="side-nav blue lighten-3" id="main-menu">
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-        <li class="side-user">
-            <div class="row">
-                <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="https://ooo.0o0.ooo/2017/06/27/5951d04b3d9f7.png" alt="User Avatar">
-                </div>
-                <div class="info col s8 valign-wrapper no-padding">
-                    <div class="valign">
-                        <p class="name">李蝶</p>
-                        <p class="desc">阳光宅女</p>
-                    </div>
-                </div>
+              <li class="waves-block waves-effect active">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
             </div>
-        </li>
         
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
 
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-home " href="/" >
-                    <i class="fa fa-home "></i>
-                    
-                    首页
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-archive " href="/archives" >
-                    <i class="fa fa-archive "></i>
-                    
-                    归档
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                    <i class="fa fa-bookmark "></i>
-                    
-                    分类
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-book "></i>
-                    
-                    读书
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-about " href="/about" >
-                    <i class="fa fa-user "></i>
-                    
-                    关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-search modal-trigger " href="#search" >
-                    <i class="fa fa-search "></i>
-                    
-                    搜索
-                </a>
-            </li>
-        
-    </ul>
 
-    <ul class="side-nav blue lighten-3" id="category-menu">
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">鸢尾旅人的博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header index-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                 
+                    鸢尾旅人的博客
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                    在Web全栈的道路上努力前行
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+<div class="container body-wrap">
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-重装Windows后的Hexo博客环境恢复"
+  class="article-card article-type-post" itemprop="blogPost">
+
     
 
-            
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Internet/">
-                    Internet <span class="right">1 篇</span></a>
-                </a>
-            </li>
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/86195e20/">重装 Windows 后的 Hexo 博客环境恢复</a>
+    </h3>
+  
 
-        
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Linux/">
-                    Linux <span class="right">6 篇</span></a>
-                </a>
-            </li>
 
-        
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Algorithm/">
-                    Algorithm <span class="right">2 篇</span></a>
-                </a>
-            </li>
+     <div class="post-meta">
+        <time class="post-time" title="2017-06-26 15:25:16" datetime="2017-06-26T07:25:16.000Z"  itemprop="datePublished">2017-06-26</time>
 
-        
+    </div>
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/大数据/">
-                    大数据 <span class="right">1 篇</span></a>
-                </a>
-            </li>
+    <div class="post-content" id="post-content" itemprop="postContent">
 
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/VPS/">
-                    VPS <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/树莓派/">
-                    树莓派 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Blog/">
-                    Blog <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-    </ul>
-</div>
-
+    
+        <p><strong>前言：</strong><br>由于本人换系统较为频繁，这种操作不止一两次了。<br>这次换系统后，觉得重搭环境麻烦，导致很久都没有更博了。<br>搭完后，发现过程并不复杂，于是记录下来，方便下次。。</p>
+    
+        <div>
+            <a href="/posts/86195e20/" class="post-more waves-button">
+                阅读全文 »
+            </a>
         </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-CentOS7上PPTP VPN的搭建"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/79e47cfb/">CentOS7 上 PPTP VPN 的搭建</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-06-22 16:18:29" datetime="2017-06-22T08:18:29.000Z"  itemprop="datePublished">2017-06-22</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br> 我目前的需求：为了方便调试阿里云上的网站，希望能像访问本地磁盘一样访问云服务器上的程序，达到自动同步的效果。<br>首先，利用 VPN 协议能将两台不同局域网的计算机拉到同一个局域网内。<br>其次，局域网内的文件共享方式大体分三种——FTP、NFS、Samba。FTP 不能实现在线修改；NFS 能同步，但只支持 linux 系统之间的挂载；而 Samba 则能实现 windows 与 linux 之间的同步访问。<br>经过各方面的考虑，最终，我选择了 VPN 与 Samba 协议结合的方式。下面将陆续介绍这两个服务器的搭建步骤。<br>VPN 已经是一个老生常谈的东西了，像各大视频网站上的 VIP 的特权，又像通往个人空间的光速隧道，简单，安全。其中，VPN 搭建的过程中最麻烦最容易出问题的步骤是防火墙的设置，需要特别注意。<br>
+    
+        <div>
+            <a href="/posts/79e47cfb/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPN/">VPN</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-树莓派上Node-js和mongoDB的安装"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/19738ae3/">树莓派上Node.js和MongoDB的安装</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-03-22 22:28:16" datetime="2017-03-22T14:28:16.000Z"  itemprop="datePublished">2017-03-22</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <a id="more"></a>
+<hr>
+<p><strong>环境：</strong> </p>
+<blockquote>
+<p>Raspberry pi：3B+<br>树莓派 OS：Raspbian<br>Node.js：v7.1.0<br>npm：3.10.9<br>mongoDB：  </p>
+</blockquote>
+<hr>
+<h1 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1 安装 Node.js"></a>1 安装 Node.js</h1><p>总的来说，Node.js 在 linux 下有四种安装方法。<br>第一种是利用 apt 从源中直接获取安装，但用这种方法获得的版本往往很旧；<br>第二种是下载官网打包好的 deb 安装包，用 dpkg 进行安装，但官网并没有提供树莓派的版本。最接近的有 ubuntu 和 debian 版本，基于 x86_64 ，树莓派需要的是 arm7l ，也只能望而却步。<br>第三种是手动编译 Node.js 官网提供的源码，这种方式虽然麻烦点，但却是获取最新版本的唯一途径。而事实证明，适合的比最新的好用……<br>第四种方法，下载官网已经编译好的包，解压后简单配置下就能用，重要的是版本一定要找对！<br>在树莓派上，上面这四种方法我都一一试过了，从编译源码解决各种依赖，到找 deb 包找到生无可恋，再到已编译包各种版本之间的徘徊不前。所以，笔者要告诉每一个看到这篇博文的你，为了少走弯路，优先尝试第四种方式！<br>废话不多说，下面介绍方法四的步骤：<br>首先，如何选择适合我们系统的版本呢？<br>到<a href="http://nodejs.org/dist/" target="_blank" rel="external">这里</a>可以看到所有的版本，令人眼花缭乱。不过没关系，在选择版本的过程中，只需要记住两点，一是系统内核，二是系统发布时间。这两个信息可以通过一条命令获得，如下：</p>
+<pre><code>$ uname -a
+</code></pre><p>版本选好后，可以选择 wget 下载，也可以先在自己电脑上下载好再传过去。我选择的是后者，因为 IDM 快很多……<br>解压：</p>
+<pre><code>$ tar -xf node-vX.X.X-linux-armvXl.tar.xz
+</code></pre><p>安装：</p>
+<pre><code>$ sudo mv node-vX.X.X-linux-armvXl /usr/local/node
+</code></pre><p>最后建个硬链接，和添 path 路径是一个效果：</p>
+<pre><code>$ cd /usr/local/bin
+$ sudo ln -s /usr/local/node/bin/node node
+$ sudo ln -s /usr/local/node/bin/npm npm
+</code></pre><p>测试：</p>
+<pre><code>$ node -v
+$ npm -v
+</code></pre><p>成功！</p>
+<hr>
+<h1 id="2-安装-Serialport"><a href="#2-安装-Serialport" class="headerlink" title="2 安装 Serialport"></a>2 安装 Serialport</h1><pre><code>$ sudo npm install serialport --unsafe-perm --build-from-source
+</code></pre><hr>
+<h1 id="3-安装-MongoDB"><a href="#3-安装-MongoDB" class="headerlink" title="3 安装 MongoDB"></a>3 安装 MongoDB</h1><pre><code>$ sudo apt-get install mongodb-server -y
+
+$ sudo mkdir -p /data/db
+
+$ sudo service mongodb start
+</code></pre><p>测试：</p>
+<hr>
+<h1 id="4-在-Node-js-中使用-MongoDB"><a href="#4-在-Node-js-中使用-MongoDB" class="headerlink" title="4 在 Node.js 中使用 MongoDB"></a>4 在 Node.js 中使用 MongoDB</h1><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong><a href="https://github.com/nebrius/raspi-io/wiki/Getting-a-Raspberry-Pi-ready-for-NodeBots" target="_blank" rel="external">Getting a Raspberry Pi ready for NodeBots</a><br><strong>【２】</strong><a href="https://github.com/EmergingTechnologyAdvisors/node-serialport#raspberry-pi-linux" target="_blank" rel="external">EmergingTechnologyAdvisors/node-serialport</a><br><strong>【３】</strong><a href="http://raspberrypituts.com/nodejs-mongodb-web-server-raspberry-pi-tutorial/" target="_blank" rel="external">NodeJS + MongoDB Web Server Raspberry Pi Tutorial</a>  </p>
+<hr>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2017 年 3 月 22 日 </p>
+
+    
+        <div>
+            <a href="/posts/19738ae3/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-pi/">Raspberry pi</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-浅谈树莓派的初始设置"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/dd7b0567/">浅谈树莓派的初始设置</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-03-18 14:28:21" datetime="2017-03-18T06:28:21.000Z"  itemprop="datePublished">2017-03-18</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。<br>怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！</p>
+    
+        <div>
+            <a href="/posts/dd7b0567/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RASPBIAN/">RASPBIAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-pi/">Raspberry pi</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-利用SSH远程登录VPS的初尝试"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/a409b975/">利用 SSH 远程登录 VPS 的初尝试</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-25 19:31:57" datetime="2017-01-25T11:31:57.000Z"  itemprop="datePublished">2017-01-25</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>最近在<a href="https://www.qcloud.com">腾讯云</a>上注册了 1 元学生特惠（云服务器＋域名）。为了以后能一起愉快的玩耍，首先要学会远程登录，然后还要进行一些必要的配置。</p>
+    
+        <div>
+            <a href="/posts/a409b975/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ArchLinux的问题集锦"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/d5332367/">ArchLinux的问题集锦（持续更新）</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-24 19:02:18" datetime="2017-01-24T11:02:18.000Z"  itemprop="datePublished">2017-01-24</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>不管使用什么系统，总会遇到一些令人头疼的问题。<br>在这篇文章中，会记录一些笔者平时遇到的棘手问题，并且会长期更新。<br>而<strong>记录</strong>的目的则在于——当我们再次见面，也许能笑着说一句“好久不见”…… </p>
+    
+        <div>
+            <a href="/posts/d5332367/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-POJ1002-487-3279"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/605d4c67/">POJ1002-487-3279</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-19 20:36:28" datetime="2017-01-19T12:36:28.000Z"  itemprop="datePublished">2017-01-19</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>首先我要说，这种类似的题我至少做过三道以上，而且无一不是以 <code>TLE</code> 告结。这一“离奇悬案”一直以来也算是心头一大疙瘩，如今能在这么闲暇的时刻再次相遇，也只能用缘分解释了Ｏ（∩＿∩）Ｏ哈哈～<br>在破解本案后，你只需要记住一句话——大数据的输入效率不容忽视！  </p>
+    
+        <div>
+            <a href="/posts/605d4c67/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POJ/">POJ</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-POJ1001-求高精度幂"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/f52fb2ab/">POJ1001-求高精度幂</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-18 19:44:47" datetime="2017-01-18T11:44:47.000Z"  itemprop="datePublished">2017-01-18</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。<br>这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……<br>在成功做完<a href="http://poj.org/problem?id=1001&amp;lang=zh-CN&amp;change=true">本题</a>后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情况的考虑。  </p>
+    
+        <div>
+            <a href="/posts/f52fb2ab/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POJ/">POJ</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vim的优化"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/2209c94b/">vim的优化</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-15 19:46:41" datetime="2017-01-15T11:46:41.000Z"  itemprop="datePublished">2017-01-15</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？<br>什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！<br>说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？<br>估计装了这个系统后就一直在忙考试，而没时间整这些，惭愧惭愧。</p>
+    
+        <div>
+            <a href="/posts/2209c94b/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Archlinux/">Archlinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Spark+Hadoop+JDK+Scala的环境搭建"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/posts/f1af8126/">Spark+Hadoop+JDK+Scala 的环境搭建</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-13 14:35:10" datetime="2017-01-13T06:35:10.000Z"  itemprop="datePublished">2017-01-13</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p><strong>前言：</strong><br>心血来潮，最近准备开始学习一直以来心心念念的云计算。说来，人也确实是个奇怪的物种，越是觉得高深的东西，越是想去了解它，征服它……<br>云计算，核心是分布式计算。鄙人的浅显理解就是——通过协调多硬件的新型算法来弥补传统算法在大数据领域的缺陷。<br>实践为先，那么，从搭建环境开始吧！</p>
+    
+        <div>
+            <a href="/posts/f1af8126/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDK/">JDK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/">Spark</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </div>
 </nav>
 
-<div id="search" class="modal search-modal">
-    <div class="row">
-        <div class="input-field col s12">
-              <input id="search-input" type="text">
-              <label for="search-input">搜索</label>
-        </div>
-
-    </div>
-    <div id="search-result" class="search-result col s12">
-
-    </div>
-</div>
-
-
-    <main>
-        
-
-
-
-<div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/06/26/重装Windows后的Hexo博客环境恢复/">重装 Windows 后的 Hexo 博客环境恢复</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-06-26T07:25:16.000Z"><a href="/2017/06/26/重装Windows后的Hexo博客环境恢复/">2017-06-26</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Hexo/" class="chip pink lighten-3">Hexo</a>
-        
-            <a href="/tags/Blog/" class="chip pink lighten-3">Blog</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>由于本人换系统较为频繁，这种操作不止一两次了。<br>这次换系统后，觉得重搭环境麻烦，导致很久都没有更博了。<br>搭完后，发现过程并不复杂，于是记录下来，方便下次。。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/06/26/重装Windows后的Hexo博客环境恢复/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/06/22/CentOS7上PPTP VPN的搭建/">CentOS7 上 PPTP VPN 的搭建</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-06-22T08:18:29.000Z"><a href="/2017/06/22/CentOS7上PPTP VPN的搭建/">2017-06-22</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/CentOS/" class="chip pink lighten-3">CentOS</a>
-        
-            <a href="/tags/VPN/" class="chip pink lighten-3">VPN</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br> 我目前的需求：为了方便调试阿里云上的网站，希望能像访问本地磁盘一样访问云服务器上的程序，达到自动同步的效果。<br>首先，利用 VPN 协议能将两台不同局域网的计算机拉到同一个局域网内。<br>其次，局域网内的文件共享方式大体分三种——FTP、NFS、Samba。FTP 不能实现在线修改；NFS 能同步，但只支持 linux 系统之间的挂载；而 Samba 则能实现 windows 与 linux 之间的同步访问。<br>经过各方面的考虑，最终，我选择了 VPN 与 Samba 协议结合的方式。下面将陆续介绍这两个服务器的搭建步骤。<br>VPN 已经是一个老生常谈的东西了，像各大视频网站上的 VIP 的特权，又像通往个人空间的光速隧道，简单，安全。其中，VPN 搭建的过程中最麻烦最容易出问题的步骤是防火墙的设置，需要特别注意。<br>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/06/22/CentOS7上PPTP VPN的搭建/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/03/22/树莓派上Node-js和mongoDB的安装/">树莓派上Node.js和MongoDB的安装</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-03-22T14:28:16.000Z"><a href="/2017/03/22/树莓派上Node-js和mongoDB的安装/">2017-03-22</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Raspberry-pi/" class="chip pink lighten-3">Raspberry pi</a>
-        
-            <a href="/tags/Node-js/" class="chip pink lighten-3">Node.js</a>
-        
-            <a href="/tags/MongoDB/" class="chip pink lighten-3">MongoDB</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/03/18/浅谈树莓派的初始设置/">浅谈树莓派的初始设置</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-03-18T06:28:21.000Z"><a href="/2017/03/18/浅谈树莓派的初始设置/">2017-03-18</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Raspberry-pi/" class="chip pink lighten-3">Raspberry pi</a>
-        
-            <a href="/tags/RASPBIAN/" class="chip pink lighten-3">RASPBIAN</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>树莓派，一个美丽与神奇并存的小电脑，易学，好玩。<br>可以给爱好者提供日常所需，也可以被 Geek 玩出新科技。<br>怎么说我也算得上半个 Geek 吧，不玩玩树莓派多遗憾……哈哈，现在就开始吧！</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/03/18/浅谈树莓派的初始设置/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/25/利用SSH远程登录VPS的初尝试/">利用 SSH 远程登录 VPS 的初尝试</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-25T11:31:57.000Z"><a href="/2017/01/25/利用SSH远程登录VPS的初尝试/">2017-01-25</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/CentOS/" class="chip pink lighten-3">CentOS</a>
-        
-            <a href="/tags/VPS/" class="chip pink lighten-3">VPS</a>
-        
-            <a href="/tags/SSH/" class="chip pink lighten-3">SSH</a>
-        
-            <a href="/tags/Ubuntu/" class="chip pink lighten-3">Ubuntu</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>最近在<a href="https://www.qcloud.com">腾讯云</a>上注册了 1 元学生特惠（云服务器＋域名）。为了以后能一起愉快的玩耍，首先要学会远程登录，然后还要进行一些必要的配置。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/25/利用SSH远程登录VPS的初尝试/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/24/ArchLinux的问题集锦/">ArchLinux的问题集锦（持续更新）</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-24T11:02:18.000Z"><a href="/2017/01/24/ArchLinux的问题集锦/">2017-01-24</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/ArchLinux/" class="chip pink lighten-3">ArchLinux</a>
-        
-            <a href="/tags/Tips/" class="chip pink lighten-3">Tips</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>不管使用什么系统，总会遇到一些令人头疼的问题。<br>在这篇文章中，会记录一些笔者平时遇到的棘手问题，并且会长期更新。<br>而<strong>记录</strong>的目的则在于——当我们再次见面，也许能笑着说一句“好久不见”…… </p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/24/ArchLinux的问题集锦/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/19/POJ1002-487-3279/">POJ1002-487-3279</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-19T12:36:28.000Z"><a href="/2017/01/19/POJ1002-487-3279/">2017-01-19</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Algorithm/" class="chip pink lighten-3">Algorithm</a>
-        
-            <a href="/tags/C/" class="chip pink lighten-3">C++</a>
-        
-            <a href="/tags/POJ/" class="chip pink lighten-3">POJ</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>首先我要说，这种类似的题我至少做过三道以上，而且无一不是以 <code>TLE</code> 告结。这一“离奇悬案”一直以来也算是心头一大疙瘩，如今能在这么闲暇的时刻再次相遇，也只能用缘分解释了Ｏ（∩＿∩）Ｏ哈哈～<br>在破解本案后，你只需要记住一句话——大数据的输入效率不容忽视！  </p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/19/POJ1002-487-3279/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/18/POJ1001-求高精度幂/">POJ1001-求高精度幂</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-18T11:44:47.000Z"><a href="/2017/01/18/POJ1001-求高精度幂/">2017-01-18</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Algorithm/" class="chip pink lighten-3">Algorithm</a>
-        
-            <a href="/tags/C/" class="chip pink lighten-3">C++</a>
-        
-            <a href="/tags/POJ/" class="chip pink lighten-3">POJ</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>高精度问题——包括高精度加减法、高精度乘除法、高精度幂等。其中，高精度幂的实现中包含了高精度和与高精度乘的精髓。显然，最直接的解题方法就是模拟人的手算过程，有小学底子就行。<br>这一类题的特点是算法过程通俗易懂，但是实现起来必须很谨慎，因为一个细节可能就得赔上半天时间，本人在调试过程中算是深有体会了……<br>在成功做完<a href="http://poj.org/problem?id=1001&amp;lang=zh-CN&amp;change=true">本题</a>后，你会发现，最花时间规条最多的不是大数相乘和相加的实现，而是小数点位置以及特殊情况的考虑。  </p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/18/POJ1001-求高精度幂/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/15/vim的优化/">vim的优化</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-15T11:46:41.000Z"><a href="/2017/01/15/vim的优化/">2017-01-15</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Vim/" class="chip pink lighten-3">Vim</a>
-        
-            <a href="/tags/Archlinux/" class="chip pink lighten-3">Archlinux</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>之前研究过 Ubuntu 下的 Vim 优化，那个貌似简单很多，毕竟什么基本设置都有，稍微删几个注释符或者修改几个参数就好了。在 Archlinux 下貌似没这么简单？<br>什么颜色搭配风格啊，自动缩进啊，代码识别和高亮啊。恩，还有括号匹配！<br>说实话，这些问题不解决，敲代码都很费时费力呢！停……这表示我换上这个系统以来都没规规矩矩の码过字啊，这么久了都没想过优化优化 wuli 可爱的 Vim ？<br>估计装了这个系统后就一直在忙考试，而没时间整这些，惭愧惭愧。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/15/vim的优化/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="brown-link-context"><a href="/2017/01/13/Spark+Hadoop+JDK+Scala的环境搭建/">Spark+Hadoop+JDK+Scala 的环境搭建</a></h1>
-    
-
-
-            </div>
-
-            <time class="blue-link-context" datetime="2017-01-13T06:35:10.000Z"><a href="/2017/01/13/Spark+Hadoop+JDK+Scala的环境搭建/">2017-01-13</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Spark/" class="chip pink lighten-3">Spark</a>
-        
-            <a href="/tags/Hadoop/" class="chip pink lighten-3">Hadoop</a>
-        
-            <a href="/tags/JDK/" class="chip pink lighten-3">JDK</a>
-        
-            <a href="/tags/Scala/" class="chip pink lighten-3">Scala</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry blue-link-context">
-                    <p><strong>前言：</strong><br>心血来潮，最近准备开始学习一直以来心心念念的云计算。说来，人也确实是个奇怪的物种，越是觉得高深的东西，越是想去了解它，征服它……<br>云计算，核心是分布式计算。鄙人的浅显理解就是——通过协调多硬件的新型算法来弥补传统算法在大数据领域的缺陷。<br>实践为先，那么，从搭建环境开始吧！</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action blue-link-context">
-            <a href="/2017/01/13/Spark+Hadoop+JDK+Scala的环境搭建/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-
-    <ul class="pagination center-align">
-    <li class="disabled">
-        <a href="/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="active black"><a href="/">1</a></li>
-    
-        <li class="waves-effect"><a href="/page/2">2</a></li>
-    
-    
-    <li class="">
-        <a href="/page/2/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
 
 </div>
 
-        <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large purple lighten-3">
-      <i class="fa fa-caret-square-o-up"></i>
-    </a>
-    <ul>
-      <li><a class="btn-return-top btn-floating waves-effect lime" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse blue lighten-3"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
-    </ul>
-  </div>
-
-    </main>
-    <footer class="page-footer light-green lighten-2 darken-1">
-    
-    <div class="footer-container container">
-        <div class="row">
-            
-            <div class="social-group col m4 s12">
-                <h5 class="white-text">社交</h5>
-                
-                    <a class="social-link" href="http://weibo.com/5566419150" target="_blank">
-                        <i class="fa fa-2x fa-weibo"></i>
-                    </a>
-                
-                    <a class="social-link" href="https://github.com/IrisLr" target="_blank">
-                        <i class="fa fa-2x fa-github"></i>
-                    </a>
-                
-                    <a class="social-link" href="/atom.xml" target="_blank">
-                        <i class="fa fa-2x fa-rss"></i>
-                    </a>
-                
-                
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-    <div class="site-visitors-container white-text">
-        <span>
-            <i class="fa fa-user"></i>
-            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
         </span>
-        <span>&nbsp;|&nbsp;</span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
         <span>
-            <i class="fa fa-eye"></i>
-            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
         </span>
-    </div>
+        <br/>
 
-
-            </div>
-            
-
-            
-            <div class="col m8 s12">
-                <h5 class="white-text">友情链接</h5>
-                
-                    <a class="social-link" href="https://www.ctguqmx.com/" target="_blank">启明星工作室</a>
-                
-                    <a class="social-link" href="http://120.24.215.46/" target="_blank">雅致科技</a>
-                
-            </div>
-            
-        </div>
-    </div>
-    
-
-    <div class="footer-copyright blue-link-context">
-        <div class="container">
-            © 2016 irislr.me, All rights reserved.
-            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
-        </div>
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
     </div>
 </footer>
 
+    </main>
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-    <noscript>
-    <div class="noscript">
-        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
-    </div>
-</noscript>
-<div class="noscript">
-    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
 </div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
 
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/materialize.min.js"></script>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
 
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
 <script>
-    (function($) {
-        $(document).ready(function() {
-            // 隐藏禁用javascript（针对微信内置浏览器）的提示
-            $('.noscript').hide();
 
-            // 图片缩放效果
-            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
 
-            // 给图片加上点击放大效果（materialbox插件）
-            $imgs.addClass('materialboxed').each(function(i, el) {
-                $(this).attr('data-caption', $(this).attr('alt') || ' ');
-            }).materialbox();
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
 
-            // 优化表格的显示
-            $('table').each(function() {
-                var $table = $(this);
-                // 除去多行代码的情况
-                if ($table.find('pre').length == 0) {
-                    $table.addClass('responsive-table striped bordered');
-                }
-            });
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
 
-            // 首页幻灯片
-            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
 
-            $(".button-collapse").sideNav();
-            $(".category-menu").sideNav();
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
 
-            // 针对gallery post
-            $('.carousel').carousel({full_width: true});
-            $('.carousel-control.prev').click(function() {
-                $('.carousel').carousel('prev');
-            });
-            $('.carousel-control.next').click(function() {
-                $('.carousel').carousel('next');
-            });
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
 
-            // 文章目录
-            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
 
-            // 目录随屏幕滚动（防止目录过长越过footer）
-            var $toc = $('.toc');
-            var scrollTargetTop = 0;
-            $(window).scroll(function() {
-                var $activeLink = $toc.find('a.active.section');
-                if ($(window).scrollTop() < 100) {
-                    scrollTargetTop = 0;
-                } else {
-                    if ($activeLink[0]) {
-                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
-                    }
-                }
-                $toc.css('top', '-' + scrollTargetTop + 'px');
-            });
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
 
-            // 修正文章目录的left-border颜色
-            var color = $('.table-of-contents-text').css('color');
-            $('.table-of-contents-link').css('border-left-color', color);
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
 
-            // 针对移动端做的优化：FAB按钮点击一下收回
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                $('.fixed-action-btn').addClass('click-to-toggle');
-            }
-            // 回到顶部
-            $('.btn-return-top').click(function() {
-                $('body, html').animate({
-                    scrollTop: 0
-                }, 500);
-            });
+		document.body.appendChild(myimg);
 
-            // 重置读书页面的Tab标签页的颜色
-            $('li.tab a').hover(function() {
-                $(this).toggleClass('text-lighten-4');
-            });
-            $('.indicator').addClass('light-green lighten-2 lighten-2');
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
 
-            
-            // 添加new标签
-            $('').append('<span class="new badge green"></span>');
-            
+	});
 
-            // 搜索功能
-            $('.modal-trigger').leanModal({
-                // 打开搜索框时自动聚焦
-                ready: function() {
-                    if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
-                    }
-                }
-            });
-            var searchXml = "search.xml";
-            if (searchXml.length == 0) {
-             	searchXml = "search.xml";
-            }
-            var searchPath = "/" + searchXml;
-            initSearch(searchPath, 'search-input', 'search-result');
-        });
+}
 
-        // 初始化搜索与匹配函数
-        var initSearch = function(path, search_id, content_id) {
-            'use strict';
-            $.ajax({
-                url: path,
-                dataType: "xml",
-                success: function(xmlResponse) {
-                    // get the contents from search data
-                    var datas = $("entry", xmlResponse).map(function() {
-                        return {
-                            title: $("title", this).text(),
-                            content: $("content", this).text(),
-                            url: $("url", this).text()
-                        };
-                    }).get();
-                    var $input = document.getElementById(search_id);
-                    var $resultContent = document.getElementById(content_id);
-                    $input.addEventListener('input', function() {
-                        var str = '<ul class=\"search-result-list\">';
-                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                        $resultContent.innerHTML = "";
-                        if (this.value.trim().length <= 0) {
-                            return;
-                        }
-                        // perform local searching
-                        datas.forEach(function(data) {
-                            var isMatch = true;
-                            var content_index = [];
-                            var data_title = data.title.trim().toLowerCase();
-                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                            var data_url = data.url;
-                            var index_title = -1;
-                            var index_content = -1;
-                            var first_occur = -1;
-                            // only match artiles with not empty titles and contents
-                            if (data_title != '' && data_content != '') {
-                                keywords.forEach(function(keyword, i) {
-                                    index_title = data_title.indexOf(keyword);
-                                    index_content = data_content.indexOf(keyword);
-                                    if (index_title < 0 && index_content < 0) {
-                                        isMatch = false;
-                                    } else {
-                                        if (index_content < 0) {
-                                            index_content = 0;
-                                        }
-                                        if (i == 0) {
-                                            first_occur = index_content;
-                                        }
-                                    }
-                                });
-                            }
-                            // show search results
-                            if (isMatch) {
-                                keywords.forEach(function(keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
-                                });
-
-                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                                var content = data.content.trim().replace(/<[^>]+>/g, "");
-                                if (first_occur >= 0) {
-                                    // cut out 100 characters
-                                    var start = first_occur - 20;
-                                    var end = first_occur + 80;
-                                    if (start < 0) {
-                                        start = 0;
-                                    }
-                                    if (start == 0) {
-                                        end = 100;
-                                    }
-                                    if (end > content.length) {
-                                        end = content.length;
-                                    }
-                                    var match_content = content.substring(start, end);
-                                    // highlight all keywords
-                                    keywords.forEach(function(keyword) {
-                                        var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword blue lighten-2\">" + keyword + "</span>");
-                                    });
-
-                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
-                                }
-                                str += "</li>";
-                            }
-                        });
-                        str += "</ul>";
-                        $resultContent.innerHTML = str;
-                    });
-                }
-            });
-        }
-    })(jQuery);
-</script>
+/* 名字跳动 */
+$("#name").bumpyText();
 
 
-<script src="/js/prettify.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("pre").addClass("prettyprint");
-        prettyPrint();
-    });
-</script>
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
 
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-101715019-1', 'auto');
-    ga('send', 'pageview');
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
 
 </script>
 
 
 
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=62765098" charset="UTF-8"></script>
+
+<!-- 公式渲染 -->
 
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<!-- 不蒜子 -->
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 </body>

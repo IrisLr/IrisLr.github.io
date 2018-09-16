@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>撕人定制 ArchLinux（一） | 鸢尾旅人的博客 | 鸢尾旅人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="ArchLinux,系统安装">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="此博文主要介绍了安装前需要进行的一系列准备工作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="撕人定制 ArchLinux（一）">
+<meta property="og:url" content="http://irislr.me/posts/900d2e4c/index.html">
+<meta property="og:site_name" content="鸢尾旅人的博客">
+<meta property="og:description" content="此博文主要介绍了安装前需要进行的一系列准备工作。">
+<meta property="og:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-26/99662440.jpg">
+<meta property="og:updated_time" content="2016-11-29T10:32:27.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="撕人定制 ArchLinux（一）">
+<meta name="twitter:description" content="此博文主要介绍了安装前需要进行的一系列准备工作。">
+<meta name="twitter:image" content="http://ocob25qxv.bkt.clouddn.com/public/16-11-26/99662440.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="鸢尾旅人的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">IrisLr</h5>
+          
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:2261554595@qq.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/irislr" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/irislr" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">撕人定制 ArchLinux（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-准备工作"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-制作启动盘"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 制作启动盘</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-设置UEFI模式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 设置UEFI模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-在硬盘里留出30G以上的空闲空间"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 在硬盘里留出30G以上的空闲空间</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-为正式安装做好铺垫"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 为正式安装做好铺垫　　</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-进入-ArchISO"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 进入 ArchISO</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-验证启动模式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 验证启动模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-连接到因特网"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 连接到因特网</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-4-更新系统时间"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">2.4 更新系统时间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-5-硬盘分区"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">2.5 硬盘分区</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-6-挂载分区"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">2.6 挂载分区</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-撕人定制ArchLinux（一）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">撕人定制 ArchLinux（一）</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2016-11-27 18:27:32" datetime="2016-11-27T10:27:32.000Z"  itemprop="datePublished">2016-11-27</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">4</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>此博文主要介绍了安装前需要进行的一系列准备工作。<br><a id="more"></a></p>
+<p><strong>前言:</strong><br>我的第一台爱本——灵越3543，是2015年初入手的。下面来回顾下我的”光荣“折腾史……</p>
+<blockquote>
+<ul>
+<li>2015.2-3：win8.1（电脑自带）</li>
+<li>2015.4-11：win7（虚拟机里体验过各种 ubuntu ， centOS ， openSUSE 等等）</li>
+<li>2015.12-2016.5：win7 + ubuntu15.10（刚装完的时候经常进 ubuntu ，实际上一个月以后每次都是直接进 win ）</li>
+<li>2016.5-6的某些天：win10（想体现下 win10 ，也仅仅只是体验下……）</li>
+<li>2016.6-7：centOS7.1（为配置自己的 mcm 工作环境，折腾了不止一点两点额）</li>
+<li>2016.8-11：ubuntu16.04（唯一感觉是比 centOS 舒服许多）</li>
+<li>2016.11.14-22：win10（双11入手的固态刚到，准备老老实实滚回 win ，却因为某软件问题开机蓝屏进不了系统而放弃治疗……）</li>
+<li>2016.11.25：archlinux（你的我一直在寻找的吗？）</li>
+</ul>
+</blockquote>
+<p>先来爆下料呗，哈哈，以下是现在博主爱本startx之后的样子～ </p>
+<p><img src="http://ocob25qxv.bkt.clouddn.com/public/16-11-26/99662440.jpg" alt="">  </p>
+<p>另外，如果想按自己的喜好撕人定制，<strong>强烈建议移步 ArchLinux WiKi 的<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">安装指导</a>！</strong><br>实际上，本博文的绝大部分内容也是参考此 wiki 。  </p>
+<p>接下来，格好删除你的C盘，跟我一起来吧！  </p>
+<hr>
+<p><strong>准备:</strong></p>
+<blockquote>
+<ul>
+<li>普通U盘一个  </li>
+<li><a href="https://www.archlinux.org/download/" target="_blank" rel="external">ArchLinux 镜像</a> </li>
+<li>电脑一台</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-制作启动盘"><a href="#1-1-制作启动盘" class="headerlink" title="1.1 制作启动盘"></a>1.1 制作启动盘</h2><p> windows 下面，下载启动盘制作工具 <a href="https://rufus.akeo.ie/" target="_blank" rel="external">rufus</a>，将镜像写入U盘，<strong>注意</strong>制作过程中会格式化，记得备份。<br>在此安利下， rufus 真的是一个很给力的工具，目前为止，本人装过的所有 Linux 系统都是用它做的启动盘。</p>
+<h2 id="1-2-设置UEFI模式"><a href="#1-2-设置UEFI模式" class="headerlink" title="1.2 设置UEFI模式"></a>1.2 设置UEFI模式</h2><p>不同电脑有所不同，具体步骤自行 baidu 吧。<br>下面的步骤都是基于的 UEFI 模式的。实际上， BIOS 和 UEFI 两种模式的安装步骤中也仅仅只是分区和安装引导程序的过程有稍许不同。<br>选择 UEFI 的原因？唔……本人认为 UEFI 是趋势吧。　　</p>
+<h2 id="1-3-在硬盘里留出30G以上的空闲空间"><a href="#1-3-在硬盘里留出30G以上的空闲空间" class="headerlink" title="1.3 在硬盘里留出30G以上的空闲空间"></a>1.3 在硬盘里留出30G以上的空闲空间</h2><p>如果以前装的是 windows ，现在准备装双系统了，那么就进磁盘管理选择一个盘进行删除卷操作。<br>如果以前装的是 windows ，现在准备装 ArchLinux 单系统了，那么直接进大白菜删除所有分区。<br>如果以前装的是 linux ，那就跳过这步吧……</p>
+<hr>
+<h1 id="2-为正式安装做好铺垫"><a href="#2-为正式安装做好铺垫" class="headerlink" title="2 为正式安装做好铺垫　　"></a>2 为正式安装做好铺垫　　</h1><h2 id="2-1-进入-ArchISO"><a href="#2-1-进入-ArchISO" class="headerlink" title="2.1 进入 ArchISO"></a>2.1 进入 ArchISO</h2><p>开机前将U盘插入，设置成从U盘启动。<br>开机能看到 ArchISO 的选择界面，一般选第一个就行，默认装64位。 想装32位就选第二个。<br>进去以后即默认获取 root 权限。</p>
+<h2 id="2-2-验证启动模式"><a href="#2-2-验证启动模式" class="headerlink" title="2.2 验证启动模式"></a>2.2 验证启动模式</h2><p>如果 UEFI 模式已经启用 , Archiso 将会使用 systemd-boot 来启动 Arch Linux 。如果你要验证启动模式, 可以尝试列出 efivars 目录:</p>
+<pre><code># ls /sys/firmware/efi/efivars
+</code></pre><p>如果出现 No such file or directory 的提示，则需要重新开机检查设置。</p>
+<h2 id="2-3-连接到因特网"><a href="#2-3-连接到因特网" class="headerlink" title="2.3 连接到因特网"></a>2.3 连接到因特网</h2><p>守护进程 dhcpcd 已被默认启用来探测有线设备, 并会尝试连接。因此最省事的方法就是找个路由器设置为 dhcp 的地方。<br>如需验证网络是否正常, 可以使用 ping:</p>
+<pre><code># ping -c 3 baidu.com
+</code></pre><h2 id="2-4-更新系统时间"><a href="#2-4-更新系统时间" class="headerlink" title="2.4 更新系统时间"></a>2.4 更新系统时间</h2><p>用 systemd-timesyncd 确保系统时间是正确的：</p>
+<pre><code># timedatectl set-ntp true
+</code></pre><h2 id="2-5-硬盘分区"><a href="#2-5-硬盘分区" class="headerlink" title="2.5 硬盘分区"></a>2.5 硬盘分区</h2><p>找到你的硬盘名称，我的固态显示为 /dev/sdb：</p>
+<pre><code># fdisk -l
+</code></pre><p>下面使用 parted 工具进行分区，四个分区依次为 /boot/EFI , / , swap , /home：</p>
+<pre><code># parted /dev/sdb
+(parted) mkpart p 0 512M        &lt;== /boot/EFI
+(parted) mkpart p 512M 40G      &lt;== /
+(parted) mkpart p 40G 48G       &lt;== swap
+(parted) mkpart e 48G -1        &lt;== /home
+</code></pre><p>接下来，还需要用合适的文件系统来对每个分区进行格式化操作：</p>
+<pre><code># mkfs.vfat sdb1                &lt;== /boot/EFI
+# mkfs.ext4 sdb2                &lt;== /
+# mkswap sdb3                   &lt;== swap
+# mkfs.ext4 sdb4                &lt;== home
+</code></pre><h2 id="2-6-挂载分区"><a href="#2-6-挂载分区" class="headerlink" title="2.6 挂载分区"></a>2.6 挂载分区</h2><p>首先将根分区挂载到 /mnt：</p>
+<pre><code># mount /dev/sdb2 /mnt
+</code></pre><p>创建目录并挂载 /boot/EFI：</p>
+<pre><code># mkdir /mnt/boot
+# mkdir /mnt/boot/EFI
+# mount /dev/sdb1 /mnt/boot/EFI
+</code></pre><p>创建目录并挂载 /home：</p>
+<pre><code># mkdir /mnt/home
+# mount /dev/sdb4 /mnt/home
+</code></pre><p>激活 sdb3 作为交换分区：</p>
+<pre><code># swapon /dev/sdb3
+</code></pre><hr>
+<p><strong>参考资料：</strong><br><strong>【１】</strong>   <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="external">ArchLinux官方教程</a>  </p>
+<p>作者 <a href="http://irislr.github.io" target="_blank" rel="external">@Iris</a><br>2016 年 11 月 27 日 </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新：<time datetime="2016-11-29T10:32:27.469Z" itemprop="dateUpdated">2016-11-29 18:32:27</time>
+</span>
+
+
+        
+        原文链接：<a href="/posts/900d2e4c/" target="_blank" rel="external">http://irislr.me//posts/900d2e4c/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://irislr.me'">
+            <img src="/img/avatar.jpg" alt="IrisLr">
+            <a>IrisLr</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArchLinux/">ArchLinux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统安装/">系统安装</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/900d2e4c/&title=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/900d2e4c/&title=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&source=此博文主要介绍了安装前需要进行的一系列准备工作。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/900d2e4c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/900d2e4c/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/900d2e4c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/a01bc294/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：撕人定制 ArchLinux（二）
+        </h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+    
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+    
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
+
+    
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "null",
+            appKey: "null",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://irislr.me">irislr.me</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license"><a  target="_blank" rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">博客内容遵循 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
+
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://irislr.me/posts/900d2e4c/&title=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&pic=http://irislr.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://irislr.me/posts/900d2e4c/&title=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&source=此博文主要介绍了安装前需要进行的一系列准备工作。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://irislr.me/posts/900d2e4c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《撕人定制 ArchLinux（一）》 — 鸢尾旅人的博客&url=http://irislr.me/posts/900d2e4c/&via=http://irislr.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://irislr.me/posts/900d2e4c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuElEQVR42u3aSW7DMAwF0Nz/0i7Qde18kpZsFE+rIIP1lIXA6fOJ1/G7zt45Ltf1rz4rFi4u7pibbJZTcmjvwLi4uDu515fX6Y9b19MZN7lAcXFx38ZN4o38O7i4uP+J29smCaFwcXHfxs0fd53YXIcy88IKLi7uHm61YLri9cL6Li4ubpF7FFevANq7vP7YHRcXdws3L1vc2yjtFVVxcXH3cPN2aa/JuiSlwcXFXcydhCP3tmnzIQ9cXNyd3CSNScKgXmOmcDBcXNzF3PLJitvnAxnRn4KLi7uF2yuO3FsYbZZOcHFxt3B7oU+etCTB06ggi4uLeyt30kztHa9XfMHFxd3DTXCTsKMXDJ2+xsXF3cLNW629Nmoe1kRzIri4uFu4k/Jor7TRG+nAxcV9ipuPWyXJTLVZW77IcHFxl3GrF1D1GOV2SA+Ni4t7K7eXwMzHLKpXHi4u7k7uvPQ5KYJUGy24uLg7udWN5+Nc1cPg4uI+xU0ur+qnk0ToS1yGi4v7Gm71nepzkqfh4uK+k3tvCaPaqsHFxd3JrSY/vaJGHvTg4uI+y+1NOFQDnbyZOk+ccHFxB9wfI8DiMfWjFMkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2016/11/27");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "IrisLr");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+</body>
+</html>
