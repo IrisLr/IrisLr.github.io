@@ -367,31 +367,10 @@
   
     
     <entry>
-      <title></title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      <content type="html"><![CDATA[<p>layout: categories<br>comments: false</p>]]></content>
-    </entry>
-    
-    <entry>
-      <title></title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<p>layout: about<br>comments: true<br>reward: false</p>]]></content>
-    </entry>
-    
-    <entry>
       <title>读书</title>
       <link href="/reading/index.html"/>
       <url>/reading/index.html</url>
       <content type="html"><![CDATA[]]></content>
-    </entry>
-    
-    <entry>
-      <title></title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      <content type="html"><![CDATA[<p>layout: tags<br>comments: false</p>]]></content>
     </entry>
     
   
